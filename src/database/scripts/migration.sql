@@ -1,0 +1,12 @@
+CREATE TABLE contatos(
+    id SERIAL PRIMARY KEY,
+    nome CHARACTER VARYING(50) NOT NULL,
+    email CHARACTER VARYING(50) NOT NULL,
+    phone INT NOT NULL 
+);
+
+CREATE TABLE categorias(
+    id SERIAL PRIMARY KEY,
+    nome CHARACTER VARYING(50) NOT NULL,
+    contato_id FOREIGN KEY (id) REFERENCES contatos (id)
+);
