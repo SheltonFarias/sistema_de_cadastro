@@ -14,4 +14,12 @@ function listContacts() {
  return query('SELECT * FROM contatos;');
 }
 
+function createcontacts () {
+  return query('CREATE')
+}
+
+function updatecontacts () {
+  return query('UPDATE contatos')
+}
+
 app.listen(3000, () => console.log('Server started at http://localhost:3000/'));
