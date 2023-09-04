@@ -10,8 +10,8 @@ app.get('/contacts', async function(req, res) {
   return res.json(contacts);
 });
 
-app.update('/contatos/:id')
-app.delete('/contatos/:id')
+app.put('/contatos/:id')
+app.drop('/contatos/:id')
 
 function listContacts() {
  return query('SELECT * FROM contatos;');
