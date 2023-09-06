@@ -18,6 +18,8 @@ app.get('/contatos/:id', function(req, res){
   let consult = `SELECT id FROM contatos WHERE id = ${id}`
   |
   query.query(consult, (err, result) => {
+    console.log(result);
+    return null;
     if (err) throw err;
     res.render('index', result)
   })
