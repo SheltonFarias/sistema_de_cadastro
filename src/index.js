@@ -9,8 +9,13 @@ app.get('/', async function(req, res) {
 
   return res.json(contacts);
 });
-app.get('/contatos', function(req, res){
+
+app.post('/contatos', function(req, res){
   return query('SELECT * FROM contatos')
+})
+
+app.delete('/contatos', function(req, res){
+  return query('DELETE FROM contatos WHERE')
 })
 
 app.get('/contatos/:id', function(req, res){
