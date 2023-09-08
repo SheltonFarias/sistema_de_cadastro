@@ -4,18 +4,35 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/', async function(req, res) {
-  const contacts = await listContacts();
+app.get('/contatos', async function(req, res) {
+  // const contacts = await listContacts();
 
-  return res.json(contacts);
+  // return res.json(contacts);
+
+  const contatos = await query('SELECT * FROM contatos');
+
+  return res.json(contatos);
 });
 
-app.post('/contatos', function(req, res){
-  return query('SELECT * FROM contatos')
+app.post('/contatos', async function(req, res){
+  //return query('SELECT * FROM contatos')
+  const contato = req.body;
+
+  const { name, email, phone, category_id } = contato
+
+  const obj = {
+    text: 'INSERT INTO contatos(name, email, phone, category_id) VALUES($1, $2, $3, $4)',
+    values: [name, email, phone, category_id]
+  }
+
+  const contatoCriado = await query(obj);
+  console.log(contatoCriado);
+
+  return res.status(201).json(contatoCriado)
 })
 
-app.delete('/contatos', function(req, res){
-  return query('DELETE FROM contatos WHERE')
+app.get('/contatos', function(req, res){
+  return query('DELETE FROM contatos WHERE id = *')
 })
 
 app.get('/contatos/:id', function(req, res){
