@@ -37,31 +37,40 @@ app.post('/contatos', async function(req, res){
 
 //Rota PUT
 app.put('/contatos/:id', async function(req,res){
- const contato = req.body;
- 
- const {name, email, phone, category_id} = contato
+ const Atualizarcontato = req.body;
+ const id = req.params.id
+ const {name, email, phone, category_id} = Atualizarcontato
 
 const sql = {
+<<<<<<< HEAD
   text: 'UPDATE contatos SET(name, email, phone) WHERE(id)',
   values: [name, email, phone]
 }
+=======
+  text: 'UPDATE contatos SET($1, $2, $3, $4) WHERE ()',
+  values: [name, email, phone, category_id, id]
+}
+return res.status(200).json(contatos);
+
+return res.status(201).json('Contato Atualizado')
+>>>>>>> ed59c776b4cec7b7365c3e67853b4d949265fde0
 })
 
- const ContatoAtualizado = await query(sql)
-  return res.status(201).json('Contato Atualizado')
+//  const ContatoAtualizado = await query(sql)
 
-//Rota para deletar um contato
-app.get('/contatos', function(req, res){
-  return query('DELETE FROM contatos WHERE id = *')
-
-})
 
 
 //Rota DELETE
+<<<<<<< HEAD
 app.delete('/contatos/:id', async function(req,res) {
 
 } )
 
+=======
+app.delete('/contatos/:id', async function(req,res){
+
+})
+>>>>>>> ed59c776b4cec7b7365c3e67853b4d949265fde0
 
 
 
@@ -83,7 +92,6 @@ app.get('/categorias', async function(req, res) {
 
 //ROTAS CATEGORIAS
 
-
 // Rota POST
 
 
@@ -104,6 +112,10 @@ app.post('/categorias', async function(req, res){
   return res.status(201).json(categoriaCriada)
 })
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ed59c776b4cec7b7365c3e67853b4d949265fde0
 //Rota GET
 
 app.get('/categorias', async function(req, res) {
@@ -118,6 +130,7 @@ app.get('/categorias', async function(req, res) {
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -127,6 +140,8 @@ app.get('/categorias', async function(req, res) {
 
 
 
+=======
+>>>>>>> ed59c776b4cec7b7365c3e67853b4d949265fde0
 app.listen(3000, () => console.log('Server started at http://localhost:3000/'));
 
 
