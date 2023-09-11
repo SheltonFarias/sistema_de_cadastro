@@ -44,11 +44,21 @@ app.get('/contatos', function(req, res){
 
 
 
-//ROTAS CONTATOS
+//ROTAS CATEGORIAS
+
+//Rota Get
+app.get('/categorias', async function(req, res) {
+  // const contacts = await listContacts();
+  
+  // return res.json(contacts);
+  
+  const categorias = await query('SELECT * FROM categorias');
+  
+  return res.json(contatos);
+});
 
 
 // Rota Post
-
 app.post('/categorias', async function(req, res){
   //return query('SELECT * FROM contatos')
   const Categorias = req.body;
@@ -65,27 +75,6 @@ app.post('/categorias', async function(req, res){
 
   return res.status(201).json(categoriaCriada)
 })
-
-//Rota Get
-
-app.get('/categorias', async function(req, res) {
-  // const contacts = await listContacts();
-  
-  // return res.json(contacts);
-  
-  const categorias = await query('SELECT * FROM categorias');
-  
-  return res.json(contatos);
-});
-
-
-
-
-
-
-// function createcontacts () {
-//   return query('CREATE')
-// }
 
 
 app.listen(3000, () => console.log('Server started at http://localhost:3000/'));
