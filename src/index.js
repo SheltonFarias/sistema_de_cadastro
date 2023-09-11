@@ -38,19 +38,19 @@ app.post('/contatos', async function(req, res){
 //Rota PUT
 app.put('/contatos/:id', async function(req,res){
  const Atualizarcontato = req.body;
- 
+ const id = req.params.id
  const {name, email, phone, category_id} = Atualizarcontato
 
 const sql = {
-  text: 'UPDATE contatos SET(name, email, phone) WHERE(id)',
-  values: [name, email, phone]
+  text: 'UPDATE contatos SET($1, $2, $3, $4) WHERE ()',
+  values: [name, email, phone, category_id, id]
 }
 return res.status(200).json(contatos);
 
+return res.status(201).json('Contato Atualizado')
 })
 
- const ContatoAtualizado = await query(sql)
-  return res.status(201).json('Contato Atualizado')
+//  const ContatoAtualizado = await query(sql)
 
 
 
