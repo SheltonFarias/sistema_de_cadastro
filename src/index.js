@@ -48,8 +48,6 @@ const sql = {
 }
 
 return res.status(200).json(contatos)
-
- return res.status(201).send('Contato Atualizado')
 })
 
 
