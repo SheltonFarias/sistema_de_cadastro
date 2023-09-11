@@ -38,6 +38,7 @@ app.post('/contatos', async function(req, res){
 {
   contato: contatos,
   mensage: 'ahausujahs'
+  
 }
 //Rota PUT
 app.put('/contatos/:id', async function(req,res){
@@ -49,10 +50,13 @@ const sql = {
 
   text: 'UPDATE contatos SET name = $1, email = $2, phone =$3, category_id = $4 WHERE ($5)',
 
+
   values: [name, email, phone, category_id, id]
 }
 
 return res.status(201)
+
+return res.status(200).json(contatos)
 
 })
 
@@ -135,6 +139,18 @@ app.get('/categorias', async function(req, res) {
   return res.json(contatos);
 });
 
+ 
+//Rota Delete
+const deleteUser = (request, response) => {
+  const id = parseInt(request.params.id)
+
+  pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).send(`User deleted with ID: ${id}`)
+  })
+}
 
 
 
