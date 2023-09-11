@@ -42,18 +42,17 @@ app.put('/contatos/:id', async function(req,res){
  const {name, email, phone, category_id} = Atualizarcontato
 
 const sql = {
-<<<<<<< HEAD
+
   text: 'UPDATE contatos SET(name, email, phone) WHERE(id)',
   values: [name, email, phone]
 }
-=======
+
   text: 'UPDATE contatos SET($1, $2, $3, $4) WHERE ()',
   values: [name, email, phone, category_id, id]
 }
 return res.status(200).json(contatos);
 
 return res.status(201).json('Contato Atualizado')
->>>>>>> ed59c776b4cec7b7365c3e67853b4d949265fde0
 })
 
 //  const ContatoAtualizado = await query(sql)
@@ -61,16 +60,13 @@ return res.status(201).json('Contato Atualizado')
 
 
 //Rota DELETE
-<<<<<<< HEAD
 app.delete('/contatos/:id', async function(req,res) {
 
 } )
 
-=======
 app.delete('/contatos/:id', async function(req,res){
 
 })
->>>>>>> ed59c776b4cec7b7365c3e67853b4d949265fde0
 
 
 
