@@ -43,10 +43,7 @@ app.put('/contatos/:id', async function(req,res){
 
 const sql = {
 
-  text: 'UPDATE contatos SET(name, email, phone) WHERE(id)',
-  values: [name, email, phone]
-}
-
+  
   text: 'UPDATE contatos SET($1, $2, $3, $4) WHERE ()',
   values: [name, email, phone, category_id, id]
 }
@@ -108,10 +105,7 @@ app.post('/categorias', async function(req, res){
   return res.status(201).json(categoriaCriada)
 })
 
-<<<<<<< HEAD
-=======
 
->>>>>>> ed59c776b4cec7b7365c3e67853b4d949265fde0
 //Rota GET
 
 app.get('/categorias', async function(req, res) {
@@ -126,7 +120,7 @@ app.get('/categorias', async function(req, res) {
 
 
 
-<<<<<<< HEAD
+
 
 
 
@@ -136,8 +130,7 @@ app.get('/categorias', async function(req, res) {
 
 
 
-=======
->>>>>>> ed59c776b4cec7b7365c3e67853b4d949265fde0
+
 app.listen(3000, () => console.log('Server started at http://localhost:3000/'));
 
 
