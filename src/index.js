@@ -6,7 +6,7 @@ app.use(express.json());
 
 //ROTAS CONTATO
 
-//Rota Get
+//Rota GET
 app.get('/contatos', async function(req, res) {
   // const contacts = await listContacts();
 
@@ -17,7 +17,7 @@ app.get('/contatos', async function(req, res) {
   return res.json(contatos);
 });
 
-//Rota Post
+//Rota POST
 app.post('/contatos', async function(req, res){
   //return query('SELECT * FROM contatos')
   const contato = req.body;
@@ -31,19 +31,38 @@ app.post('/contatos', async function(req, res){
 
   const contatoCriado = await query(obj);
   console.log(contatoCriado);
-
+ //  if (!name || !email || !phone) {    return res.status(400).json({ error: 'Nome , email, telefone são obrigatórios.' }
   return res.status(201).json(contatoCriado)
 })
+
+//Rota PUT
+app.put('/contatos/:id', async function(req,res){
+ const contato = req.body;
+ 
+ const {name, email, phone, category_id} = contato
+
+const sql = {
+  text: 'UPDATE contatos SET(name, email, phone) WHERE(id)',
+  values: [name, email, phone]
+})
+
+ const ContatoAtualizado = await query(sql)
+  return res.status(201).json('Contato Atualizado')
 
 //Rota para deletar um contato
 app.get('/contatos', function(req, res){
   return query('DELETE FROM contatos WHERE id = *')
+
 })
-,
+
+
+//Rota DELETE
+app.delete('/contatos/:id', async function(req,res));
 
 
 
 
+<<<<<<< HEAD
 //ROTAS CATEGORIAS
 
 //Rota Get
@@ -59,6 +78,18 @@ app.get('/categorias', async function(req, res) {
 
 
 // Rota Post
+=======
+
+
+
+
+
+//ROTAS CATEGORIAS
+
+
+// Rota POST
+
+>>>>>>> fe72f5a4bdc0a3b05a42d5e84c64b2f5b85f9b71
 app.post('/categorias', async function(req, res){
   //return query('SELECT * FROM contatos')
   const Categorias = req.body;
@@ -72,21 +103,51 @@ app.post('/categorias', async function(req, res){
   
   const categoriaCriada = await query(obj);
   console.log(categoriaCriada);
-
+  
   return res.status(201).json(categoriaCriada)
 })
 
+<<<<<<< HEAD
+=======
+//Rota GET
+
+app.get('/categorias', async function(req, res) {
+  // const contacts = await listContacts();
+  
+  // return res.json(contacts);
+  
+  const categorias = await query('SELECT * FROM categorias');
+  
+  return res.json(contatos);
+});
+
+
+
+
+
+
+// function createcontacts () {
+//   return query('CREATE')
+// }
+
+>>>>>>> fe72f5a4bdc0a3b05a42d5e84c64b2f5b85f9b71
 
 app.listen(3000, () => console.log('Server started at http://localhost:3000/'));
 
 
 // app.get('/contatos/:id', function(req, res){
-//   const id = req.params.id
-//   let consult = `SELECT id FROM contatos WHERE id = ${id}`
-//   |
-//   query.query(consult, (err, result) => {
-//     console.log(result);
-//     return null; 
-//     if (err) throw err;
-//     res.render('index', result)
-//   })
+  //   const id = req.params.id
+  //   let consult = `SELECT id FROM contatos WHERE id = ${id}`
+  //   |
+  //   query.query(consult, (err, result) => {
+    //     console.log(result);
+    //     return null; 
+    //     if (err) throw err;
+    //     res.render('index', result)
+    //   })
+    
+
+    // app.get('/contatos', function(req, res){
+    //   return query('DELETE FROM contatos WHERE id = *')
+    // })
+    // ,
