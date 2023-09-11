@@ -63,7 +63,6 @@ app.delete('/contatos/:id', async function(req,res){})
 
 
 
-<<<<<<< HEAD
 //ROTAS CATEGORIAS
 
 //Rota Get
