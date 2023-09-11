@@ -41,7 +41,6 @@ app.put('/contatos/:id', async function(req,res){
  
  const {name, email, phone, category_id} = contato
 
-
 const sql = {
   text: 'UPDATE contatos SET(name, email, phone) WHERE(id)',
   values: [name, email, phone]
@@ -60,7 +59,7 @@ app.get('/contatos', function(req, res){
 
 //Rota DELETE
 app.delete('/contatos/:id', async function(req,res) {
-  
+
 } )
 
 
