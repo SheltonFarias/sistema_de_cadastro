@@ -9,9 +9,11 @@ app.get('/', async function(req, res) {
 
   return res.json(contacts);
 });
+
 app.get('/contatos', function(req, res){
   return query('SELECT * FROM contatos')
 })
+,
 
 app.get('/contatos/:id', function(req, res){
   const id = req.params.id
