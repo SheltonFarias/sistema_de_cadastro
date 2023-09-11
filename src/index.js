@@ -38,6 +38,7 @@ app.post('/contatos', async function(req, res){
 app.get('/contatos', function(req, res){
   return query('DELETE FROM contatos WHERE id = *')
 })
+,
 
 
 
