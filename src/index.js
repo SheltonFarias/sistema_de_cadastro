@@ -42,7 +42,13 @@ app.put('/contatos/:id', async function(req,res){
  const {name, email, phone, category_id} = Atualizarcontato
 
 const sql = {
+
   text: 'UPDATE contatos SET name = $1, email = $2, phone =$3, category_id = $4 WHERE ($5)',
+
+
+
+  text: 'UPDATE contatos SET($1, $2, $3, $4) WHERE ()',
+
   values: [name, email, phone, category_id, id]
 }
 
@@ -68,6 +74,10 @@ return res.status(200).json(contatos);
 
 
 //Rota DELETE
+app.delete('/contatos/:id', async function(req,res) {
+
+} )
+
 app.delete('/contatos/:id', async function(req,res){
 
 })
@@ -124,6 +134,9 @@ app.get('/categorias', async function(req, res) {
   
   return res.json(contatos);
 });
+
+
+
 
 
 
