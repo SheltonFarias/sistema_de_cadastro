@@ -25,11 +25,11 @@ app.post('/contatos', async function(req, res){
   const { name, email, phone, category_id } = contato
 
   const obj = {
-    text: 'INSERT INTO contatos(name, email, phone, category_id) VALUES($1, $2, $3, $4)',
+    text: 'INSERT INTO contatos(name, email, phone, category_id) VALUES($1, $2, $3, $4) RETURNING *',
     values: [name, email, phone, category_id]
   }
 
-  const contatoCriado = await query(obj);
+  const [contatoCriado] = await query(obj);
   console.log(contatoCriado);
  //  if (!name || !email || !phone) {    return res.status(400).json({ error: 'Nome , email, telefone são obrigatórios.' }
   return res.status(201).json(contatoCriado)
@@ -42,14 +42,27 @@ app.put('/contatos/:id', async function(req,res){
  const {name, email, phone, category_id} = Atualizarcontato
 
 const sql = {
-  text: 'UPDATE contatos SET($1, $2, $3, $4) WHERE ()',
+  text: 'UPDATE contatos SET name = $1, email = $2, phone =$3, category_id = $4 WHERE ($5)',
   values: [name, email, phone, category_id, id]
 }
-return res.status(200).json(contatos);
 
-return res.status(201).json('Contato Atualizado')
+return res.status(201).send('Contato Atualizado')
+return res.status(200).json(contatos);
 })
 
+
+
+// app.put('/contatos/:id', async function(req,res){
+//  const Atualizarcontato = req.body;
+//  const id = parseInt(req.params.id)
+//  query = (
+//  'UPDATE contatos SET name = $1, email = $2, phone = $3, category_id = $4 WHERE id = $5', [name, email, phone, category_id, id], (error, results) => {
+//  if (error) {
+//    throw error
+//  }
+//  return res.status(200).json(contatos)
+//  })
+// })
 //  const ContatoAtualizado = await query(sql)
 
 
