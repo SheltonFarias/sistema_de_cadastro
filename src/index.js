@@ -44,6 +44,7 @@ app.put('/contatos/:id', async function(req,res){
 const sql = {
   text: 'UPDATE contatos SET(name, email, phone) WHERE(id)',
   values: [name, email, phone]
+}
 })
 
  const ContatoAtualizado = await query(sql)
@@ -57,7 +58,7 @@ app.get('/contatos', function(req, res){
 
 
 //Rota DELETE
-app.delete('/contatos/:id', async function(req,res));
+app.delete('/contatos/:id', async function(req,res){})
 
 
 
