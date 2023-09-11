@@ -6,7 +6,7 @@ app.use(express.json());
 
 //ROTAS CONTATO
 
-//Rota Get
+//Rota GET
 app.get('/contatos', async function(req, res) {
   // const contacts = await listContacts();
 
@@ -17,7 +17,7 @@ app.get('/contatos', async function(req, res) {
   return res.json(contatos);
 });
 
-//Rota Post
+//Rota POST
 app.post('/contatos', async function(req, res){
   //return query('SELECT * FROM contatos')
   const contato = req.body;
@@ -31,22 +31,41 @@ app.post('/contatos', async function(req, res){
 
   const contatoCriado = await query(obj);
   console.log(contatoCriado);
-
+ //  if (!name || !email || !phone) {    return res.status(400).json({ error: 'Nome , email, telefone são obrigatórios.' }
   return res.status(201).json(contatoCriado)
 })
 
-app.get('/contatos', function(req, res){
-  return query('DELETE FROM contatos WHERE id = *')
+//Rota PUT
+app.put('/contatos/:id', async function(req,res){
+ const contato = req.body;
+ 
+ const {name, email, phone, category_id} = contato
+
+const sql = {
+  text: 'UPDATE contatos SET(name, email, phone) WHERE(id)',
+  values: [name, email, phone]
+}
+
+ const ContatoAtualizado = await query(sql)
+  return res.status(201).json('Contato Atualizado')
 })
-,
+
+
+//Rota DELETE
+app.delete('/contatos/:id', async function(req,res))
 
 
 
 
-//ROTAS CONTATOS
 
 
-// Rota Post
+
+
+
+//ROTAS CATEGORIAS
+
+
+// Rota POST
 
 app.post('/categorias', async function(req, res){
   //return query('SELECT * FROM contatos')
@@ -61,11 +80,11 @@ app.post('/categorias', async function(req, res){
   
   const categoriaCriada = await query(obj);
   console.log(categoriaCriada);
-
+  
   return res.status(201).json(categoriaCriada)
 })
 
-//Rota Get
+//Rota GET
 
 app.get('/categorias', async function(req, res) {
   // const contacts = await listContacts();
@@ -88,12 +107,18 @@ app.listen(3000, () => console.log('Server started at http://localhost:3000/'));
 
 
 // app.get('/contatos/:id', function(req, res){
-//   const id = req.params.id
-//   let consult = `SELECT id FROM contatos WHERE id = ${id}`
-//   |
-//   query.query(consult, (err, result) => {
-//     console.log(result);
-//     return null; 
-//     if (err) throw err;
-//     res.render('index', result)
-//   })
+  //   const id = req.params.id
+  //   let consult = `SELECT id FROM contatos WHERE id = ${id}`
+  //   |
+  //   query.query(consult, (err, result) => {
+    //     console.log(result);
+    //     return null; 
+    //     if (err) throw err;
+    //     res.render('index', result)
+    //   })
+    
+
+    // app.get('/contatos', function(req, res){
+    //   return query('DELETE FROM contatos WHERE id = *')
+    // })
+    // ,
