@@ -35,6 +35,10 @@ app.post('/contatos', async function(req, res){
   return res.status(201).json(contatoCriado)
 })
 
+{
+  contato: contatos,
+  mensage: 'ahausujahs'
+}
 //Rota PUT
 app.put('/contatos/:id', async function(req,res){
  const Atualizarcontato = req.body;
@@ -45,15 +49,11 @@ const sql = {
 
   text: 'UPDATE contatos SET name = $1, email = $2, phone =$3, category_id = $4 WHERE ($5)',
 
-
-
-  text: 'UPDATE contatos SET($1, $2, $3, $4) WHERE ()',
-
   values: [name, email, phone, category_id, id]
 }
 
-return res.status(201).send('Contato Atualizado')
-return res.status(200).json(contatos);
+return res.status(201)
+
 })
 
 
