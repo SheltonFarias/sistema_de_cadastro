@@ -31,6 +31,7 @@ app.post('/contatos', async function(req, res){
   return res.status(201).json(contatoCriado)
 })
 
+//Rota para deletar um contato
 app.get('/contatos', function(req, res){
   return query('DELETE FROM contatos WHERE id = *')
 })
@@ -58,6 +59,7 @@ app.get('/contatos/:id', function(req, res){
 
 
 // function createcontacts () {
+  
 //   return query('CREATE')
 // }
 
