@@ -44,15 +44,20 @@ app.put('/contatos/:id', async function(req,res){
 const sql = {
   text: 'UPDATE contatos SET(name, email, phone) WHERE(id)',
   values: [name, email, phone]
-}
+})
 
  const ContatoAtualizado = await query(sql)
   return res.status(201).json('Contato Atualizado')
+
+//Rota para deletar um contato
+app.get('/contatos', function(req, res){
+  return query('DELETE FROM contatos WHERE id = *')
+
 })
 
 
 //Rota DELETE
-app.delete('/contatos/:id', async function(req,res))
+app.delete('/contatos/:id', async function(req,res));
 
 
 
@@ -101,6 +106,9 @@ app.get('/categorias', async function(req, res) {
 
 
 
+// function createcontacts () {
+//   return query('CREATE')
+// }
 
 
 app.listen(3000, () => console.log('Server started at http://localhost:3000/'));
