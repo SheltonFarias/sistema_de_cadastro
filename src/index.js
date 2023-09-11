@@ -50,15 +50,12 @@ const sql = {
  const ContatoAtualizado = await query(sql)
   return res.status(201).json('Contato Atualizado')
 
-//Rota para deletar um contato
-app.get('/contatos', function(req, res){
-  return query('DELETE FROM contatos WHERE id = *')
-
-})
 
 
 //Rota DELETE
-app.delete('/contatos/:id', async function(req,res){})
+app.delete('/contatos/:id', async function(req,res){
+
+})
 
 
 
@@ -77,19 +74,12 @@ app.get('/categorias', async function(req, res) {
 });
 
 
-// Rota Post
-=======
-
-
-
-
 
 //ROTAS CATEGORIAS
 
-
 // Rota POST
 
->>>>>>> fe72f5a4bdc0a3b05a42d5e84c64b2f5b85f9b71
+
 app.post('/categorias', async function(req, res){
   //return query('SELECT * FROM contatos')
   const Categorias = req.body;
@@ -107,8 +97,7 @@ app.post('/categorias', async function(req, res){
   return res.status(201).json(categoriaCriada)
 })
 
-<<<<<<< HEAD
-=======
+
 //Rota GET
 
 app.get('/categorias', async function(req, res) {
@@ -122,15 +111,6 @@ app.get('/categorias', async function(req, res) {
 });
 
 
-
-
-
-
-// function createcontacts () {
-//   return query('CREATE')
-// }
-
->>>>>>> fe72f5a4bdc0a3b05a42d5e84c64b2f5b85f9b71
 
 app.listen(3000, () => console.log('Server started at http://localhost:3000/'));
 
