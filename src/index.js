@@ -4,6 +4,9 @@ const app = express();
 
 app.use(express.json());
 
+//ROTAS CONTATO
+
+//Rota Get
 app.get('/contatos', async function(req, res) {
   // const contacts = await listContacts();
 
@@ -14,6 +17,7 @@ app.get('/contatos', async function(req, res) {
   return res.json(contatos);
 });
 
+//Rota Post
 app.post('/contatos', async function(req, res){
   //return query('SELECT * FROM contatos')
   const contato = req.body;
@@ -37,36 +41,63 @@ app.get('/contatos', function(req, res){
 })
 ,
 
-app.get('/contatos/:id', function(req, res){
-  const id = req.params.id
-  let consult = `SELECT id FROM contatos WHERE id = ${id}`
-  |
-  query.query(consult, (err, result) => {
-    console.log(result);
-    return null;
-    if (err) throw err;
-    res.render('index', result)
-  })
 
+
+
+//ROTAS CONTATOS
+
+
+// Rota Post
+
+app.post('/categorias', async function(req, res){
+  //return query('SELECT * FROM contatos')
+  const Categorias = req.body;
+  
+  const {id, name } = categorias
+  
+  const obj = {
+    text: 'INSERT INTO contatos(id, name) VALUES($1, $2)',
+    values: [id, name]
+  }
+  
+  const categoriaCriada = await query(obj);
+  console.log(categoriaCriada);
+
+  return res.status(201).json(categoriaCriada)
 })
 
+//Rota Get
+
+app.get('/categorias', async function(req, res) {
+  // const contacts = await listContacts();
+  
+  // return res.json(contacts);
+  
+  const categorias = await query('SELECT * FROM categorias');
+  
+  return res.json(contatos);
+});
 
 
 
-// function listContacts() {
-//  return query('SELECT * FROM contatos;');
-// } 
+
 
 
 // function createcontacts () {
-  
 //   return query('CREATE')
 // }
 
-// function updatecontacts () {
-//   return query('UPDATE contatos')
-// }
 
 app.listen(3000, () => console.log('Server started at http://localhost:3000/'));
 
 
+// app.get('/contatos/:id', function(req, res){
+//   const id = req.params.id
+//   let consult = `SELECT id FROM contatos WHERE id = ${id}`
+//   |
+//   query.query(consult, (err, result) => {
+//     console.log(result);
+//     return null; 
+//     if (err) throw err;
+//     res.render('index', result)
+//   })
