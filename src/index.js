@@ -59,8 +59,6 @@ return res.status(200).send('contato atualizado')
 
 return res.status(201)
 
->>>>>>> 425457caa72c53aef229fc3ab7a3ae670b2b8bb8
-return res.status(200).json(contatos)
 
 })
 
