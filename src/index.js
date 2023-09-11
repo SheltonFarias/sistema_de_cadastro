@@ -14,8 +14,6 @@ app.get('/contatos', async function(req, res) {
   return res.json(contatos);
 });
 
-<<<<<<< HEAD
-=======
 app.post('/contatos', async function(req, res){
   //return query('SELECT * FROM contatos')
   const contato = req.body;
@@ -33,7 +31,6 @@ app.post('/contatos', async function(req, res){
   return res.status(201).json(contatoCriado)
 })
 
->>>>>>> a3a869b819eb628d6cf866300a250303ba6be629
 app.get('/contatos', function(req, res){
   return query('DELETE FROM contatos WHERE id = *')
 })
