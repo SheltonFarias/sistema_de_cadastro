@@ -46,10 +46,17 @@ const sql = {
   text: 'UPDATE contatos SET name = $1, email = $2, phone =$3, category_id = $4 WHERE ($5)',
   values: [name, email, phone, category_id, id]
 }
-
+return res.status(200).send('contato atualizado')
 return res.status(200).json(contatos)
 })
 
+//Rota delete
+app.delete('/contatos', async function(req, res){
+const deletarContato = (request, response) => {
+  const id = parseInt(request.params.id)
+
+  pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => 
+})
 
 
 // app.put('/contatos/:id', async function(req,res){
