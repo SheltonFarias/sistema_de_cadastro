@@ -44,13 +44,11 @@ app.put('/contatos/:id', async function(req,res){
 const sql = {
 
   text: 'UPDATE contatos SET name = $1, email = $2, phone =$3, category_id = $4 WHERE ($5)',
-
-
   values: [name, email, phone, category_id, id]
 }
 
-return res.status(201).send('Contato Atualizado')
-return res.status(200).json(contatos);
+return res.status(200).json(contatos)
+ return res.status(201).send('Contato Atualizado')
 })
 
 
