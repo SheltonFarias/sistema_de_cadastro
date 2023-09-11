@@ -43,7 +43,7 @@ app.put('/contatos/:id', async function(req,res){
 
 const sql = {
 
-  
+
   text: 'UPDATE contatos SET($1, $2, $3, $4) WHERE ()',
   values: [name, email, phone, category_id, id]
 }
@@ -119,14 +119,6 @@ app.get('/categorias', async function(req, res) {
 });
 
 
-
-
-
-
-
-// function createcontacts () {
-//   return query('CREATE')
-// }
 
 
 
