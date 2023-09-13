@@ -35,58 +35,39 @@ app.post('/contatos', async function(req, res){
   return res.status(201).json(contatoCriado)
 })
 
-{
-  contato: contatos,
-  mensage: 'ahausujahs'
-  
-}
+
 //Rota PUT
-app.put('/contatos/:id', async function(req,res){
- const Atualizarcontato = req.body;
- const id = req.params.id
- const {name, email, phone, category_id} = Atualizarcontato
-
-const sql = {
-
-  text: 'UPDATE contatos SET name = $1, email = $2, phone =$3, category_id = $4 WHERE ($5)',
 
 
-  values: [name, email, phone, category_id, id]
-}
-
-return res.status(201)
-
-return res.status(200).json(contatos)
-
-})
-
-
-
-// app.put('/contatos/:id', async function(req,res){
-//  const Atualizarcontato = req.body;
-//  const id = parseInt(req.params.id)
-//  query = (
-//  'UPDATE contatos SET name = $1, email = $2, phone = $3, category_id = $4 WHERE id = $5', [name, email, phone, category_id, id], (error, results) => {
-//  if (error) {
-//    throw error
-//  }
-//  return res.status(200).json(contatos)
-//  })
-// })
-//  const ContatoAtualizado = await query(sql)
-
+app.put('/contatos/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, email, phone, category_id } = req.body;
+    const sql = 'UPDATE contatos SET name = $1, email = $2, phone = $3, category_id = $4 WHERE id = $5 RETURNING *';
+    const values = [name, email, phone, category_id, id];
+    const result = await query(sql, values);
+    res.status(200).json(result[0]);
+  } catch (error) {
+    console.error('Erro ao atualizar registro:', error);
+    res.status(500).json({ error: 'Erro ao atualizar registro' });
+  }
+});
 
 
 //Rota DELETE
-app.delete('/contatos/:id', async function(req,res) {
 
-} )
-
-app.delete('/contatos/:id', async function(req,res){
-
-})
-
-
+app.delete('/registros/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const sql = 'DELETE FROM categorias WHERE id = $1 RETURNING *';
+    const values = [id, name, id];
+    const result = await query(sql, values);
+    res.status(200).json(result[0]);
+  } catch (error) {
+    console.error('Erro ao excluir registro:', error);
+    res.status(500).json({ error: 'Erro ao excluir registro' });
+  }
+});
 
 
 //ROTAS CATEGORIAS
@@ -99,44 +80,46 @@ app.get('/categorias', async function(req, res) {
   
   const categorias = await query('SELECT * FROM categorias');
   
-  return res.json(contatos);
+  return res.json(categorias);
 });
 
 
-
-//ROTAS CATEGORIAS
 
 // Rota POST
 
 
 app.post('/categorias', async function(req, res){
   //return query('SELECT * FROM contatos')
-  const Categorias = req.body;
+  const categorias = req.body;
   
   const {id, name } = categorias
   
   const obj = {
-    text: 'INSERT INTO contatos(id, name) VALUES($1, $2)',
+    text: 'INSERT INTO categorias(id, name) VALUES($1, $2) RETURNING *',
     values: [id, name]
   }
   
-  const categoriaCriada = await query(obj);
+  const [categoriaCriada] = await query(obj);
   console.log(categoriaCriada);
   
   return res.status(201).json(categoriaCriada)
 })
 
 
-//Rota GET
+// Rota PUT
 
-app.get('/categorias', async function(req, res) {
-  // const contacts = await listContacts();
-  
-  // return res.json(contacts);
-  
-  const categorias = await query('SELECT * FROM categorias');
-  
-  return res.json(contatos);
+app.put('/contatos/:id', async (req, res) => {
+  try {
+    const { put } = req.params;
+    const {id, name } = req.body;
+    const sql = 'UPDATE contatos SET id = $1, name = $2 WHERE id = $3 RETURNING *';
+    const values = [id, name];
+    const result = await query(sql, values);
+    res.status(200).json(result[0]);
+  } catch (error) {
+    console.error('Erro ao atualizar registro:', error);
+    res.status(500).json({ error: 'Erro ao atualizar registro' });
+  }
 });
 
  
