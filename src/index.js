@@ -35,10 +35,10 @@ app.post('/contatos', async function(req, res){
   return res.status(201).json(contatoCriado)
 })
 
-
 //Rota PUT
 
 
+<<<<<<< HEAD
 app.put('/contatos/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -52,6 +52,33 @@ app.put('/contatos/:id', async (req, res) => {
     res.status(500).json({ error: 'Erro ao atualizar registro' });
   }
 });
+=======
+  values: [name, email, phone, category_id, id]
+}
+
+return res.status(200).send('contato atualizado')
+
+
+return res.status(201)
+
+
+})
+
+
+// app.put('/contatos/:id', async function(req,res){
+//  const Atualizarcontato = req.body;
+//  const id = parseInt(req.params.id)
+//  query = (
+//  'UPDATE contatos SET name = $1, email = $2, phone = $3, category_id = $4 WHERE id = $5', [name, email, phone, category_id, id], (error, results) => {
+//  if (error) {
+//    throw error
+//  }
+//  return res.status(200).json(contatos)
+//  })
+// })
+//  const ContatoAtualizado = await query(sql)
+
+>>>>>>> 3e3eb2e39260b4639e03ed280eb0a882ee239ec2
 
 
 //Rota DELETE
@@ -134,9 +161,6 @@ const deleteUser = (request, response) => {
     response.status(200).send(`User deleted with ID: ${id}`)
   })
 }
-
-
-
 
 
 app.listen(3000, () => console.log('Server started at http://localhost:3000/'));
