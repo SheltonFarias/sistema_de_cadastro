@@ -35,11 +35,6 @@ app.post('/contatos', async function(req, res){
   return res.status(201).json(contatoCriado)
 })
 
-{
-  contato: contatos,
-  mensage: 'ahausujahs'
-  
-}
 //Rota PUT
 app.put('/contatos/:id', async function(req,res){
  const Atualizarcontato = req.body;
@@ -60,14 +55,6 @@ return res.status(200).send('contato atualizado')
 return res.status(201)
 
 
-})
-
-//Rota delete
-app.delete('/contatos', async function(req, res){
-const deletarContato = (request, response) => {
-  const id = parseInt(request.params.id)
-
-  pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => 
 })
 
 
@@ -160,9 +147,6 @@ const deleteUser = (request, response) => {
     response.status(200).send(`User deleted with ID: ${id}`)
   })
 }
-
-
-
 
 
 app.listen(3000, () => console.log('Server started at http://localhost:3000/'));
