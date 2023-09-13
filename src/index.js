@@ -38,7 +38,6 @@ app.post('/contatos', async function(req, res){
 //Rota PUT
 
 
-<<<<<<< HEAD
 app.put('/contatos/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -52,18 +51,13 @@ app.put('/contatos/:id', async (req, res) => {
     res.status(500).json({ error: 'Erro ao atualizar registro' });
   }
 });
-=======
   values: [name, email, phone, category_id, id]
-}
+
 
 return res.status(200).send('contato atualizado')
 
 
 return res.status(201)
-
-
-})
-
 
 // app.put('/contatos/:id', async function(req,res){
 //  const Atualizarcontato = req.body;
@@ -77,9 +71,6 @@ return res.status(201)
 //  })
 // })
 //  const ContatoAtualizado = await query(sql)
-
->>>>>>> 3e3eb2e39260b4639e03ed280eb0a882ee239ec2
-
 
 //Rota DELETE
 
