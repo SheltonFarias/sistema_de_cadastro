@@ -116,11 +116,11 @@ app.post('/categorias', async function(req, res){
   //return query('SELECT * FROM contatos')
   const categorias = req.body;
   
-  const {id, name } = categorias
+  const {name} = categorias
   
   const obj = {
-    text: 'INSERT INTO categorias(id, name) VALUES($1, $2) RETURNING *',
-    values: [id, name]
+    text: 'INSERT INTO categorias(name) VALUES($1) RETURNING *',
+    values: [name]
   }
   
   const [categoriaCriada] = await query(obj);
