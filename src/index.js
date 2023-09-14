@@ -38,24 +38,6 @@ app.post('/contatos', async function(req, res) {
    return res.status(201).json(contatoCriado)
   });
 
-//Rota POST
-app.post('/contatos', async function(req, res){
-  //return query('SELECT * FROM contatos')
-  const contato = req.body;
-
-  const { name, email, phone, category_id } = contato
-
-  const obj = {
-    text: 'INSERT INTO contatos(name, email, phone, category_id) VALUES($1, $2, $3, $4) RETURNING *',
-    values: [name, email, phone, category_id]
-  }
-
-  const [contatoCriado] = await query(obj);
-  console.log(contatoCriado);
- //  if (!name || !email || !phone) {    return res.status(400).json({ error: 'Nome , email, telefone são obrigatórios.' }
-  return res.status(201).json(contatoCriado)
-
-})
 
 
 //Rota PUT
@@ -76,18 +58,14 @@ app.put('/contatos/:id', async (req, res) => {
 });
 
 
-//Rota DELETE
-
 
 //Rota DELETE
 
-//Rota DELETE
-
-app.delete('/registros/:id', async (req, res) => {
+app.delete('/contatos/:id', async (req, res) => {
    try {
    const { id } = req.params;
-   const sql = 'DELETE FROM categorias WHERE id = $1 RETURNING *';
-   const values = [id, id];
+   const sql = 'DELETE FROM contatos WHERE id = $1 RETURNING *';
+   const values = [id];
   const result = await query(sql, values);
    res.status(200).json(result[0]);
    } catch (error) {
@@ -95,6 +73,7 @@ app.delete('/registros/:id', async (req, res) => {
   res.status(500).json({ error: 'Erro ao excluir registro' });
    }
   });
+
 
 //ROTAS CATEGORIAS
 
@@ -148,16 +127,18 @@ app.put('/contatos/:id', async (req, res) => {
 
  
 //Rota Delete
-const deleteUser = (request, response) => {
-  const id = parseInt(request.params.id)
-
-  pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
-    if (error) {
-      throw error
-    }
-    response.status(200).send(`User deleted with ID: ${id}`);
-  })
-}
+app.delete('/categorias/:id', async (req, res) => {
+  try {
+  const { id } = req.params;
+  const sql = 'DELETE FROM categorias WHERE id = $1 RETURNING *';
+  const values = [id];
+ const result = await query(sql, values);
+  res.status(200).json(result[0]);
+  } catch (error) {
+  console.error('Erro ao excluir registro:', error);
+ res.status(500).json({ error: 'Erro ao excluir registro' });
+  }
+ });
 
 
 app.listen(3000, () => console.log('Server started at http://localhost:3000/'));
