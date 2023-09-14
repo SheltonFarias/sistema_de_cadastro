@@ -1,3 +1,4 @@
+
 var express = require('express');
 const { query } = require('./database');
 const app = express();
@@ -12,10 +13,12 @@ app.get('/contatos', async function(req, res) {
 
   // return res.json(contacts);
 
+
   const contatos = await query('SELECT * FROM contatos');
 
   return res.json(contatos);
 });
+
 
 // Rota POST
 app.post('/contatos', async function(req, res) {
@@ -33,6 +36,25 @@ app.post('/contatos', async function(req, res) {
    console.log(contatoCriado);
   //  if (!name || !email || !phone) { 'return res.status(400).json({ error: 'Nome , email, telefone são obrigatórios.' }
    return res.status(201).json(contatoCriado)
+  });
+
+//Rota POST
+app.post('/contatos', async function(req, res){
+  //return query('SELECT * FROM contatos')
+  const contato = req.body;
+
+  const { name, email, phone, category_id } = contato
+
+  const obj = {
+    text: 'INSERT INTO contatos(name, email, phone, category_id) VALUES($1, $2, $3, $4) RETURNING *',
+    values: [name, email, phone, category_id]
+  }
+
+  const [contatoCriado] = await query(obj);
+  console.log(contatoCriado);
+ //  if (!name || !email || !phone) {    return res.status(400).json({ error: 'Nome , email, telefone são obrigatórios.' }
+  return res.status(201).json(contatoCriado)
+
 })
 
 
@@ -56,11 +78,19 @@ app.put('/contatos/:id', async (req, res) => {
 
 //Rota DELETE
 
+
 app.delete('/contatos/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const sql = 'DELETE FROM contatos WHERE id = $1 RETURNING *';
     const values = [id, id];
+
+app.delete('/registros/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const sql = 'DELETE FROM categorias WHERE id = $1 RETURNING *';
+    const values = [id, name, id];
+
     const result = await query(sql, values);
     res.status(200).json(result[0]);
   } catch (error) {
@@ -74,6 +104,8 @@ app.delete('/contatos/:id', async (req, res) => {
 //Rota Get
 app.get('/categorias', async function(req, res) {
   // const contacts = await listContacts();
+
+  
   // return res.json(contacts);
   
   const categorias = await query('SELECT * FROM categorias');
@@ -148,5 +180,4 @@ app.listen(3000, () => console.log('Server started at http://localhost:3000/'));
 
     // app.get('/contatos', function(req, res){
     //   return query('DELETE FROM contatos WHERE id = *')
-    // })
-    // ,
+    // }
