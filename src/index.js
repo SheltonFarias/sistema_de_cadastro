@@ -59,18 +59,7 @@ return res.status(200).send('contato atualizado')
 
 return res.status(201)
 
-// app.put('/contatos/:id', async function(req,res){
-//  const Atualizarcontato = req.body;
-//  const id = parseInt(req.params.id)
-//  query = (
-//  'UPDATE contatos SET name = $1, email = $2, phone = $3, category_id = $4 WHERE id = $5', [name, email, phone, category_id, id], (error, results) => {
-//  if (error) {
-//    throw error
-//  }
-//  return res.status(200).json(contatos)
-//  })
-// })
-//  const ContatoAtualizado = await query(sql)
+
 
 //Rota DELETE
 
