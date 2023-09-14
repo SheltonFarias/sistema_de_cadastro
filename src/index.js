@@ -111,12 +111,12 @@ app.post('/categorias', async function(req, res){
 
 // Rota PUT
 
-app.put('/contatos/:id', async (req, res) => {
+app.put('/categorias/:id', async (req, res) => {
   try {
-    const { put } = req.params;
-    const {id, name } = req.body;
-    const sql = 'UPDATE contatos SET id = $1, name = $2 WHERE id = $3 RETURNING *';
-    const values = [id, name];
+    //const {  } = req.params;
+    const { name } = req.body;
+    const sql = 'UPDATE contatos SET name = $1 WHERE id = $2 RETURNING *';
+    const values = [name];
     const result = await query(sql, values);
     res.status(200).json(result[0]);
   } catch (error) {
