@@ -17,23 +17,24 @@ app.get('/contatos', async function(req, res) {
   return res.json(contatos);
 });
 
-//Rota POST
-app.post('/contatos', async function(req, res){
-  //return query('SELECT * FROM contatos')
+// Rota POST
+app.post('/contatos', async function(req, res) {
+
   const contato = req.body;
 
-  const { name, email, phone, category_id } = contato
+   const { name, email, phone, category_id } = contato
 
-  const obj = {
-    text: 'INSERT INTO contatos(name, email, phone, category_id) VALUES($1, $2, $3, $4) RETURNING *',
-    values: [name, email, phone, category_id]
-  }
+   const obj = {
+     text: 'INSERT INTO contatos(name, email, phone, category_id) VALUES($1, $2, $3, $4) RETURNING *',
+     values: [name, email, phone, category_id]
+   }
 
-  const [contatoCriado] = await query(obj);
-  console.log(contatoCriado);
- //  if (!name || !email || !phone) {    return res.status(400).json({ error: 'Nome , email, telefone são obrigatórios.' }
-  return res.status(201).json(contatoCriado)
+   const [contatoCriado] = await query(obj);
+   console.log(contatoCriado);
+  //  if (!name || !email || !phone) { 'return res.status(400).json({ error: 'Nome , email, telefone são obrigatórios.' }
+   return res.status(201).json(contatoCriado)
 })
+
 
 //Rota PUT
 
@@ -55,11 +56,11 @@ app.put('/contatos/:id', async (req, res) => {
 
 //Rota DELETE
 
-app.delete('/registros/:id', async (req, res) => {
+app.delete('/contatos/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const sql = 'DELETE FROM categorias WHERE id = $1 RETURNING *';
-    const values = [id, name, id];
+    const sql = 'DELETE FROM contatos WHERE id = $1 RETURNING *';
+    const values = [id, id];
     const result = await query(sql, values);
     res.status(200).json(result[0]);
   } catch (error) {
@@ -69,12 +70,24 @@ app.delete('/registros/:id', async (req, res) => {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 //ROTAS CATEGORIAS
 
 //Rota Get
 app.get('/categorias', async function(req, res) {
   // const contacts = await listContacts();
-  
   // return res.json(contacts);
   
   const categorias = await query('SELECT * FROM categorias');
