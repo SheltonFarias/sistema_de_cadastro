@@ -115,7 +115,7 @@ app.put('/categorias/:id', async (req, res) => {
   try {
     //const {  } = req.params;
     const { name } = req.body;
-    const sql = 'UPDATE contatos SET name = $1 WHERE id = $2 RETURNING *';
+    const sql = 'UPDATE categorias SET name = $1 WHERE id = $2 RETURNING *';
     const values = [name];
     const result = await query(sql, values);
     res.status(200).json(result[0]);
