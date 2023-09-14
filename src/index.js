@@ -69,20 +69,6 @@ app.delete('/contatos/:id', async (req, res) => {
   }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //ROTAS CATEGORIAS
 
 //Rota Get
@@ -95,10 +81,7 @@ app.get('/categorias', async function(req, res) {
   return res.json(categorias);
 });
 
-
-
 // Rota POST
-
 
 app.post('/categorias', async function(req, res){
   //return query('SELECT * FROM contatos')
