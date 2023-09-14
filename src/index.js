@@ -51,14 +51,6 @@ app.put('/contatos/:id', async (req, res) => {
     res.status(500).json({ error: 'Erro ao atualizar registro' });
   }
 });
-  values: [name, email, phone, category_id, id]
-
-
-return res.status(200).send('contato atualizado')
-
-
-return res.status(201)
-
 
 
 //Rota DELETE
