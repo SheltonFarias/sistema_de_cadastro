@@ -79,25 +79,22 @@ app.put('/contatos/:id', async (req, res) => {
 //Rota DELETE
 
 
-app.delete('/contatos/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const sql = 'DELETE FROM contatos WHERE id = $1 RETURNING *';
-    const values = [id, id];
+//Rota DELETE
+
+//Rota DELETE
 
 app.delete('/registros/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const sql = 'DELETE FROM categorias WHERE id = $1 RETURNING *';
-    const values = [id, name, id];
-
-    const result = await query(sql, values);
-    res.status(200).json(result[0]);
-  } catch (error) {
-    console.error('Erro ao excluir registro:', error);
-    res.status(500).json({ error: 'Erro ao excluir registro' });
-  }
-});
+   try {
+   const { id } = req.params;
+   const sql = 'DELETE FROM categorias WHERE id = $1 RETURNING *';
+   const values = [id, id];
+  const result = await query(sql, values);
+   res.status(200).json(result[0]);
+   } catch (error) {
+   console.error('Erro ao excluir registro:', error);
+  res.status(500).json({ error: 'Erro ao excluir registro' });
+   }
+  });
 
 //ROTAS CATEGORIAS
 
@@ -158,26 +155,9 @@ const deleteUser = (request, response) => {
     if (error) {
       throw error
     }
-    response.status(200).send(`User deleted with ID: ${id}`)
+    response.status(200).send(`User deleted with ID: ${id}`);
   })
 }
 
 
 app.listen(3000, () => console.log('Server started at http://localhost:3000/'));
-
-
-// app.get('/contatos/:id', function(req, res){
-  //   const id = req.params.id
-  //   let consult = `SELECT id FROM contatos WHERE id = ${id}`
-  //   |
-  //   query.query(consult, (err, result) => {
-    //     console.log(result);
-    //     return null; 
-    //     if (err) throw err;
-    //     res.render('index', result)
-    //   })
-    
-
-    // app.get('/contatos', function(req, res){
-    //   return query('DELETE FROM contatos WHERE id = *')
-    // }
