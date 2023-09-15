@@ -11,8 +11,14 @@ app.use(express.json());
 app.get('/contatos', async function(req, res) {
  try{
   const contatos = await query('SELECT * FROM contatos');
+  const { name } = req.query;
 
-  return res.json(contatos);
+  const results = name
+     ? contatos.filter(contato => contato.name.includes(name))
+     : contatos;
+
+  return res.json(results);
+
  }catch (error) {
   console.error('Erro ao consultar registro:', error);
   res.status(500).json({ error: 'Erro ao consultar registro' });
