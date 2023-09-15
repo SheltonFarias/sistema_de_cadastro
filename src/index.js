@@ -101,12 +101,19 @@ app.delete('/contatos/:id', async (req, res) => {
 //Rota Get
 app.get('/categorias', async function(req, res) {
  try{
-  const categorias = await query('SELECT * FROM categorias');
-  return res.json(categorias);
- }catch(error){
+  const categorias = await query('SELECT * FROM categorias WHERE = ?');
+  const { name } = req.query;
+
+  const results = name
+     ? categorias.filter(categoria => categoria.name.includes(name))
+     : categorias;
+
+  return res.json(results);
+
+ }catch (error) {
   console.error('Erro ao consultar registro:', error);
-  res.status(500).json({error: 'erro ao consultar'})
-}
+  res.status(500).json({ error: 'Erro ao consultar registro' });
+ }
 });
 
 // Rota POST
