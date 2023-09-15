@@ -51,7 +51,11 @@ app.post('/contatos', async function(req, res) {
 
 app.put('/contatos/:id', async (req, res) => {
   const { id } = req.params;
-  const { name, email, phone, category_id } = req.body;
+  const { name, email, phone, category_id} = req.body;
+
+  if (!name || !email || !phone) {
+    return res.status(400).json({ error: 'Nome, email e telefone são obrigatórios.' });
+  }
   const sql = 'UPDATE contatos SET name = $1, email = $2, phone = $3, category_id = $4 WHERE id = $5 RETURNING *';
   const values = [name, email, phone, category_id, id];
   try {
@@ -69,6 +73,11 @@ app.put('/contatos/:id', async (req, res) => {
 
 app.delete('/contatos/:id', async (req, res) => {
   const { id } = req.params;
+
+  if (!id) {
+    return res.status(400).json({ error: 'Nome, email e telefone são obrigatórios.' });
+  }
+
   const sql = 'DELETE FROM contatos WHERE id = $1 RETURNING *';
   const values = [id];
   try {
@@ -127,6 +136,10 @@ app.put('/categorias/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const {name} = req.body;
+
+    if (!name) {
+      return res.status(400).json({ error: 'Nome, email e telefone são obrigatórios.' });
+    }
     const sql = 'UPDATE categorias SET name = $1 WHERE id = $2 RETURNING *';
     const values = [name, id];
     const result = await query(sql, values);
@@ -141,6 +154,11 @@ app.put('/categorias/:id', async (req, res) => {
 //Rota Delete
 app.delete('/categorias/:id', async (req, res) => {
   const { id } = req.params;
+
+  if (!id) {
+    return res.status(400).json({ error: 'Nome, email e telefone são obrigatórios.' });
+  }
+
   const sql = 'DELETE FROM categorias WHERE id = $1 RETURNING *';
   const values = [id];
   try {
