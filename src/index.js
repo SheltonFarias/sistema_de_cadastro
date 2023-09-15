@@ -9,33 +9,40 @@ app.use(express.json());
 
 //Rota GET
 app.get('/contatos', async function(req, res) {
-  // const contacts = await listContacts();
-
-  // return res.json(contacts);
-
-
+ try{
   const contatos = await query('SELECT * FROM contatos');
 
   return res.json(contatos);
+ }catch (error) {
+  console.error('Erro ao consultar registro:', error);
+  res.status(500).json({ error: 'Erro ao consultar registro' });
+ }
 });
 
 
-// Rota POST
 app.post('/contatos', async function(req, res) {
   const contato = req.body;
 
-  const { name, email, phone, category_id } = contato
+  const { name, email, phone, category_id } = contato;
+
+  if (!name || !email || !phone) {
+    return res.status(400).json({ error: 'Nome, email e telefone são obrigatórios.' });
+  }
 
   const obj = {
     text: 'INSERT INTO contatos(name, email, phone, category_id) VALUES($1, $2, $3, $4) RETURNING *',
     values: [name, email, phone, category_id]
+  };
+  try {
+    const [contatoCriado] = await query(obj);
+    console.log(contatoCriado);
+    return res.status(201).json(contatoCriado);
+  } catch (error) {
+    return res.status(500).json({ error: 'Ocorreu um erro ao criar o contato.' });
   }
-
-  const [contatoCriado] = await query(obj);
-  console.log(contatoCriado);
-  //  if (!name || !email || !phone) { 'return res.status(400).json({ error: 'Nome , email, telefone são obrigatórios.' }
-    return res.status(201).json(contatoCriado)
 });
+
+
 
 
 
@@ -43,11 +50,11 @@ app.post('/contatos', async function(req, res) {
 
 
 app.put('/contatos/:id', async (req, res) => {
+  const { id } = req.params;
+  const { name, email, phone, category_id } = req.body;
+  const sql = 'UPDATE contatos SET name = $1, email = $2, phone = $3, category_id = $4 WHERE id = $5 RETURNING *';
+  const values = [name, email, phone, category_id, id];
   try {
-    const { id } = req.params;
-    const { name, email, phone, category_id } = req.body;
-    const sql = 'UPDATE contatos SET name = $1, email = $2, phone = $3, category_id = $4 WHERE id = $5 RETURNING *';
-    const values = [name, email, phone, category_id, id];
     const result = await query(sql, values);
     res.status(200).json(result[0]);
   } catch (error) {
@@ -61,10 +68,10 @@ app.put('/contatos/:id', async (req, res) => {
 //Rota DELETE
 
 app.delete('/contatos/:id', async (req, res) => {
-   try {
-    const { id } = req.params;
-    const sql = 'DELETE FROM contatos WHERE id = $1 RETURNING *';
-    const values = [id];
+  const { id } = req.params;
+  const sql = 'DELETE FROM contatos WHERE id = $1 RETURNING *';
+  const values = [id];
+  try {
     const result = await query(sql, values);
    res.status(200).json(result[0]);
    } catch (error) {
@@ -78,14 +85,13 @@ app.delete('/contatos/:id', async (req, res) => {
 
 //Rota Get
 app.get('/categorias', async function(req, res) {
-  // const contacts = await listContacts();
-
-  
-  // return res.json(contacts);
-  
+ try{
   const categorias = await query('SELECT * FROM categorias');
-  
   return res.json(categorias);
+ }catch(error){
+  console.error('Erro ao consultar registro:', error);
+  res.status(500).json({error: 'erro ao consultar'})
+}
 });
 
 // Rota POST
@@ -96,15 +102,22 @@ app.post('/categorias', async function(req, res){
   
   const { name } = categorias
   
+  if (!name) {
+    return res.status(400).json({ error: 'Nome, email e telefone são obrigatórios.' });
+  }
+
   const obj = {
     text: 'INSERT INTO categorias(name) VALUES($1) RETURNING *',
     values: [name]
   }
-
+try{
   const [categoriaCriada] = await query(obj);
   console.log(categoriaCriada);
-  
   return res.status(201).json(categoriaCriada)
+}catch(error){
+ console.error('Erro ao consultar registro:', error);
+  res.status(500).json({ error: 'Erro ao consultar registro' });
+}
 })
 
 
@@ -127,10 +140,10 @@ app.put('/categorias/:id', async (req, res) => {
  
 //Rota Delete
 app.delete('/categorias/:id', async (req, res) => {
-  try {
   const { id } = req.params;
   const sql = 'DELETE FROM categorias WHERE id = $1 RETURNING *';
   const values = [id];
+  try {
  const result = await query(sql, values);
   res.status(200).json(result[0]);
   } catch (error) {
