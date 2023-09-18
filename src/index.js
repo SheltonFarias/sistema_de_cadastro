@@ -9,17 +9,21 @@ app.use(express.json());
 
 //Rota GET
 app.get('/contatos', async function(req, res) {
- try{
-  const contatos = await query('SELECT * FROM contatos WHERE nome');
-  const { name } = req.query;
+try {
+    const { name } = req.query;
 
-  const results = name
-     ? contatos.filter(contato => contato.name.includes(name))
-     : contatos;
+    // Construa a consulta SQL com base no parâmetro 'name'
+    let sql = 'SELECT * FROM contatos';
 
-  return res.json(results);
+    if (name) {
+      sql += ' WHERE nome LIKE $1';
+    }
 
- }catch (error) {
+    // Execute a consulta SQL e passe o parâmetro seguro
+    const contatos = await query(sql, name ? [`%${name}%`] : []);
+
+    return res.json(contatos);
+  } catch (error) {
   console.error('Erro ao consultar registro:', error);
   res.status(500).json({ error: 'Erro ao consultar registro' });
  }
@@ -33,10 +37,8 @@ app.post('/contatos', async function(req, res) {
   const { name, email, phone, category_id } = contato;
 // Validação de todos os campos da lista"
   if (!name || !email || !phone) {
-    return res.status(400).json({ error: 'Nome, email e telefone são obrigatórios.' });
+    return res.status(400).json({ error: 'Name, email e telefone são obrigatórios.' });
   }
-
-
   // Validação do campo "email"
   if (email.length < 5 || email.length > 100) {
     
