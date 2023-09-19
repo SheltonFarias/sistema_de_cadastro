@@ -94,6 +94,7 @@ app.put('/contatos/:id', async (req, res) => {
 });
 
 
+
 //Rota DELETE
 app.delete('/contatos/:id', async (req, res) => {
   const { id } = req.params;
