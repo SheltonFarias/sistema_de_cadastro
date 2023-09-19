@@ -34,7 +34,8 @@ try {
 app.post('/contatos', async function(req, res) {
   const contato = req.body;
 
-  const { name, email, phone, category_id } = contato;
+  const { name, email, category_id } = contato;
+  let { phone } = contato;
 // Validação de todos os campos da lista"
   if (!name || !email || !phone) {
     return res.status(400).json({ error: 'Name, email e telefone são obrigatórios.' });
@@ -42,20 +43,27 @@ app.post('/contatos', async function(req, res) {
   // Validação do campo "email"
   if (email.length < 5 || email.length > 100) {
     
-   
     return res.status(400).json({ error: 'O campo "email" deve ter entre 5 e 100 caracteres.' });
-      }
+  }
     
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Verifica o formato do email
-      if (!emailRegex.test(email)) {
-        
-       
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Verifica o formato do email
+
+  if (!emailRegex.test(email)) {
     return res.status(400).json({ error: 'O campo "email" não está em um formato válido.' });
-      }
-    
+  }
+
+  if (typeof phone === 'number') { phone = phone.toString() }
+
+  const formattedPhone = phone
+    .replace(/\D/g, '')
+    .replace(/(\d{2})(\d)/, '($1) $2')
+    .replace(/(\d{4})(\d)/, '$1-$2')
+    .replace(/(\d{4})-(\d)(\d{4})/, '$1$2-$3')
+    .replace(/(-\d{4})\d+?$/, '$1');
+
   const obj = {
     text: 'INSERT INTO contatos(name, email, phone, category_id) VALUES($1, $2, $3, $4) RETURNING *',
-    values: [name, email, phone, category_id]
+    values: [name, email, formattedPhone, category_id]
   };
   try {
     const [contatoCriado] = await query(obj);
@@ -111,6 +119,8 @@ app.delete('/contatos/:id', async (req, res) => {
 //Rota Get
 app.get('/categorias', async function(req, res) {
  try{
+  const { name } = req.query;
+  
     // Construa a consulta SQL com base no parâmetro 'name'
     let sql = 'SELECT * FROM categorias';
 
@@ -138,8 +148,9 @@ app.post('/categorias', async function(req, res){
   
   const { name } = categorias
   
-  if (!name) {
-    return res.status(400).json({ error: 'Nome, email e telefone são obrigatórios.' });
+
+  if (name.length < 2 || !name ) {
+    return res.status(400).json({error: 'Nome deve ser obrigatorio, e deve ter no minimo 3 caracteres'})
   }
 
   const obj = {
