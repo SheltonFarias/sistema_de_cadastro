@@ -111,20 +111,24 @@ app.delete('/contatos/:id', async (req, res) => {
 //Rota Get
 app.get('/categorias', async function(req, res) {
  try{
-  const categorias = await query('SELECT * FROM categorias WHERE = ?');
-  const { name } = req.query;
+    // Construa a consulta SQL com base no parâmetro 'name'
+    let sql = 'SELECT * FROM categorias';
 
-  const results = name
-     ? categorias.filter(categoria => categoria.name.includes(name))
-     : categorias;
+    if (name) {
+      sql += ' WHERE name LIKE $1';
+    }
 
-  return res.json(results);
+    // Execute a consulta SQL e passe o parâmetro seguro
+    const categorias = await query(sql, name ? [`%${name}%`] : []);
 
- }catch (error) {
+    return res.json(categorias);
+  } catch (error) {
   console.error('Erro ao consultar registro:', error);
   res.status(500).json({ error: 'Erro ao consultar registro' });
  }
+ 
 });
+
 
 // Rota POST
 
