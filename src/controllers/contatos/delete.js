@@ -1,6 +1,6 @@
 const { query } = require('../../database');
 
-async function delet(req, res)  {
+async function remove(req, res)  {
     const { id } = req.params;
   
     if (!id) {
@@ -18,4 +18,4 @@ async function delet(req, res)  {
      }
     };
 
-    module.exports = delet
+    module.exports = remove

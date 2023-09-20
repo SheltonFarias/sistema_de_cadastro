@@ -1,26 +1,20 @@
-const express = require('express');
-const { query } = require('./database');
+const { Router } = require('express');
 
-const get = require('./controllers/contatos/get');
-const post = require('./controllers/contatos/post');
-const put = require('./controllers/contatos/put');
-const delet = require('./controllers/contatos/delete');
+const contatosController = require('./controllers/contatos')
+const categoriasController = require('./controllers/categorias')
 
-const getcat = require('./controllers/categorias/get');
-const postcat = require('./controllers/categorias/post');
-const putcat = require('./controllers/categorias/put');
-const deletcat = require('./controllers/categorias/delete')
+const routes = Router()
 
-const routes = express.Router()
+// contatos
+routes.get('/contatos', contatosController.get);
+routes.post('/contatos', contatosController.post);
+routes.put('/contatos/:id', contatosController.put);
+routes.delete('/contatos/:id', contatosController.delete)
 
-routes.get('/contatos', get);
-routes.post('/contatos', post);
-routes.put('/contatos/:id', put);
-routes.delete('/contatos/:id', delet)
 //categorias
-routes.get('/categorias', getcat);
-routes.post('/categorias', postcat);
-routes.put('/categorias/:id', putcat);
-routes.delete('/categorias/:id', deletcat);
+routes.get('/categorias', categoriasController.get);
+routes.post('/categorias', categoriasController.post);
+routes.put('/categorias/:id', categoriasController.put);
+routes.delete('/categorias/:id', categoriasController.delete);
 
 module.exports = routes
