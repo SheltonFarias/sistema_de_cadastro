@@ -1,6 +1,8 @@
 const { query } = require('../../database');
+//chamando a função
+const { updateCategorias } = require('../../repositories/categorias-repository.js');
 
-async function  putcat(req, res)  {
+async function put(req, res)  {
     try {
       const { id } = req.params;
       const {name} = req.body;
@@ -8,9 +10,8 @@ async function  putcat(req, res)  {
       if (!name) {
         return res.status(400).json({ error: 'Nome, email e telefone são obrigatórios.' });
       }
-      const sql = 'UPDATE categorias SET name = $1 WHERE id = $2 RETURNING *';
-      const values = [name, id];
-      const result = await query(sql, values);
+
+      const result = updateCategorias(id, name)
       res.status(200).json(result[0]);
     } catch (error) {
       console.error('Erro ao atualizar registro:', error);
@@ -18,4 +19,4 @@ async function  putcat(req, res)  {
     }
   };
 
-  module.exports = putcat
+  module.exports = put

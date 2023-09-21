@@ -1,6 +1,7 @@
 const { query } = require('../../database');
+const { deletarCategorias, deleteCategorias } = require('../../repositories/categorias-repository.js');
 
-async function  deletcat(req, res) {
+async function remove(req, res) {
     const { id } = req.params;
   
     if (!id) {
@@ -10,6 +11,7 @@ async function  deletcat(req, res) {
     const sql = 'DELETE FROM categorias WHERE id = $1 RETURNING *';
     const values = [id];
     try {
+      const remove = deleteCategorias(id)
    const result = await query(sql, values);
     res.status(200).json(result[0]);
     } catch (error) {
@@ -18,4 +20,4 @@ async function  deletcat(req, res) {
     }
    };
 
-   module.exports = deletcat
+   module.exports = remove

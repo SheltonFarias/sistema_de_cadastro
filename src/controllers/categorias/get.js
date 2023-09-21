@@ -1,18 +1,12 @@
 const { query } = require('../../database');
 
-async function getcat(req, res) {
+const { showCategorias } = require('../../repositories/categorias-repository.js');
+
+async function get(req, res) {
     try{
      const { name } = req.query;
      
-       // Construa a consulta SQL com base no parâmetro 'name'
-       let sql = 'SELECT * FROM categorias';
-   
-       if (name) {
-         sql += ' WHERE name LIKE $1';
-       }
-   
-       // Execute a consulta SQL e passe o parâmetro seguro
-       const categorias = await query(sql, name ? [`%${name}%`] : []);
+      const categorias = await showCategorias({ name });
    
        return res.json(categorias);
      } catch (error) {
@@ -22,4 +16,4 @@ async function getcat(req, res) {
     
    };
 
-   module.exports = getcat
+   module.exports = get
