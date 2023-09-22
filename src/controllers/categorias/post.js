@@ -2,7 +2,7 @@ const { query } = require('../../database');
 const { createCategorias } = require('../../repositories/categorias-repository.js');
 
 async function post(req, res){
-    //return query('SELECT * FROM contatos')
+    //return query('SELECT * FROM categorias')
     const categorias = req.body;
     
     const { name } = categorias

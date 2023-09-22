@@ -1,10 +1,12 @@
 const { query } = require('../../database');
+const { createContatos } = require('../../repositories/contatos-repository.js');
 
 async function  post(req, res) {
+  //return query('SELECT * FROM contatos')
     const contato = req.body;
   
-    const { name, email, category_id } = contato;
-    let { phone } = contato;
+    const { name, email, phone, category_id } = contato
+ 
   // Validação de todos os campos da lista"
     if (!name || !email || !phone) {
       return res.status(400).json({ error: 'Name, email e telefone são obrigatórios.' });
