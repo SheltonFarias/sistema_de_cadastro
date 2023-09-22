@@ -1,24 +1,18 @@
 const { query } = require('../../database');
 
+const { showContatos } = require('../../repositories/contatos-repository.js');
+
 async function get(req, res) {
     try {
         const { name } = req.query;
 
-        // Construa a consulta SQL com base no parâmetro 'name'
-        let sql = 'SELECT * FROM contatos';
-
-        if (name) {
-            sql += ' WHERE nome LIKE $1';
-        }
-
-        // Execute a consulta SQL e passe o parâmetro seguro
-        const contatos = await query(sql, name ? [`%${name}%`] : []);
+    const contatos = await showContatos({ name })
 
         return res.json(contatos);
     } catch (error) {
         console.error('Erro ao consultar registro:', error);
         res.status(500).json({ error: 'Erro ao consultar registro' });
     }
-}
+};
 
 module.exports = get;

@@ -13,7 +13,7 @@ async function get(req, res) {
      console.error('Erro ao consultar registro:', error);
      res.status(500).json({ error: 'Erro ao consultar registro' });
     }
-    
+  
    };
 
    module.exports = get
