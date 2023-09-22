@@ -1,18 +1,18 @@
-const { query } = require('../../database');
+const { query } = require('../../database')
 
-const { showContatos } = require('../../repositories/contatos-repository.js');
+const { showContatos } = require('../../repositories/contatos-repository.js')
 
 async function get(req, res) {
-    try {
-        const { name } = req.query;
+	try {
+		const { name } = req.query
 
-    const contatos = await showContatos({ name })
+		const contatos = await showContatos({ name })
 
-        return res.json(contatos);
-    } catch (error) {
-        console.error('Erro ao consultar registro:', error);
-        res.status(500).json({ error: 'Erro ao consultar registro' });
-    }
-};
+		return res.json(contatos)
+	} catch (error) {
+		console.error('Erro ao consultar registro:', error)
+		res.status(500).json({ error: 'Erro ao consultar registro' })
+	}
+}
 
-module.exports = get;
+module.exports = get
