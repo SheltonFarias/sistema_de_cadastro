@@ -28,15 +28,16 @@ async function createContatos(name) {
 }
 
 
-async function updatecontatos(name, email, phone, category_id) {
+async function updatecontatos(contato) {
+    const { name, email, phone, category_id, id } = contato
+    
+    const sql = {
+        text: 'UPDATE contatos SET name = $1, email = $2, phone = $3, category_id = $4 WHERE id = $5 RETURNING *',
+        values : [name, email, phone, category_id, id]
+    }
+    const [atualizarcontatos] = await query(sql)
 
-const sql = {
-    text: 'UPDATE contatos SET name = $1, email = $2, phone = $3, category_id = $4 WHERE id = $5 RETURNING *',
-    values : [name, email, phone, category_id]
-}
-const [atualizarcontatos] = await query(sql)
-
-return atualizarcontatos;
+    return atualizarcontatos;
 }
 
 
