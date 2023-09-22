@@ -40,7 +40,7 @@ async function updateCategorias(id,name) {
       return atualizarCategorias;
 }
 
-
+//Delete
 async function deleteCategorias(id) {
     const sql = {
         text: 'DELETE FROM categorias WHERE id = $1 RETURNING *',
