@@ -1,4 +1,4 @@
-const { query } = require('../../database')
+//const { query } = require('../../database')
 const { createCategorias } = require('../../repositories/categorias-repository.js')
 
 async function post(req, res){

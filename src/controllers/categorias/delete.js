@@ -7,12 +7,8 @@ async function remove(req, res) {
 	if (!id) {
 		return res.status(400).json({ error: 'Nome, email e telefone são obrigatórios.' })
 	}
-  
-	const sql = 'DELETE FROM categorias WHERE id = $1 RETURNING *'
-	const values = [id]
 	try {
-		const remove = deleteCategorias(id)
-		const result = await query(sql, values)
+		const result = await query(deleteCategorias)
 		res.status(200).json(result[0])
 	} catch (error) {
 		console.error('Erro ao excluir registro:', error)
