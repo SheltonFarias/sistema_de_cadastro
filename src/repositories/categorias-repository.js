@@ -57,5 +57,4 @@ module.exports = {
 	createCategorias,
 	updateCategorias,
 	deleteCategorias,
-
 }
