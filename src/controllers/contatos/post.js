@@ -4,8 +4,8 @@ const { createContatos } = require('../../repositories/contatos-repository.js')
 async function post(req, res) {
 	const contatos = req.body
 
-	const { name, email, phone, category_id } = contatos
-
+	const { name, email, category_id } = contatos
+	let { phone } = contatos
 	if (!name || !email || !phone) {
 		return res
 			.status(400)
@@ -38,7 +38,7 @@ async function post(req, res) {
 		.replace(/(-\d{4})\d+?$/, '$1')
 
 	try {
-		const [contatoCriado] = await createContatos(obj)
+		const [contatoCriado] = await createContatos(name, email, formattedPhone, category_id)
 		console.log(contatoCriado)
 		return res.status(201).json(contatoCriado)
 	} catch (error) {

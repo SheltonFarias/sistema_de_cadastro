@@ -16,10 +16,10 @@ async function showContatos(filters) {
 	return contatos
 }
 
-async function createContatos(name) {
+async function createContatos(name, email, formattePhone, category_id) {
 	const obj = {
-		text: 'INSERT INTO contatos(name) VALUES($1) RETURNING *',
-		values: [name],
+		text: 'INSERT INTO contatos(name, email, phone, category_id) VALUES($1, $2, $3, $4) RETURNING *',
+		values: [name, email, formattePhone, category_id],
 	}
 
 	const [contatoCriado] = await query(obj)
@@ -28,11 +28,11 @@ async function createContatos(name) {
 }
 
 async function updatecontatos(contato) {
-	const { name, email, phone, category_id, id } = contato
+	const { name, email, formattePhoned, category_id, id } = contato
 
 	const sql = {
 		text: 'UPDATE contatos SET name = $1, email = $2, phone = $3, category_id = $4 WHERE id = $5 RETURNING *',
-		values: [name, email, phone, category_id, id],
+		values: [name, email, formattePhoned, category_id, id],
 	}
 	const [atualizarcontatos] = await query(sql)
 
