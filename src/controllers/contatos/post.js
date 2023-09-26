@@ -38,10 +38,10 @@ async function post(req, res) {
 		.replace(/(-\d{4})\d+?$/, '$1')
 
 	try {
-		const [contatoCriado] = await createContatos(name, email, formattedPhone, category_id)
-		console.log(contatoCriado)
+		const contatoCriado = await createContatos(name, email, formattedPhone, category_id)
 		return res.status(201).json(contatoCriado)
 	} catch (error) {
+		console.log(error)
 		return res
 			.status(500)
 			.json({ error: 'Ocorreu um erro ao criar o contato.' })
