@@ -3,33 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Formulário de Contato</title>
+    <title>Tabela de Contatos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Formulário de Contato</h1>
-    <form id="contact-form">
+    <h1>Tabela de Contatos</h1>
+    
+    <!-- Formulário de adição de contato -->
+    <div id="contato-form">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" required>
-       
+        <input type="text" id="nome" required><br>
+        
         <label for="email">Email:</label>
-        <input type="email" id="email" required>
-       
+        <input type="email" id="email" required><br>
+        
         <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" required>
-       
+        <input type="tel" id="telefone" required><br>
+        
         <label for="categoria">Categoria:</label>
-        <select id="categoria" required>
-            <option value="Amigos">Amigos</option>
-            <option value="Família">Família</option>
-            <option value="Trabalho">Trabalho</option>
-            <option value="Outros">Outros</option>
-        </select>
-       
-        <button type="button" id="adicionar-contato">Adicionar Contato</button>
-    </form>
-   
-    <table id="contatos">
+        <input type="text" id="categoria" required><br>
+        
+        <button onclick="adicionarContato()">Adicionar Contato</button>
+    </div>
+
+    <!-- Tabela de contatos -->
+    <table id="contatos-table">
         <thead>
             <tr>
                 <th>Nome</th>
@@ -39,11 +37,36 @@
             </tr>
         </thead>
         <tbody>
-            <!-- As linhas da tabela serão adicionadas aqui usando JavaScript -->
+            <!-- Linhas da tabela de contatos serão adicionadas aqui -->
         </tbody>
     </table>
 
-    <script src="script.js"></script>
+    <script>
+      // Função para adicionar um novo contato à tabela
+function adicionarContato() {
+    var nome = document.getElementById("nome").value;
+    var email = document.getElementById("email").value;
+    var telefone = document.getElementById("telefone").value;
+    var categoria = document.getElementById("categoria").value;
+
+    var table = document.getElementById("contatos-table").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.rows.length);
+    var cell1 = newRow.insertCell(0);
+    var cell2 = newRow.insertCell(1);
+    var cell3 = newRow.insertCell(2);
+    var cell4 = newRow.insertCell(3);
+    cell1.innerHTML = nome;
+    cell2.innerHTML = email;
+    cell3.innerHTML = telefone;
+    cell4.innerHTML = categoria;
+
+    // Limpar o formulário após adicionar o contato
+    document.getElementById("nome").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("telefone").value = "";
+    document.getElementById("categoria").value = "";
+}
+
+    </script>
 </body>
 </html>
-
