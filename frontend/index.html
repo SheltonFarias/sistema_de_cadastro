@@ -9,6 +9,13 @@
 <body>
     <h1>Tabela de Contatos</h1>
     
+    <!-- Formulário de consulta de contatos -->
+    <div id="consulta-form">
+        <label for="pesquisa">Pesquisar por Nome:</label>
+        <input type="text" id="pesquisa" placeholder="Digite o nome">
+        <button onclick="pesquisarContato()">Pesquisar</button>
+    </div>
+
     <!-- Formulário de adição de contato -->
     <div id="contato-form">
         <label for="nome">Nome:</label>
@@ -65,6 +72,25 @@ function adicionarContato() {
     document.getElementById("email").value = "";
     document.getElementById("telefone").value = "";
     document.getElementById("categoria").value = "";
+}
+
+// Função para pesquisar contatos pelo nome
+function pesquisarContato() {
+    var pesquisa = document.getElementById("pesquisa").value.toLowerCase();
+    var table = document.getElementById("contatos-table").getElementsByTagName('tbody')[0];
+    var rows = table.getElementsByTagName("tr");
+    
+    for (var i = 0; i < rows.length; i++) {
+        var cell = rows[i].getElementsByTagName("td")[0];
+        if (cell) {
+            var nome = cell.textContent.toLowerCase();
+            if (nome.indexOf(pesquisa) > -1) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    }
 }
 
     </script>
