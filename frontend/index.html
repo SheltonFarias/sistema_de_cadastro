@@ -1,14 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app">
-      hello world
-    </div>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Formulário de Contato</title>
+</head>
+<body>
+    <h1>Formulário de Contato</h1>
+    <form id="contact-form">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required>
+       
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+       
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" required>
+       
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" required>
+            <option value="Amigos">Amigos</option>
+            <option value="Família">Família</option>
+            <option value="Trabalho">Trabalho</option>
+            <option value="Outros">Outros</option>
+        </select>
+       
+        <button type="button" id="adicionar-contato">Adicionar Contato</button>
+    </form>
+   
+    <table id="contatos">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- As linhas da tabela serão adicionadas aqui usando JavaScript -->
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
 </html>
+
