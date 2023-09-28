@@ -5,37 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabela de Contatos</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="categorias.html">
 </head>
 <body>
     <h1>Tabela de Contatos</h1>
     
     <!-- Formulário de consulta de contatos -->
     <div id="consulta-form">
-        <h2>Consulte seu Cadastro</h2>
+        <label for="pesquisa">Pesquisar por Nome:</label>
         <input type="text" id="pesquisa" placeholder="Digite o nome">
         <button onclick="pesquisarContato()">Pesquisar</button>
     </div>
 
-    <!-- add contatos -->
+    <!-- Formulário de adição de contato -->
     <div id="contato-form">
-       <h2>Faça seu Cadastro:</h2>
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" placeholder="Digite o Nome" required><br>
+        <input type="text" id="nome" required><br>
         
         <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Ex: Teste@gmail.com" required><br>
+        <input type="email" id="email" required><br>
         
         <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" placeholder="Ex: +55 (85)912345678 " required><br>
+        <input type="tel" id="telefone" required><br>
         
         <label for="categoria">Categoria:</label>
-        <input type="number" id="categoria" required><br>
+        <input type="text" id="categoria" required><br>
         
-        <button class="adicionarContato" onclick="adicionarContato()">Adicionar Contato</button>
+        <button onclick="adicionarContato()">Adicionar Contato</button>
     </div>
 
-    <!-- vizualização de contatos -->
+    <!-- Tabela de contatos -->
     <table id="contatos-table">
         <thead>
             <tr>
@@ -50,21 +48,20 @@
         </tbody>
     </table>
 
-
-    
-     <script>
+    <script>
+      // Função para adicionar um novo contato à tabela
 function adicionarContato() {
-    let nome = document.getElementById("nome").value;
-    let email = document.getElementById("email").value;
-    let telefone = document.getElementById("telefone").value;
-    let categoria = document.getElementById("categoria").value;
+    var nome = document.getElementById("nome").value;
+    var email = document.getElementById("email").value;
+    var telefone = document.getElementById("telefone").value;
+    var categoria = document.getElementById("categoria").value;
 
-    let table = document.getElementById("contatos-table").getElementsByTagName('tbody')[0];
-    let newRow = table.insertRow(table.rows.length);
-    let cell1 = newRow.insertCell(0);
-    let cell2 = newRow.insertCell(1);
-    let cell3 = newRow.insertCell(2);
-    let cell4 = newRow.insertCell(3);
+    var table = document.getElementById("contatos-table").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.rows.length);
+    var cell1 = newRow.insertCell(0);
+    var cell2 = newRow.insertCell(1);
+    var cell3 = newRow.insertCell(2);
+    var cell4 = newRow.insertCell(3);
     cell1.innerHTML = nome;
     cell2.innerHTML = email;
     cell3.innerHTML = telefone;
@@ -95,11 +92,7 @@ function pesquisarContato() {
         }
     }
 }
-    </script> 
-    <button type="button"><a class="linkpage2" href="categorias.html">Cadastro de Categorias</a></button>
-    <script href="events.js" ></script>
+
+    </script>
 </body>
-<!-- <footer>
-    <h3 class="footer">Direitos reservados, Farias Corporation</h3>
-</footer> -->
 </html>
