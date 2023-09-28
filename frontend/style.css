@@ -107,6 +107,11 @@ tr:hover {
   border-radius: 4px;
 }
 
+
+.linkpage1,.linkpage2{
+  text-decoration: none;
+}
+
 #contatos-table {
   width: 98%;
 }
