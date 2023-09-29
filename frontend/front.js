@@ -1,4 +1,4 @@
-<script>
+{/* <script>
 // Função para adicionar um novo contato à tabela
 function adicionarContato() {
 var nome = document.getElementById("nome").value;
@@ -43,4 +43,4 @@ for (var i = 0; i < rows.length; i++) {
 }
 }
 
-</script>
+</script> */}
