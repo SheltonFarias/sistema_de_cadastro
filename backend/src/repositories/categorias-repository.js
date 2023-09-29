@@ -12,7 +12,6 @@ async function showCategorias(filters) {
 
 	// Execute a consulta SQL e passe o parâmetro seguro
 	const categorias = await query(sql, name ? [`%${name}%`] : [])
-
 	return categorias
 }
 
@@ -24,7 +23,6 @@ async function createCategorias(name) {
 	}
 
 	const [categoriaCriada] = await query(obj)
-
 	return categoriaCriada
 }
 

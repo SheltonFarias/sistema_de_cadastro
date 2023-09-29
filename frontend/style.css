@@ -19,6 +19,7 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="tel"] {
+  box-sizing: border-box; 
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
@@ -26,24 +27,24 @@ input[type="tel"] {
   border-radius: 4px;
 }
 
+/*botão para adicionar contato*/
 button {
   padding: 10px 20px;
   background-color: #007BFF;
+  margin-left: 0%;
+  margin-right: 30px;
   color: white;
   border: none;
   border-radius: 3px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #0056b3;
-}
 
 table {
   background-color: #fff;
   width: calc(100% - 360px);
-  margin: 20px;
-  float: right;
+  margin-left: 30px;
+  margin-right: 30px;
   border-collapse: collapse;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -60,40 +61,27 @@ th {
   color: white;
 }
 
-tr:hover {
-  background-color: #f5f5f5;
-  transition: background-color 0.3s;
-}
-/*
-.footer {
-  height: 100%;
-  margin: 50px;
-  padding: 50;
-}
-*/
 
-.adicionarcontato {
-  margin: 0px;
-}
-
-/* Styles for forms */
-
+/* caixa pesquisar por nome*/
 #consulta-form {
+  display: inline-block;
   background-color:#fff;
   padding: 20px;
-  width: 640px; /* Aumentar a largura*/
-  height: 150px;
+  width: 600px; /* Aumentar a largura*/
+  height: 100px;
   margin: 10px;
   float: right;
   border-radius: 5px;
-  box-shadow: 0 0  rgba(151, 144, 144, 0.2);
 }
 
+/* caixa de nome, email, telefone e categoria */
 #contato-form {
   background-color: #fff;
-  padding: 20px;
-  width: 49%; /* Defina a largura como 50% para ocupar metade da tela */
+  padding: 35px;
+  position: sticky;
+  width: 40%; /* Defina a largura como 50% para ocupar metade da tela */
   margin: 10px auto; /* Centralize horizontalmente */
+  height: 310px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   float: left;
@@ -101,22 +89,16 @@ tr:hover {
 
 #pesquisa {
   width: 98%; /* Definir a largura */
-  padding: 6px;
-  margin-bottom: 15px;
-  border: 2px solid #f1eded;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: px solid #f1eded;
   border-radius: 4px;
 }
 
-
-.linkpage1,.linkpage2{
-  text-decoration: none;
+#categoria {
+  margin-bottom: 10px;
 }
 
 #contatos-table {
   width: 98%;
-}
-
-#categoria {
-  
-  margin-bottom: 15px;
 }
