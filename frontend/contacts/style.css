@@ -1,27 +1,3 @@
-ul.pagination {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 20px 0; /* Adicione margem na parte inferior */
-}
-
-ul.pagination li {display: inline;}
-
-ul.pagination li a {
-  color: black;
-  padding: 8px 16px;
-  text-decoration: none;
-  text-align: center;
-}
-
-ul.pagination li a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
-ul.pagination li a:hover:not(.active) {background-color: #ddd;}
-
 @media screen and (max-width:600px) {
   /*Tela Pequena*/
   #register-contacts {
@@ -102,7 +78,6 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
     padding: 2px;
     margin-bottom: 15px;
     border: 3v solid #f1eded;
-  
   }  
 }  
 
@@ -157,6 +132,10 @@ table {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }  
 
+.acoes {
+  width: 10px;
+}
+
 th, td {
   border: 1px solid #ccc;
   padding: 8px;
@@ -167,6 +146,29 @@ th {
   background-color: #007BFF;
   color: white;
 }  
+ul.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0; /* Adicione margem na parte inferior */
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-align: center;
+}
+
+ul.pagination li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 
 
 #categoria {
@@ -205,7 +207,5 @@ th {
   padding: 2px;
   margin-bottom: 15px;
   border: 3v solid #f1eded;
-
 }  
-
 }
