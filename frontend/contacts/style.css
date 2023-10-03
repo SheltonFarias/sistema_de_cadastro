@@ -123,6 +123,7 @@ button {
   cursor: pointer;
 }
 
+/* tabelo de resultado do cadastro*/
 table {
   background-color: #fff;
   width: calc(100% - 360px);
@@ -143,55 +144,16 @@ th {
   color: white;
 }
 
-/* caixa pesquisar por nome*/
-#consulta-form {
-  display: inline-block;
-  background-color:#fff;
-  padding: 20px;
-  width: 600px; /* Aumentar a largura*/
-  height: 100px;
-  margin: 10px;
-  border-radius: 5px;
-}
-
-/* caixa de nome, email, telefone e categoria */
-#contato-form {
-  background-color: #fff;
-  padding: 35px;
-  position: sticky;
-  width: 40%; /* Defina a largura como 50% para ocupar metade da tela */
-  margin: 10px auto; /* Centralize horizontalmente */
-  height: 310px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  float: left;
-}
-
-#pesquisa {
-  width: 98%; /* Definir a largura */
-  padding: 10px;
-  margin-bottom: 5px;
-  border: px solid #f1eded;
-  border-radius: 4px;
-}
 
 #categoria {
   margin-bottom: 10px;
   tr:hover {
   background-color: #f5f5f5;
   transition: background-color 0.3s;
-}
-
-/* Styles for forms */
-
-.bt1{
-  text-decoration: none;
-}
-
-#categoria{
   margin-bottom: 10px;
 }
 
+/* Styles for forms */
 
 #register-contacts {
   background-color: #fff;
@@ -221,4 +183,7 @@ th {
   border: 3v solid #f1eded;
 
 }
+
+
+
 }
