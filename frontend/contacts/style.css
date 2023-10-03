@@ -1,3 +1,27 @@
+ul.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0; /* Adicione margem na parte inferior */
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-align: center;
+}
+
+ul.pagination li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+
 @media screen and (max-width:600px) {
   /*Tela Pequena*/
   #register-contacts {
@@ -7,18 +31,18 @@
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     float: left;
-  }
+  }  
   
   #consult-contacts {
-  background-color:#fff;
+  background-color:#fff;  
     max-width: 650px; /* Aumentar a largura*/
     width: 90%;
     margin: 10px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
     float: left;
-  }
-}
+  }  
+}  
 
 @media screen and (min-width: 601px) and (max-width: 1024) {
   /*Tela Media*/
@@ -30,7 +54,7 @@
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     
-  }
+  }  
   
   #consult-contacts {
     background-color:#fff;
@@ -40,15 +64,15 @@
     margin: 10px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
-  }
+  }  
   
   #result-contacts {
     width: 98%; /* Definir a largura */
     padding: 2px;
     margin-bottom: 15px;
     border: 3px solid #f1eded;
-  }
-}
+  }  
+}  
 
 @media screen and (min-width: 1025px) {
   /*Tela Grande*/
@@ -60,7 +84,7 @@
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     float: left;
-  }
+  }  
   
   #consult-contacts {
     background-color:#fff;
@@ -71,7 +95,7 @@
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
     float: left;
-  }
+  }  
   
   #result-contacts {
     width: 98%; /* Definir a largura */
@@ -79,26 +103,26 @@
     margin-bottom: 15px;
     border: 3v solid #f1eded;
   
-  }
-}
+  }  
+}  
 
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
-}
+}  
 
 h1 {
   background-color: #007BFF;
   color: white;
   padding: 10px;
   text-align: center;
-}
+}  
 
 label {
   display: block;
   margin-bottom: 5px;
   color: #333;
-}
+}  
 
 input[type="text"],
 input[type="email"],
@@ -109,7 +133,7 @@ input[type="tel"] {
   margin-bottom: 10px;
   border: 2px solid #ccc;
   border-radius: 4px;
-}
+}  
 
 /*botão para adicionar contato*/
 button {
@@ -121,7 +145,7 @@ button {
   border: none;
   border-radius: 3px;
   cursor: pointer;
-}
+}  
 
 /* tabelo de resultado do cadastro*/
 table {
@@ -131,27 +155,27 @@ table {
   border-collapse: collapse;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
+}  
 
 th, td {
   border: 1px solid #ccc;
   padding: 8px;
   text-align: left;
-}
+}  
 
 th {
   background-color: #007BFF;
   color: white;
-}
+}  
 
 
 #categoria {
   margin-bottom: 10px;
   tr:hover {
-  background-color: #f5f5f5;
+  background-color: #f5f5f5;  
   transition: background-color 0.3s;
   margin-bottom: 10px;
-}
+}  
 
 /* Styles for forms */
 
@@ -163,7 +187,7 @@ th {
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   float: left;
-}
+}  
 
 #consult-contacts {
   background-color:#fff;
@@ -174,7 +198,7 @@ th {
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
   float: right;
-}
+}  
 
 #result-contacts {
   width: 98%; /* Definir a largura */
@@ -182,8 +206,6 @@ th {
   margin-bottom: 15px;
   border: 3v solid #f1eded;
 
-}
-
-
+}  
 
 }
