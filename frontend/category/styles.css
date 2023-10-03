@@ -1,0 +1,133 @@
+@media screen and (max-width:600px) {
+  /*Tela Pequena*/
+  #register-category {
+    background-color: #fff;  
+    width: 49%; /* largura */
+    margin: 10px ; /* Centralize horizontalmente */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    float: left;
+  }
+  
+  #consult-category {
+  background-color:#fff;
+    max-width: 650px; /* Aumentar a largura*/
+    width: 90%;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
+    float: left;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1024) {
+  /*Tela Media*/
+  #register-category {
+    background-color: #fff;
+    padding: 10px;
+    width: 49%; /* largura */
+    margin: 10px ; /* Centralize horizontalmente */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    
+  }
+  
+  #consult-category {
+    background-color:#fff;
+    padding: 10px;
+    max-width: 650px;
+    width: 40%;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
+  }
+  
+  #result-category {
+    width: 98%; /* Definir a largura */
+    padding: 2px;
+    margin-bottom: 15px;
+    border: 3px solid #f1eded;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  /*Tela Grande*/
+  #register-category {
+    background-color: #fff;
+    padding: 20px;
+    width: 49%; /* largura */
+    margin: 10px ; /* Centralize horizontalmente */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    float: left;
+  }
+  
+  #consult-category {
+    background-color:#fff;
+    padding: 20px;
+    max-width: 650px;
+    width: 40%;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
+    float: left;
+  }
+  
+  #result-category {
+    width: 98%; /* Definir a largura */
+    padding: 2px;
+    margin-bottom: 15px;
+    border: 3v solid #f1eded;
+  
+  }
+}
+h1 {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+input[type="text"],
+input[type="name"]{
+  box-sizing: border-box; 
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 30px;
+  background-color: #007BFF;
+  margin-left: 0%;
+  margin-right: 30px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+table {
+  background-color: #fff;
+  width: calc(100% - 360px);
+  margin: 20px;
+  border-collapse: collapse;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #007BFF;
+  color: white;
+}
+
