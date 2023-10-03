@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-Br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabela de Contatos</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <h1>Tabela de Contatos</h1>
-    
+
     <!-- add contatos -->
     <div id="register-contacts">
         <h2>Faça seu Cadastro:</h2>
@@ -28,80 +29,89 @@
         <button onclick="adicionarContato()">Adicionar Contato</button>
     </div>
 
-
     <div id="consult-contacts">
         <h2>Consulte seu Cadastro</h2>
         <input type="text" id="pesquisa" placeholder="Digite o nome">
-        <button  onclick="pesquisarContato()">Pesquisar</button>
+        <button onclick="pesquisarContato()">Pesquisar</button>
     </div>
     
     <!-- vizualização de contatos -->
     <table id="result-contacts">
-
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Telefone</th>
                 <th>Categoria</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             <!-- Linhas da tabela de contatos serão adicionadas aqui -->
         </tbody>
     </table>
-
-
     
+    <button><a href="categorias.html">12</a></button>
     
     <script>
-      // Função para adicionar um novo contato à tabela
-function adicionarContato() {
-    var nome = document.getElementById("nome").value;
-    var email = document.getElementById("email").value;
-    var telefone = document.getElementById("telefone").value;
-    var categoria = document.getElementById("categoria").value;
+        function adicionarContato() {
+            var nome = document.getElementById("nome").value;
+            var email = document.getElementById("email").value;
+            var telefone = document.getElementById("telefone").value;
+            var categoria = document.getElementById("categoria").value;
 
+            let table = document.getElementById("result-contacts").getElementsByTagName('tbody')[0];
+            let newRow = table.insertRow(table.rows.length);
+            
+            let cell1 = newRow.insertCell(0);
+            cell1.textContent = nome;
+            
+            let cell2 = newRow.insertCell(1);
+            cell2.textContent = email;
+            
+            let cell3 = newRow.insertCell(2);
+            cell3.textContent = telefone;
+            
+            let cell4 = newRow.insertCell(3);
+            cell4.textContent = categoria;
+            
+            let cell5 = newRow.insertCell(4);
+            cell5.innerHTML = '<i class="fa fa-trash" onclick="excluirContato(this)"></i>' + 
+                ' <i class="fa fa-pencil" onclick="editarContato(this)"></i>';
+            
+            // Limpar o formulário após adicionar o contato
+            document.getElementById("nome").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("telefone").value = "";
+            document.getElementById("categoria").value = "";
+        }
 
-    let table = document.getElementById("result-contacts").getElementsByTagName('tbody')[0];
-    let newRow = table.insertRow(table.rows.length);
-    let cell1 = newRow.insertCell(0);
-    let cell2 = newRow.insertCell(1);
-    let cell3 = newRow.insertCell(2);
-    let cell4 = newRow.insertCell(3);
-
-    cell1.innerHTML = nome;
-    cell2.innerHTML = email;
-    cell3.innerHTML = telefone;
-    cell4.innerHTML = categoria;
-
-    // Limpar o formulário após adicionar o contato
-    document.getElementById("nome").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("telefone").value = "";
-    document.getElementById("categoria").value = "";
-}
-
-// Função para pesquisar contatos pelo nome
-function pesquisarContato() {
-    var pesquisa = document.getElementById("pesquisa").value.toLowerCase();
-    var table = document.getElementById("result-contacts").getElementsByTagName('tbody')[0];
-    var rows = table.getElementsByTagName("tr");
-    
-    for (var i = 0; i < rows.length; i++) {
-        var cell = rows[i].getElementsByTagName("td")[0];
-        if (cell) {
-            var nome = cell.textContent.toLowerCase();
-            if (nome.indexOf(pesquisa) > -1) {
-                rows[i].style.display = "";
-            } else {
-                rows[i].style.display = "none";
+        function excluirContato(icon) {
+            var confirmation = confirm("Tem certeza de que deseja excluir este contato?");
+            if (confirmation) {
+                var row = icon.parentNode.parentNode;
+                row.parentNode.removeChild(row);
             }
         }
-    }
-}
 
+        function editarContato(icon) {
+            // Implemente a lógica para editar o contato aqui, por exemplo, usando um modal de edição.
+        }
+
+        function pesquisarContato() {
+            var pesquisa = document.getElementById("pesquisa").value.toLowerCase();
+            var table = document.getElementById("result-contacts").getElementsByTagName('tbody')[0];
+            var rows = table.getElementsByTagName("tr");
+            
+            for (var i = 0; i < rows.length; i++) {
+                var nome = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
+                if (nome.includes(pesquisa)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
     </script>
-
 </body>
 </html>
