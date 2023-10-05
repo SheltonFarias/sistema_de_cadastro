@@ -20,7 +20,7 @@
   }  
 }  
 
-@media screen and (min-width: 601px) and (max-width: 1024px) {
+@media screen and (min-width: 601px) and (max-width: 1024) {
   /*Tela Media*/
   #register-contacts {
     background-color: #fff;
@@ -31,16 +31,7 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     
   }  
-  #consulta-form{
-    background-color:#fff;
-      max-width: 650px; /* Aumentar a largura*/
-      width: 90%;
-      margin: 10px;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
-      float: left;
-    }
-    
+  
   #consult-contacts {
     background-color:#fff;
     padding: 10px;
