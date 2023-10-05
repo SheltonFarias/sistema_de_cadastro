@@ -144,6 +144,9 @@ table {
 .acoes {
   width: 10px;
 }
+button:hover {
+  background-color: darkblue;
+}
 
 th, td {
   border: 1px solid #ccc;
@@ -179,9 +182,10 @@ ul.pagination {
               ul.pagination li:not(:last-child) {
                 margin-right: 5px; /* Adicione uma margem à direita para criar a linha branca */
               }
-                ul.pagination li a:hover(.active) {
-                      background-color: #ddd;
-                    }
+              ul.pagination li a.active:hover {
+                background-color:darkblue;
+              }
+              
 
 
 #categoria {

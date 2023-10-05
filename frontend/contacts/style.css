@@ -122,6 +122,10 @@ button {
   cursor: pointer;
 }  
 
+button:hover {
+  background-color: darkblue;
+}
+
 /* tabelo de resultado do cadastro*/
 table {
   background-color: #fff;
@@ -173,9 +177,13 @@ ul.pagination li {
               margin-right: 5px; /* Adicione uma margem à direita para criar a linha branca */
             }
 
-                ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+              ul.pagination li a.active:hover {
+  background-color:darkblue;
+}
 
 
+
+                
 #categoria {
   margin-bottom: 10px;
   tr:hover {
