@@ -38,51 +38,35 @@ function excluirContato(icon) {
   }
 }
 
-function editarContato(icon) {
-    var row = icon.parentNode.parentNode;
-    
-    // Obtenha os valores atuais dos campos
-    var nome = row.getElementsByTagName("td")[0].textContent;
-    var email = row.getElementsByTagName("td")[1].textContent;
-    var telefone = row.getElementsByTagName("td")[2].textContent;
-    var categoria = row.getElementsByTagName("td")[3].textContent;
-    
-    // Abra um modal de edição
-    var modal = document.getElementById("register-contacts");
-    var nomeInput = modal.querySelector("nome");
-    var emailInput = modal.querySelector("email");
-    var telefoneInput = modal.querySelector("telefone");
-    var categoriaInput = modal.querySelector("categoria");
-    
-    // Preencha os campos do modal com os valores atuais
-    nomeInput.value = nome;
-    emailInput.value = email;
-    telefoneInput.value = telefone;
-    categoriaInput.value = categoria;
-    
-    // Defina uma função de salvamento para aplicar as alterações
-    var salvarBotao = modal.querySelector("#salvar-edicao");
-    salvarBotao.onclick = function() {
-      // Obtenha os novos valores dos campos do modal
-      var novoNome = nomeInput.value;
-      var novoEmail = emailInput.value;
-      var novoTelefone = telefoneInput.value;
-      var novaCategoria = categoriaInput.value;
-      
-      // Atualize os valores na linha da tabela
-      row.getElementsByTagName("td")[0].textContent = novoNome;
-      row.getElementsByTagName("td")[1].textContent = novoEmail;
-      row.getElementsByTagName("td")[2].textContent = novoTelefone;
-      row.getElementsByTagName("td")[3].textContent = novaCategoria;
-      
-      // Feche o modal
-      modal.style.display = "none";
-    };
-    
-    // Abra o modal de edição
-    modal.style.display = "block";
-  }
+function editarCategoria(icon) {
+  var row = icon.parentNode.parentNode;
   
+  // Obtenha o nome atual da categoria
+  var nome = row.getElementsByTagName("td")[0].textContent;
+  
+  // Abra o modal de edição
+  var modal = document.getElementById("modal-edit");
+  var nomeInput = modal.querySelector("#edit-nome");
+  
+  // Preencha o campo do modal com o valor atual
+  nomeInput.value = nome;
+  
+  // Defina uma função de salvamento para aplicar as alterações
+  var salvarBotao = modal.querySelector("#salvar-edicao");
+  salvarBotao.onclick = function() {
+    // Obtenha o novo valor do campo do modal
+    var novoNome = nomeInput.value;
+    
+    // Atualize o valor na linha da tabela
+    row.getElementsByTagName("td")[0].textContent = novoNome;
+    
+    // Feche o modal
+    modal.style.display = "none";
+  };
+  
+  // Abra o modal de edição
+  modal.style.display = "block";
+}
 
 function pesquisarContato() {
   var pesquisa = document.getElementById("pesquisa").value.toLowerCase();
