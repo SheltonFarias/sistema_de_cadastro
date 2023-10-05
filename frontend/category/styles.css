@@ -1,48 +1,125 @@
+@media screen and (max-width:600px) {
+  /*Tela Pequena*/
+  #register-category {
+    background-color: #fff;  
+    width: 49%; /* largura */
+    margin: 10px ; /* Centralize horizontalmente */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    float: left;
+  }  
+  
+  #consult-category {
+  background-color:#fff;  
+    max-width: 650px; /* Aumentar a largura*/
+    width: 40%;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
+    float: right;
+
+  }  
+  #result-category {
+    width: 98%; /* Definir a largura */
+    padding: 2px;
+    margin-bottom: 15px;
+    border: 3px solid #f1eded;
+  }  
+}  
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  /*Tela Media*/
+  #register-category {
+    background-color: #fff;
+    padding: 8px;
+    width: 48%; /* largura */
+    margin: 10px ; /* Centralize horizontalmente */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    float: left;
+  }  
+
+  #consult-category {
+    background-color:#fff;
+    padding: 7px;
+    max-width: 650px;
+    width: 40%;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
+    float: right;
+  }  
+  
+  #result-category {
+    width: 98%; /* Definir a largura */
+    padding: 2px;
+    margin-bottom: 15px;
+    border: 3px solid #f1eded;
+  }  
+}  
+
+@media screen and (min-width: 1025px) {
+  /*Tela Grande*/
+  #register-category {
+    background-color: #fff;
+    padding: 20px;
+    width: 49%; /* largura */
+    margin: 10px ; /* Centralize horizontalmente */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    float: left;
+  }  
+  
+  #consult-category {
+    background-color:#fff;
+    padding: 15px;
+    max-width: 650px;
+    width: 40%;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
+    float: right;
+  }  
+  
+  #result-category {
+    width: 98%; /* Definir a largura */
+    padding: 2px;
+    margin-bottom: 15px;
+    border: 3v solid #f1eded;
+    float:none;
+  }  
+}  
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
 }  
-#consulta-form {
-  background-color:#fff;
-    padding: 10px;
-    max-width: 750px;
-    width: 70%;
-    margin: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
-}
-
-#contato-form {
-  background-color:#fff;
-    padding: 10px;
-    max-width: 750px;
-    width: 70%;
-    margin: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
-}
 
 h1 {
   background-color: #007BFF;
   color: white;
   padding: 10px;
   text-align: center;
-}
+}  
+
 label {
   display: block;
   margin-bottom: 5px;
   color: #333;
-}
+}  
+
 input[type="text"],
-input[type="name"]{
+input[type="email"],
+input[type="tel"] {
   box-sizing: border-box; 
   width: 100%;
   padding: 8px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   border: 2px solid #ccc;
   border-radius: 4px;
-}
+}  
 
+/*botão para adicionar contato*/
 button {
   padding: 10px 30px;
   background-color: #007BFF;
@@ -52,25 +129,32 @@ button {
   border: none;
   border-radius: 3px;
   cursor: pointer;
-}
+}  
+
+/* tabelo de resultado do cadastro*/
 table {
   background-color: #fff;
   width: calc(100% - 360px);
-  margin: 10px;
+  margin: 20px;
   border-collapse: collapse;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}  
+
+.acoes {
+  width: 10px;
 }
+
 th, td {
   border: 1px solid #ccc;
   padding: 8px;
   text-align: left;
-}
+}  
 
 th {
   background-color: #007BFF;
   color: white;
-}
+}  
 ul.pagination {
   display: flex;
   justify-content: center;
@@ -78,6 +162,7 @@ ul.pagination {
   padding: 0;
   margin: 20px 0; /* Adicione margem na parte inferior */
 }
+
 ul.pagination li {display: inline;}
 
 ul.pagination li a {
@@ -86,13 +171,50 @@ ul.pagination li a {
   text-decoration: none;
   text-align: center;
 }
+
 ul.pagination li a.active {
   background-color: #007BFF;
   color: white;
 }
+
 ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 
-#Cadastro_contacts {
-  margin: 10px;
-}
 
+#categoria {
+  margin-bottom: 10px;
+  tr:hover {
+  background-color: #f5f5f5;  
+  transition: background-color 0.3s;
+  margin-bottom: 10px;
+}  
+
+/* Styles for forms */
+
+#register-category {
+  background-color: #fff;
+  padding: 20px;
+  width: 49%; /* largura */
+  margin: 10px ; /* Centralize horizontalmente */
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  float: left;
+}  
+
+#consult-category {
+  background-color:#fff;
+  padding: 20px;
+  max-width: 650px;
+  width: 40%;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
+  float: right;
+}  
+
+#result-category {
+  width: 98%; /* Definir a largura */
+  padding: 2px;
+  margin-bottom: 15px;
+  border: 3v solid #f1eded;
+}  
+}

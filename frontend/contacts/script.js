@@ -1,8 +1,8 @@
 function adicionarContato() {
-  var nome = document.getElementById("nome").value;
-  var email = document.getElementById("email").value;
-  var telefone = document.getElementById("telefone").value;
-  var categoria = document.getElementById("categoria").value;
+  let nome = document.getElementById("nome").value;
+  let email = document.getElementById("email").value;
+  let telefone = document.getElementById("telefone").value;
+  let categoria = document.getElementById("categoria").value;
 
   let table = document.getElementById("result-contacts").getElementsByTagName('tbody')[0];
   let newRow = table.insertRow(table.rows.length);
