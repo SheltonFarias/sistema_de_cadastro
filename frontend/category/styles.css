@@ -185,6 +185,10 @@ ul.pagination {
               ul.pagination li a.active:hover {
                 background-color:darkblue;
               }
+
+    .seta:hover {
+      background-color:gainsboro;
+    }
               
 
 
