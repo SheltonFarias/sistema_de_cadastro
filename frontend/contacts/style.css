@@ -154,21 +154,26 @@ ul.pagination {
   margin: 20px 0; /* Adicione margem na parte inferior */
 }
 
-ul.pagination li {display: inline;}
-
-ul.pagination li a {
-  color: black;
-  padding: 8px 16px;
-  text-decoration: none;
-  text-align: center;
+ul.pagination li {
+  display: inline;
 }
 
-ul.pagination li a.active {
-  background-color: #007BFF;
-  color: white;
-}
+    ul.pagination li a {
+      color: black;
+      padding: 8px 16px;
+      text-decoration: none;
+      text-align: center;
+    }
 
-ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+        ul.pagination li a.active {
+          background-color: #007BFF;
+          color: white;
+        }
+            ul.pagination li:not(:last-child) {
+              margin-right: 5px; /* Adicione uma margem à direita para criar a linha branca */
+            }
+
+                ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 
 
 #categoria {
