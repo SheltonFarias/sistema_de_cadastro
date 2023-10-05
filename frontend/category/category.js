@@ -1,6 +1,6 @@
 function adicionarCategoria() {
   let nome = document.getElementById("nome").value;
-  let categoria = document.getElementById("categoria").value;
+  // let categoria = document.getElementById("categoria").value;
 
 
   let table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
@@ -9,16 +9,16 @@ function adicionarCategoria() {
   let cell1 = newRow.insertCell(0);
   cell1.textContent = nome;
  
-  let cell2 = newRow.insertCell(1);
-  cell2.textContent = categoria;
+  // let cell2 = newRow.insertCell(1);
+  // cell2.textContent = categoria;
  
-  let cell3 = newRow.insertCell(2);
+  let cell3 = newRow.insertCell(1);
   cell3.innerHTML = '<i class="fa fa-trash" onclick="excluirCategoria(this)"></i>' +
       ' <i class="fa fa-pencil" onclick="editarCategoria(this)"></i>';
  
   // Limpar o formulário após adicionar o contato
   document.getElementById("nome").value = "";
-  document.getElementById("categoria").value = "";
+  // document.getElementById("categoria").value = "";
 }
 
 
@@ -38,7 +38,7 @@ function editarCategoria(icon) {
 
 function pesquisarCategoria() {
   var pesquisa = document.getElementById("pesquisa").value.toLowerCase();
-  var table = document.getElementById("result-contacts").getElementsByTagName('tbody')[0];
+  var table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
   var rows = table.getElementsByTagName("tr");
  
   for (var i = 0; i < rows.length; i++) {

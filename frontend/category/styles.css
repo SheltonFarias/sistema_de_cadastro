@@ -144,6 +144,7 @@ table {
 .acoes {
   width: 10px;
 }
+
 button:hover {
   background-color: darkblue;
 }

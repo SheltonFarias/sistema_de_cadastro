@@ -12,17 +12,20 @@
     
     <!-- Formulário de consulta de contatos -->
     <div id="consult-category">
-        <h2>Consulte seu Cadastro:</h2>
+        <h2>Consulte seu Cadastro</h2>
         <input type="text" id="pesquisa" placeholder="Digite o nome">
         <button onclick="pesquisarCategoria()">Pesquisar</button>
     </div>
 
     <!-- add contatos -->
     <div id="register-category">
-       <h2>Faça o Cadastro da sua Categoria:</h2>
+       <h2>Faça o Cadastro da sua Categoria</h2>
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" placeholder="Digite sua Categoria" required><br>
+        <input type="text" id="nome" placeholder="Digite seu nome" required><br>
       
+        <!-- <label for="categoria">Categoria</label>
+        <input type="text" id="categoria" placeholder="Digite sua Categoria" required><br> -->
+
         <button class="adicionarCategorias" onclick="adicionarCategoria()">Adicionar Categoria</button>
     </div>
 
@@ -32,7 +35,7 @@
         <thead>
             <tr>
                 <th>Nome</th>
-                <th>Categoria</th>
+                <th class="acoes">Ações</th>
             </tr>
         </thead>
         <tbody>
