@@ -13,18 +13,17 @@
     <!-- Formulário de consulta de contatos -->
     <div id="consult-category">
         <h2>Consulte seu Cadastro:</h2>
-
         <input type="text" id="pesquisa" placeholder="Digite o nome">
-        <button onclick="pesquisarContato()">Pesquisar</button>
+        <button onclick="pesquisarCategoria()">Pesquisar</button>
     </div>
 
     <!-- add contatos -->
     <div id="register-category">
        <h2>Faça o Cadastro da sua Categoria:</h2>
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" placeholder="Digite o Nome" required><br>
+        <input type="text" id="nome" placeholder="Digite sua Categoria" required><br>
       
-        <button class="adicionarCategorias" onclick="adicionarContato()">Adicionar Contato</button>
+        <button class="adicionarCategorias" onclick="adicionarCategoria()">Adicionar Categoria</button>
     </div>
 
     
@@ -42,13 +41,12 @@
     </table>
 
     <ul class="pagination">
-        <li><a href="categorias.html">«</a></li>
-        <li><a class="active" href="../category/contacts.html">1</a></li>
-        <li><a class="active" href="../category/contacts.html">2</a></li>
-        <li><a href="../category/contacts.html">»</a></li>
+        <li><a href="../contacts/index.html">«</a></li>
+        <li><a class="active" href="../contacts/index.html">1</a></li>
+        <li><a class="active" href="../contacts/index.html">2</a></li>
       </ul>
 
-    <script src="script.js"></script>
+    <script src="category.js"></script>
 </body>
 
 </html>

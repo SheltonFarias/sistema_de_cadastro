@@ -215,6 +215,6 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
   width: 98%; /* Definir a largura */
   padding: 2px;
   margin-bottom: 15px;
-  border: 3v solid #f1eded;
+  border: 3px solid #f1eded;
 }  
 }
