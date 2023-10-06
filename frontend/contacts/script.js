@@ -113,10 +113,10 @@ cell5.innerHTML = '<i class="fa fa-trash" onclick="excluirContato(this)"></i>' +
 function editarContato(icon) {
   var row = icon.parentNode.parentNode;
   
-  var nome = row.getElementsByTagName("td")[0].textContent;
-  var email = row.getElementsByTagName("td")[1].textContent;
-  var telefone = row.getElementsByTagName("td")[2].textContent;
-  var categoria = row.getElementsByTagName("td")[3].textContent;
+  let nome = row.getElementsByTagName("td")[0].textContent;
+  let email = row.getElementsByTagName("td")[1].textContent;
+  let telefone = row.getElementsByTagName("td")[2].textContent;
+  let categoria = row.getElementsByTagName("td")[3].textContent;
 
   // Preencha o formulário "register-contacts" com os dados do contato selecionado
   document.getElementById("nome").value = nome;
@@ -132,12 +132,12 @@ function editarContato(icon) {
   };
 }
 
-// Adicione uma função para salvar a edição do contato
+
 function salvarEdicao(row) {
-  var nome = document.getElementById("nome").value;
-  var email = document.getElementById("email").value;
-  var telefone = document.getElementById("telefone").value;
-  var categoria = document.getElementById("categoria").value;
+  let nome = document.getElementById("nome").value;
+  let email = document.getElementById("email").value;
+  let telefone = document.getElementById("telefone").value;
+  let categoria = document.getElementById("categoria").value;
 
   // Atualize os valores na linha da tabela
   row.getElementsByTagName("td")[0].textContent = nome;
