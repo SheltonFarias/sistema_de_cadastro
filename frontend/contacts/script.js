@@ -118,7 +118,7 @@ function editarContato(icon) {
   let telefone = row.getElementsByTagName("td")[2].textContent;
   let categoria = row.getElementsByTagName("td")[3].textContent;
 
-  // Preencha o formulário "register-contacts" com os dados do contato selecionado
+ // Passa a edição para o formulario register-contacts
   document.getElementById("nome").value = nome;
   document.getElementById("email").value = email;
   document.getElementById("telefone").value = telefone;
@@ -132,7 +132,6 @@ function editarContato(icon) {
   };
 }
 
-
 function salvarEdicao(row) {
   let nome = document.getElementById("nome").value;
   let email = document.getElementById("email").value;
@@ -145,14 +144,13 @@ function salvarEdicao(row) {
   row.getElementsByTagName("td")[2].textContent = telefone;
   row.getElementsByTagName("td")[3].textContent = categoria;
 
-  // Limpe o formulário após salvar a edição
+  // Limpeza do campo edição
   document.getElementById("nome").value = "";
   document.getElementById("email").value = "";
   document.getElementById("telefone").value = "";
   document.getElementById("categoria").value = "";
-
-  // Restaure a ação do botão "Adicionar Contato" para adicionar um novo contato
-  var adicionarBotao = document.querySelector("button[onclick='adicionarContato()']");
+//retorna a função do botão para adicionar contatos
+  let adicionarBotao = document.querySelector("button[onclick='adicionarContato()']");
   adicionarBotao.innerText = "Adicionar Contato";
   adicionarBotao.onclick = adicionarContato;
 }

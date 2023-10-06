@@ -74,3 +74,43 @@ function pesquisarCategoria() {
   }
 }
 
+let cell5 = newRow.insertCell(0);
+cell5.innerHTML = '<i class="fa fa-trash" onclick="excluirContato(this)"></i>' + 
+    ' <i class="fa fa-pencil" onclick="editarContato(this)"></i>';
+
+function editarCategoria(icon) {
+  var row = icon.parentNode.parentNode;
+  
+  let nome = row.getElementsByTagName("td")[0].textContent;
+
+
+  // Passa a edição para o formulario register-category
+  document.getElementById("nome").value = nome;
+
+
+  // muda a funçao do botao de adicionar categorias
+  var adicionarBotao = document.querySelector("button[onclick='adicionarCategoria()']");
+  adicionarBotao.innerText = "Salvar Edição";
+  adicionarBotao.onclick = function () {
+    salvarEdicao(row);
+  };
+}
+
+
+function salvarEdicao(row) {
+  let nome = document.getElementById("nome").value;
+
+  // Atualização dos valores
+  row.getElementsByTagName("td")[0].textContent = nome;
+
+
+  // Limpeza do campo edição
+  document.getElementById("nome").value = "";
+
+
+ //retorna a função do botão para adicionar categorias
+  let adicionarBotao = document.querySelector("button[onclick='adicionarCategoria()']");
+  adicionarBotao.innerText = "Adicionar Categoria";
+  adicionarBotao.onclick = adicionarCategoria();
+}
+
