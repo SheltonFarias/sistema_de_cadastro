@@ -104,3 +104,56 @@ function pesquisarContato() {
     });
   }
 }
+
+let cell5 = newRow.insertCell(4);
+cell5.innerHTML = '<i class="fa fa-trash" onclick="excluirContato(this)"></i>' + 
+    ' <i class="fa fa-pencil" onclick="editarContato(this)"></i>';
+
+// Atualize a função editarContato para preencher o formulário de registro com os dados do contato selecionado
+function editarContato(icon) {
+  var row = icon.parentNode.parentNode;
+  
+  var nome = row.getElementsByTagName("td")[0].textContent;
+  var email = row.getElementsByTagName("td")[1].textContent;
+  var telefone = row.getElementsByTagName("td")[2].textContent;
+  var categoria = row.getElementsByTagName("td")[3].textContent;
+
+  // Preencha o formulário "register-contacts" com os dados do contato selecionado
+  document.getElementById("nome").value = nome;
+  document.getElementById("email").value = email;
+  document.getElementById("telefone").value = telefone;
+  document.getElementById("categoria").value = categoria;
+
+  // Defina a ação do botão "Adicionar Contato" para atualizar o contato em vez de adicionar um novo
+  var adicionarBotao = document.querySelector("button[onclick='adicionarContato()']");
+  adicionarBotao.innerText = "Salvar Edição";
+  adicionarBotao.onclick = function () {
+    salvarEdicao(row);
+  };
+}
+
+// Adicione uma função para salvar a edição do contato
+function salvarEdicao(row) {
+  var nome = document.getElementById("nome").value;
+  var email = document.getElementById("email").value;
+  var telefone = document.getElementById("telefone").value;
+  var categoria = document.getElementById("categoria").value;
+
+  // Atualize os valores na linha da tabela
+  row.getElementsByTagName("td")[0].textContent = nome;
+  row.getElementsByTagName("td")[1].textContent = email;
+  row.getElementsByTagName("td")[2].textContent = telefone;
+  row.getElementsByTagName("td")[3].textContent = categoria;
+
+  // Limpe o formulário após salvar a edição
+  document.getElementById("nome").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("telefone").value = "";
+  document.getElementById("categoria").value = "";
+
+  // Restaure a ação do botão "Adicionar Contato" para adicionar um novo contato
+  var adicionarBotao = document.querySelector("button[onclick='adicionarContato()']");
+  adicionarBotao.innerText = "Adicionar Contato";
+  adicionarBotao.onclick = adicionarContato;
+}
+

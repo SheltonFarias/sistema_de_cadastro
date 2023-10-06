@@ -27,6 +27,7 @@
         <input type="number" id="categoria" required placeholder="Ex: 1"><br>
         
         <button onclick="adicionarContato()">Adicionar Contato</button>
+        <button id="cancelar-edicao">Cancelar</button>
     </div>
 
     <div id="consult-contacts">
@@ -39,11 +40,12 @@
     <table id="result-contacts">
         <thead>
             <tr>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>Categoria</th>
+                <th data-field="Nome">Nome</th>
+                <th data-field="Email">Email</th>
+                <th data-field="Telefone">Telefone</th>
+                <th data-field="">Categoria</th>
                 <th class="acoes">Ações</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -59,6 +61,7 @@
           <li><a class="active" href="../category/categorias.html">2</a></li>
           <li><a class="seta" href="../category/categorias.html">»</a></li>
         </ul>
+        
 
 <script src="script.js"></script>
 </body>
