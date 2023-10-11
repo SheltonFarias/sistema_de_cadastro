@@ -87,15 +87,6 @@ function pesquisarContato() {
   var table = document.getElementById("result-contacts").getElementsByTagName('tbody')[0];
   var rows = table.getElementsByTagName("tr");
   
-  fetch('http://localhost:3000/contatos', {
-    method: 'GET',
-    headers:{
-      'content-type': 'application/json',
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-
   for (var i = 0; i < rows.length; i++) {
       var nome = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
       if (nome.includes(pesquisa)) {
