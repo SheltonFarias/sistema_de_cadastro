@@ -24,16 +24,17 @@
 
         <label for="telefone">Telefone:</label>
         <input type="tel" id="telefone" required placeholder="Ex: (85)912345678"><br>
-        <div>
-            <select id="">
-                <option value="id da categoria">Facebook</option>
-                <option value="id da categoria">Instagram</option>
-                <option value="id da categoria">tik-tok</option>
-                <option value="id da categoria">Twitter</option>
-                <option value="id da categoria">Telegram</option>
-    
+
+        <div class="container">
+            <select id="categoria">
+              <option value="facebook">Facebook</option>
+              <option value="instagram">Instagram</option>
+              <option value="tiktok">Tik-Tok</option>
+              <option value="twitter">Twitter</option>
+              <option value="telegram">Telegram</option>
             </select>
-        </div>
+          </div>
+<br>
         <button onclick="adicionarContato()">Adicionar Contato</button>
         <button id="cancelar-edicao">Cancelar</button>
     </div>

@@ -110,6 +110,23 @@ input[type="tel"] {
   border-radius: 4px;
 }  
 
+/* Estilização da div que contém o select */
+.container {
+  background-color: #f0f0f0;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 155px;
+  background-color: #007BFF;
+}
+
+/* Estilização do select dentro da div */
+    .container select {
+      width: 100%;
+      font-size: 18px;
+    }
+
+
 /*botão para adicionar contato*/
 button {
   padding: 10px 30px;
