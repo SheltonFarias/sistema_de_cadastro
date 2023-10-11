@@ -38,7 +38,7 @@ function adicionarContato() {
       name: nome,
       email:email,
       phone: telefone,
-      category: categoria 
+      categoria: categoria 
     }
   })
   .then((response) => response.json())
@@ -187,7 +187,7 @@ function preencherTabelaComContatos(contatos) {
     cell3.textContent = contato.phone;
 
     let cell4 = newRow.insertCell(3);
-    cell4.textContent = contato.category;
+    cell4.textContent = contato.category_id;
 
     let cell5 = newRow.insertCell(4);
     cell5.innerHTML = '<i class="fa fa-trash" onclick="excluirContato(this)"></i>' +
