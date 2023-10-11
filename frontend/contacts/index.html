@@ -24,10 +24,16 @@
 
         <label for="telefone">Telefone:</label>
         <input type="tel" id="telefone" required placeholder="Ex: (85)912345678"><br>
-
-        <label for="categoria">Categoria:</label>
-        <input type="number" id="categoria" required placeholder="Ex: 1"><br>
-
+        <div>
+            <select id="">
+                <option value="id da categoria">Facebook</option>
+                <option value="id da categoria">Instagram</option>
+                <option value="id da categoria">tik-tok</option>
+                <option value="id da categoria">Twitter</option>
+                <option value="id da categoria">Telegram</option>
+    
+            </select>
+        </div>
         <button onclick="adicionarContato()">Adicionar Contato</button>
         <button id="cancelar-edicao">Cancelar</button>
     </div>
@@ -37,16 +43,6 @@
         <input type="text" id="pesquisa" placeholder="Digite o nome">
         <button onclick="pesquisarContato()">Pesquisar</button>
     </div>
-
-    <select id="">
-        <option value="id da categoria">nome da categoria</option>
-        <option value="id da categoria">nome da categoria</option>
-
-        <option value="id da categoria">nome da categoria</option>
-        <option value="id da categoria">nome da categoria</option>
-        <option value="id da categoria">nome da categoria</option>
-
-    </select>
 
     <!-- vizualização de contatos -->
     <table id="result-contacts">
