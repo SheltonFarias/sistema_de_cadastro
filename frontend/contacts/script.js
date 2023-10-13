@@ -2,85 +2,90 @@ function adicionarContato() {
   let nome = document.getElementById("nome").value;
   let email = document.getElementById("email").value;
   let telefone = document.getElementById("telefone").value;
-  let categoria = document.getElementById("categoria").value;
+  let categoria = document.getElementById("categoria").value; // Obtém a categoria
 
   let table = document.getElementById("result-contacts").getElementsByTagName('tbody')[0];
   let newRow = table.insertRow(table.rows.length);
-  
+
   let cell1 = newRow.insertCell(0);
   cell1.textContent = nome;
 
   let cell2 = newRow.insertCell(1);
   cell2.textContent = email;
-  
+
   let cell3 = newRow.insertCell(2);
   cell3.textContent = telefone;
-  
+
   let cell4 = newRow.insertCell(3);
-  cell4.textContent = categoria;
-  
+  cell4.textContent = categoria; 
+
   let cell5 = newRow.insertCell(4);
   cell5.innerHTML = '<i class="fa fa-trash" onclick="excluirContato(this)"></i>' +
-  ' <i class="fa fa-pencil" onclick="editarContato(this)"></i>';
-  
+    ' <i class="fa fa-pencil" onclick="editarContato(this)"></i';
+
   // Limpar o formulário após adicionar o contato
   document.getElementById("nome").value = "";
   document.getElementById("email").value = "";
   document.getElementById("telefone").value = "";
   document.getElementById("categoria").value = "";
 
+  // Construa o objeto de dados a ser enviado com a solicitação POST
+  const data = {
+    name: nome,
+    email: email,
+    phone: telefone,
+    category_id: categoria,
+  };
+
   fetch('http://localhost:3000/contatos', {
     method: 'POST',
-    headers:{
-      'content-type': 'application/json',
+    headers: {
+      'Content-Type': 'application/json',
     },
-    body: {
-      name: nome,
-      email:email,
-      phone: telefone,
-      categoria: categoria 
-    }
+    body: JSON.stringify(data),
   })
-  .then((response) => response.json())
-  .then((data) => console.log(data))
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      atualizarTabelaComContatos();
+    })
+    .catch((error) => {
+      console.error('Erro ao adicionar contato:', error);
+    });
+
+  
 }
+
 
 function excluirContato(icon) {
   var confirmation = confirm("Tem certeza de que deseja excluir este contato?");
   if (confirmation) {
     var row = icon.parentNode.parentNode;
-    row.parentNode.removeChild(row);
+
+    fetch('http://localhost:3000/contatos/30' , {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Erro ao excluir contato');
+        }
+      })
+      .then((data) => {
+        console.log('Contato excluído com sucesso:', data);
+        // Remova a linha da tabela após a exclusão bem-sucedida.
+        row.parentNode.removeChild(row);
+      })
+      .catch((error) => {
+        console.error('Erro ao excluir contato:', error);
+      });
   }
 }
 
-  function editarContato(icon) {
-    var row = icon.parentNode.parentNode;
-    
-    // Obtenha o nome atual da categoria
-    var nome = row.getElementsByTagName("td")[0].textContent;
-    
-    // Abra o modal de edição
-    var modal = document.getElementById("modal-edit");
-    var nomeInput = modal.querySelector("#edit-nome");
-    
-    // Preencha o campo do modal com o valor atual
-    nomeInput.value = nome;
-    
-    var salvarBotao = modal.querySelector("#salvar-edicao");
-    salvarBotao.onclick = function () {
-      // Obtenha o novo valor do campo do modal
-      var novoNome = nomeInput.value;
-      
-      // Atualize o valor na linha da tabela
-      row.getElementsByTagName("td")[0].textContent = novoNome;
-      
-      // Feche o modal
-      modal.style.display = "none";
-    };
-    
-    // Abra o modal de edição
-  modal.style.display = "block";
-}
 
 function pesquisarContato() {
   var pesquisa = document.getElementById("pesquisa").value.toLowerCase();
@@ -106,21 +111,6 @@ function editarContato(icon) {
   let telefone = row.getElementsByTagName("td")[2].textContent;
   let categoria = row.getElementsByTagName("td")[3].textContent;
     
-  fetch('http://localhost:3000/contatos', {
-    method: 'PUT',
-    headers:{
-      'content-type': 'application/json',
-    },
-    body: {
-      name: nome,
-      email:email,
-      phone: telefone,
-      category: categoria 
-    }
-  })
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-
   // Passa a edição para o formulario register-contacts
   document.getElementById("nome").value = nome;
   document.getElementById("email").value = email;
@@ -135,29 +125,61 @@ function editarContato(icon) {
     };
   }
   
-  function salvarEdicao(row) {
-    let nome = document.getElementById("nome").value;
+
+function salvarEdicao(row) {
+  let nome = document.getElementById("nome").value;
   let email = document.getElementById("email").value;
   let telefone = document.getElementById("telefone").value;
   let categoria = document.getElementById("categoria").value;
-  
-  // Atualize os valores na linha da tabela
-  row.getElementsByTagName("td")[0].textContent = nome;
-  row.getElementsByTagName("td")[1].textContent = email;
-  row.getElementsByTagName("td")[2].textContent = telefone;
-  row.getElementsByTagName("td")[3].textContent = categoria;
-  
-  // Limpeza do campo edição
-  document.getElementById("nome").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("telefone").value = "";
-  document.getElementById("categoria").value = "";
-  
-  // Retorna a função do botão para adicionar contatos
-  let adicionarBotao = document.querySelector("button[onclick='adicionarContato()']");
-  adicionarBotao.innerText = "Adicionar Contato";
-  adicionarBotao.onclick = adicionarContato;
+
+  // Construa o objeto de dados a ser enviado com a solicitação PUT
+  const data = {
+    name: nome,
+    email: email,
+    phone: telefone,
+    category_id: categoria,
+  };
+
+  fetch('http://localhost:3000/contatos/28' , {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Erro ao atualizar contato');
+      }
+    })
+    .then((data) => {
+      console.log(data);
+
+      // Atualize os valores na linha da tabela
+      row.getElementsByTagName("td")[0].textContent = nome;
+      row.getElementsByTagName("td")[1].textContent = email;
+      row.getElementsByTagName("td")[2].textContent = telefone;
+      row.getElementsByTagName("td")[3].textContent = categoria;
+
+      // Limpeza do campo edição
+      document.getElementById("nome").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("telefone").value = "";
+      document.getElementById("categoria").value = "";
+
+      // Retorna a função do botão para adicionar contatos
+      let adicionarBotao = document.querySelector("button[onclick='adicionarContato()']");
+      adicionarBotao.innerText = "Adicionar Contato";
+      adicionarBotao.onclick = adicionarContato;
+    })
+    .catch((error) => {
+      console.error('Erro ao atualizar contato:', error);
+    });
 }
+
+
 
 // Função para preencher a tabela com os dados da consulta GET
 function preencherTabelaComContatos(contatos) {
@@ -186,7 +208,7 @@ function preencherTabelaComContatos(contatos) {
   });
 }
 
-// Função para realizar a consulta GET e preencher a tabela
+
 function atualizarTabelaComContatos() {
   fetch('http://localhost:3000/contatos', {
     method: 'GET',
@@ -200,6 +222,5 @@ function atualizarTabelaComContatos() {
     });
 }
 
-// Chame a função para preencher a tabela quando a página for carregada
 window.addEventListener('load', atualizarTabelaComContatos);
 
