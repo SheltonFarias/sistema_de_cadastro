@@ -2,7 +2,6 @@ function adicionarCategoria() {
   let nome = document.getElementById("nome").value;
   // let categoria = document.getElementById("categoria").value;
 
-
   let table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
   let newRow = table.insertRow(table.rows.length);
  
@@ -47,30 +46,7 @@ function pesquisarCategoria() {
           rows[i].style.display = "";
       } else {
           rows[i].style.display = "none";
-      }
-        // Fazer uma solicitação POST ao backend com os dados
-  fetch('http://localhost:3000/contatos/', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-    .then(response => {
-      console.log(response)
-
-
-      if (!response.ok) {
-        throw new Error('Não foi possível adicionar o contato no servidor.');
-      }
-      return response.json(); // Se o servidor retorna uma resposta JSON, você pode processá-la aqui
-    })
-    .then(data => {
-      // Faça algo com a resposta do backend, se necessário
-    })
-    .catch(error => {
-      // Trata erros, como falha na solicitação ou processamento de dados
-      console.error(error);
-    });
+        } 
   }
 }
 
@@ -95,7 +71,6 @@ function editarCategoria(icon) {
     salvarEdicao(row);
   };
 }
-
 
 function salvarEdicao(row) {
   let nome = document.getElementById("nome").value;

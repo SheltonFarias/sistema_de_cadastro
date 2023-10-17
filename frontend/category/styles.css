@@ -1,9 +1,7 @@
 @media screen and (max-width:600px) {
   /*Tela Pequena*/
-
   #consult-category {
   background-color:#fff;  
-    max-width: 650px; /* Aumentar a largura*/
     width: 98%;
     margin: 10px;
     border-radius: 5px;
@@ -20,11 +18,9 @@
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
   /*Tela Media*/
-
   #consult-category {
     background-color:#fff;
     padding: 7px;
-    max-width: 650px;
     width: 98%;
     margin: 10px;
     border-radius: 5px;
@@ -42,21 +38,10 @@
 
 @media screen and (min-width: 1025px) {
   /*Tela Grande*/
-  #register-category {
-    background-color: #fff;
-    padding: 20px;
-    width: 98%; /* largura */
-    margin: 10px ; /* Centralize horizontalmente */
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    float: left;
-  }  
-  
   #consult-category {
     background-color:#fff;
     padding: 15px;
-    max-width: 650px;
-    width: 40%;
+    width: 96%;
     margin: 10px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
