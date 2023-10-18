@@ -1,7 +1,5 @@
 function adicionarCategoria() {
   let nome = document.getElementById("nome").value;
-  // let categoria = document.getElementById("categoria").value;
-
   let table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
   let newRow = table.insertRow(table.rows.length);
  
@@ -30,11 +28,6 @@ function excluirCategoria(icon) {
 }
 
 
-function editarCategoria(icon) {
-  // Implemente a lógica para editar o contato aqui, por exemplo, usando um modal de edição.
-}
-
-
 function pesquisarCategoria() {
   var pesquisa = document.getElementById("pesquisa").value.toLowerCase();
   var table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
@@ -49,10 +42,6 @@ function pesquisarCategoria() {
         } 
   }
 }
-
-let cell5 = newRow.insertCell(0);
-cell5.innerHTML = '<i class="fa fa-trash" onclick="excluirContato(this)"></i>' + 
-    ' <i class="fa fa-pencil" onclick="editarContato(this)"></i>';
 
 function editarCategoria(icon) {
   var row = icon.parentNode.parentNode;
@@ -89,3 +78,47 @@ function salvarEdicao(row) {
   adicionarBotao.onclick = adicionarCategoria();
 }
 
+ 
+function preencherTabelaComContatos(categorias) {
+  let table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
+  // Limpe a tabela antes de preencher com os novos dados
+  table.innerHTML = "";
+
+  categorias.forEach(categoria => {
+    let newRow = table.insertRow(table.rows.length);
+
+    let cell1 = newRow.insertCell(0);
+    cell1.textContent = categoria.name;
+
+    // let cell2 = newRow.insertCell(1);
+    // cell2.textContent = categoria.email;
+
+    // let cell3 = newRow.insertCell(2);
+    // cell3.textContent = categoria.phone;
+
+    // let cell4 = newRow.insertCell(3);
+    // cell4.textContent = categoria.categoria_nome;
+
+    let cell2 = newRow.insertCell(1);
+    cell2.innerHTML = '<i class="fa fa-trash" onclick="excluirContato(this)"></i>' +
+      ' <i class="fa fa-pencil" onclick="editarContato(this)"></i>';
+
+    // Adicione o atributo data-contact-id possibilitando a identificação do ID
+    newRow.setAttribute("data-contact-id", contato.id);
+  });
+}
+
+function atualizarTabelaComContatos() {
+  fetch('http://localhost:3000/contatos', {
+    method: 'GET',
+    headers: {
+      'content-type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      preencherTabelaComContatos(data); // repassa os valores recebidos para a tabela
+    });
+}
+
+window.addEventListener('load', atualizarTabelaComContatos);

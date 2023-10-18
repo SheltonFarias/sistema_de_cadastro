@@ -1,3 +1,4 @@
+//Adiciona o Contato apos o preenchimento dos campo e clicar no BOTÃO
 function adicionarContato() {
   let nome = document.getElementById("nome").value;
   let email = document.getElementById("email").value;
@@ -29,7 +30,7 @@ function adicionarContato() {
   document.getElementById("telefone").value = "";
   document.getElementById("categoria").value = "";
 
-  // Construa o objeto de dados a ser enviado com a solicitação POST
+  // Objeto para envio ao solicitar POST
   const data = {
     name: nome,
     email: email,
@@ -55,6 +56,7 @@ function adicionarContato() {
   
 }
 
+// Exclui a Função ao clicar no icone e Confirmar
 function excluirContato(icon) {
   var confirmation = confirm("Tem certeza de que deseja excluir este contato?");
   if (confirmation) {
@@ -78,7 +80,7 @@ function excluirContato(icon) {
       })
       .then((data) => {
         console.log('Contato excluído com sucesso:', data);
-
+ 
         // Remova a linha da tabela após a exclusão bem-sucedida.
         row.parentNode.removeChild(row);
       })
@@ -88,6 +90,7 @@ function excluirContato(icon) {
   }
 }
 
+// Pesquisa os contatos com base nos Caracteres infotm
 function pesquisarContato() {
   var pesquisa = document.getElementById("pesquisa").value.toLowerCase();
   var table = document.getElementById("result-contacts").getElementsByTagName('tbody')[0];
@@ -103,7 +106,7 @@ function pesquisarContato() {
   }
 }
 
-// Atualize a função editarContato para preencher o formulário de registro com os dados do contato selecionado
+// Edita o contato salvo, retornando ele para o campo de registro de cadastro
 function editarContato(icon) {
   let row = icon.parentNode.parentNode;
 
@@ -125,17 +128,17 @@ function editarContato(icon) {
       salvarEdicao(row);
     };
   }
-  
+
+  // Ao clicar no BOTÂO salvar executa a funçao para salvar a alteração
   function salvarEdicao(row) {
     let nome = document.getElementById("nome").value;
     let email = document.getElementById("email").value;
     let telefone = document.getElementById("telefone").value;
     let categoria = document.getElementById("categoria").value;
   
-    // Obtenha o ID do contato a partir dos dados da linha da tabela
+    // Fornece o ID atraves da tabela
     var contatoId = row.getAttribute("data-contact-id");
   
-    // Construa o objeto de dados a ser enviado com a solicitação PUT
     const data = {
       name: nome,
       email: email,
@@ -160,13 +163,13 @@ function editarContato(icon) {
       .then((data) => {
         console.log(data);
   
-        // Atualize os valores na linha da tabela
+        // Libera os campos para atualizar a tabela
         row.getElementsByTagName("td")[0].textContent = nome;
         row.getElementsByTagName("td")[1].textContent = email;
         row.getElementsByTagName("td")[2].textContent = telefone;
         row.getElementsByTagName("td")[3].textContent = categoria;
   
-        // Limpeza do campo edição
+        // limpa os campos pos ediçao
         document.getElementById("nome").value = "";
         document.getElementById("email").value = "";
         document.getElementById("telefone").value = "";
@@ -200,13 +203,13 @@ function preencherTabelaComContatos(contatos) {
     cell3.textContent = contato.phone;
 
     let cell4 = newRow.insertCell(3);
-    cell4.textContent = contato.category_id;
+    cell4.textContent = contato.categoria_nome;
 
     let cell5 = newRow.insertCell(4);
     cell5.innerHTML = '<i class="fa fa-trash" onclick="excluirContato(this)"></i>' +
       ' <i class="fa fa-pencil" onclick="editarContato(this)"></i>';
 
-    // Adicione o atributo data-contact-id com o ID do contato
+    // Adicione o atributo data-contact-id possibilitando a identificação do ID
     newRow.setAttribute("data-contact-id", contato.id);
   });
 }
@@ -220,7 +223,7 @@ function atualizarTabelaComContatos() {
   })
     .then((response) => response.json())
     .then((data) => {
-      preencherTabelaComContatos(data); // Preenche a tabela com os dados recebidos
+      preencherTabelaComContatos(data); // repassa os valores recebidos para a tabela
     });
 }
 
