@@ -64,9 +64,8 @@
   
   #consult-contacts {
     background-color:#fff;
-    padding: 20px;
-    max-width: 650px;
-    width: 40%;
+    padding: 25px;
+    width: 43%;
     margin: 10px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
@@ -197,9 +196,9 @@ ul.pagination li {
                 background-color:darkblue;
                 }
 
-        .seta:hover {
-         background-color:gainsboro;
-         }
+.seta:hover {
+  background-color:gainsboro;
+}
                 
 #categoria {
   margin-bottom: 10px;
