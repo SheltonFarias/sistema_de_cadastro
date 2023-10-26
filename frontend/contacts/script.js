@@ -228,4 +228,3 @@ function atualizarTabelaComContatos() {
 }
 
 window.addEventListener('load', atualizarTabelaComContatos);
-

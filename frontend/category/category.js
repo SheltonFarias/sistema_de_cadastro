@@ -1,44 +1,26 @@
-//Adiciona o Contato apos o preenchimento dos campo e clicar no BOTÃO
-function adicionarContato() {
+//Adiciona o categoria apos o preenchimento dos campo e clicar no BOTÃO
+function adicionarCategoria() {
   let nome = document.getElementById("nome").value;
-  let email = document.getElementById("email").value;
-  let telefone = document.getElementById("telefone").value;
-  let categoria = document.getElementById("categoria").value; // Obtém a categoria
 
-  let table = document.getElementById("result-contacts").getElementsByTagName('tbody')[0];
+  let table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
   let newRow = table.insertRow(table.rows.length);
 
   let cell1 = newRow.insertCell(0);
   cell1.textContent = nome;
 
   let cell2 = newRow.insertCell(1);
-  cell2.textContent = email;
+  cell2.innerHTML = '<i class="fa fa-trash" onclick="excluircategoria(this)"></i>' +
+    ' <i class="fa fa-pencil" onclick="editarcategoria(this)"></i';
 
-  let cell3 = newRow.insertCell(2);
-  cell3.textContent = telefone;
-
-  let cell4 = newRow.insertCell(3);
-  cell4.textContent = categoria; 
-
-  let cell5 = newRow.insertCell(4);
-  cell5.innerHTML = '<i class="fa fa-trash" onclick="excluirContato(this)"></i>' +
-    ' <i class="fa fa-pencil" onclick="editarContato(this)"></i';
-
-  // Limpar o formulário após adicionar o contato
+  // Limpar o formulário após adicionar o categoria
   document.getElementById("nome").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("telefone").value = "";
-  document.getElementById("categoria").value = "";
 
   // Objeto para envio ao solicitar POST
   const data = {
     name: nome,
-    email: email,
-    phone: telefone,
-    category_id: categoria,
   };
 
-  fetch('http://localhost:3000/contatos', {
+  fetch('http://localhost:3000/categorias', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -48,24 +30,24 @@ function adicionarContato() {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      atualizarTabelaComContatos();
+      atualizarTabelaComcategorias();
     })
     .catch((error) => {
-      console.error('Erro ao adicionar contato:', error);
+      console.error('Erro ao adicionar categoria:', error);
     });
   
 }
 
 // Exclui a Função ao clicar no icone e Confirmar
-function excluirContato(icon) {
-  var confirmation = confirm("Tem certeza de que deseja excluir este contato?");
+function excluircategoria(icon) {
+  var confirmation = confirm("Tem certeza de que deseja excluir este categoria?");
   if (confirmation) {
     var row = icon.parentNode.parentNode;
     
-    // Obtenha o ID do contato a partir dos dados da linha da tabela
-    var contatoId = row.getAttribute("data-contact-id");
+    // Obtenha o ID do categoria a partir dos dados da linha da tabela
+    var categoriaId = row.getAttribute("data-category-id");
 
-    fetch(`http://localhost:3000/contatos/${contatoId}`, {
+    fetch(`http://localhost:3000/categorias/${categoriaId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -75,25 +57,25 @@ function excluirContato(icon) {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error('Erro ao excluir contato');
+          throw new Error('Erro ao excluir categoria');
         }
       })
       .then((data) => {
-        console.log('Contato excluído com sucesso:', data);
+        console.log('categoria excluído com sucesso:', data);
  
         // Remova a linha da tabela após a exclusão bem-sucedida.
         row.parentNode.removeChild(row);
       })
       .catch((error) => {
-        console.error('Erro ao excluir contato:', error);
+        console.error('Erro ao excluir categoria:', error);
       });
   }
 }
 
-// Pesquisa os contatos com base nos Caracteres infotm
-function pesquisarContato() {
+// Pesquisa os categorias com base nos Caracteres infotm
+function pesquisarCategoria() {
   var pesquisa = document.getElementById("pesquisa").value.toLowerCase();
-  var table = document.getElementById("result-contacts").getElementsByTagName('tbody')[0];
+  var table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
   var rows = table.getElementsByTagName("tr");
   
   for (var i = 0; i < rows.length; i++) {
@@ -106,23 +88,17 @@ function pesquisarContato() {
   }
 }
 
-// Edita o contato salvo, retornando ele para o campo de registro de cadastro
-function editarContato(icon) {
+// Edita o categoria salvo, retornando ele para o campo de registro de cadastro
+function editarcategoria(icon) {
   let row = icon.parentNode.parentNode;
 
   let nome = row.getElementsByTagName("td")[0].textContent;
-  let email = row.getElementsByTagName("td")[1].textContent;
-  let telefone = row.getElementsByTagName("td")[2].textContent;
-  let categoria = row.getElementsByTagName("td")[3].textContent;
     
-  // Passa a edição para o formulario register-contacts
+  // Passa a edição para o formulario register-category
   document.getElementById("nome").value = nome;
-  document.getElementById("email").value = email;
-  document.getElementById("telefone").value = telefone;
-  document.getElementById("categoria").value = categoria;
   
-  // Defina a ação do botão "Adicionar Contato" para atualizar o contato em vez de adicionar um novo
-  var adicionarBotao = document.querySelector("button[onclick='adicionarContato()']");
+  // Defina a ação do botão "Adicionar categoria" para atualizar o categoria em vez de adicionar um novo
+  var adicionarBotao = document.querySelector("button[onclick='adicionarCategoria()']");
   adicionarBotao.innerText = "Salvar Edição";
   adicionarBotao.onclick = function () {
       salvarEdicao(row);
@@ -132,21 +108,15 @@ function editarContato(icon) {
   // Ao clicar no BOTÂO salvar executa a funçao para salvar a alteração
   function salvarEdicao(row) {
     let nome = document.getElementById("nome").value;
-    let email = document.getElementById("email").value;
-    let telefone = document.getElementById("telefone").value;
-    let categoria = document.getElementById("categoria").value;
   
     // Fornece o ID atraves da tabela
-    var contatoId = row.getAttribute("data-contact-id");
+    var categoriaId = row.getAttribute("data-category-id");
   
     const data = {
       name: nome,
-      email: email,
-      phone: telefone,
-      category_id: categoria,
     };
   
-    fetch(`http://localhost:3000/contatos/${contatoId}`, {
+    fetch(`http://localhost:3000/categorias/${categoriaId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -157,7 +127,7 @@ function editarContato(icon) {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error('Erro ao atualizar contato');
+          throw new Error('Erro ao atualizar categoria');
         }
       })
       .then((data) => {
@@ -165,57 +135,42 @@ function editarContato(icon) {
   
         // Libera os campos para atualizar a tabela
         row.getElementsByTagName("td")[0].textContent = nome;
-        row.getElementsByTagName("td")[1].textContent = email;
-        row.getElementsByTagName("td")[2].textContent = telefone;
-        row.getElementsByTagName("td")[3].textContent = categoria;
   
         // limpa os campos pos ediçao
         document.getElementById("nome").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("telefone").value = "";
-        document.getElementById("categoria").value = "";
   
-        // Retorna a função do botão para adicionar contatos
-        let adicionarBotao = document.querySelector("button[onclick='adicionarContato()']");
-        adicionarBotao.innerText = "Adicionar Contato";
-        adicionarBotao.onclick = adicionarContato;
+        // Retorna a função do botão para adicionar categorias
+        let adicionarBotao = document.querySelector("button[onclick='adicionarCategoria()']");
+        adicionarBotao.innerText = "Adicionar categoria";
+        adicionarBotao.onclick = adicionarCategoria;
       })
       .catch((error) => {
-        console.error('Erro ao atualizar contato:', error);
+        console.error('Erro ao atualizar categoria:', error);
       });
   }
   
-function preencherTabelaComContatos(contatos) {
-  let table = document.getElementById("result-contacts").getElementsByTagName('tbody')[0];
+function preencherTabelaComcategorias(categorias) {
+  let table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
   // Limpe a tabela antes de preencher com os novos dados
   table.innerHTML = "";
 
-  contatos.forEach(contato => {
+  categorias.forEach(categoria => {
     let newRow = table.insertRow(table.rows.length);
 
     let cell1 = newRow.insertCell(0);
-    cell1.textContent = contato.name;
+    cell1.textContent = categoria.name;
 
     let cell2 = newRow.insertCell(1);
-    cell2.textContent = contato.email;
+    cell2.innerHTML = '<i class="fa fa-trash" onclick="excluircategoria(this)"></i>' +
+      ' <i class="fa fa-pencil" onclick="editarcategoria(this)"></i>';
 
-    let cell3 = newRow.insertCell(2);
-    cell3.textContent = contato.phone;
-
-    let cell4 = newRow.insertCell(3);
-    cell4.textContent = contato.categoria_nome;
-
-    let cell5 = newRow.insertCell(4);
-    cell5.innerHTML = '<i class="fa fa-trash" onclick="excluirContato(this)"></i>' +
-      ' <i class="fa fa-pencil" onclick="editarContato(this)"></i>';
-
-    // Adicione o atributo data-contact-id possibilitando a identificação do ID
-    newRow.setAttribute("data-contact-id", contato.id);
+    // Adicione o atributo data-category-id possibilitando a identificação do ID
+    newRow.setAttribute("data-category-id", categoria.id);
   });
 }
 
-function atualizarTabelaComContatos() {
-  fetch('http://localhost:3000/contatos', {
+function atualizarTabelaComcategorias() {
+  fetch('http://localhost:3000/categorias', {
     method: 'GET',
     headers: {
       'content-type': 'application/json',
@@ -223,9 +178,9 @@ function atualizarTabelaComContatos() {
   })
     .then((response) => response.json())
     .then((data) => {
-      preencherTabelaComContatos(data); // repassa os valores recebidos para a tabela
+      preencherTabelaComcategorias(data); // repassa os valores recebidos para a tabela
     });
 }
 
-window.addEventListener('load', atualizarTabelaComContatos);
+window.addEventListener('load', atualizarTabelaComcategorias);
 
