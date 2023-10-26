@@ -228,3 +228,40 @@ function atualizarTabelaComContatos() {
 }
 
 window.addEventListener('load', atualizarTabelaComContatos);
+
+
+function preencherSelectComOpcoes(opcoes) {
+  let select = document.getElementById("selectCategorias");
+  select.innerHTML = "";
+  
+  opcoes.forEach(categoria => {
+    let option = document.createElement("option");
+    option.value = categoria.id;
+    option.innerText = categoria.name;
+
+    select.appendChild(option);
+  });
+}
+
+function atualizarSelectComOpcoes() {
+  fetch('http://localhost:3000/categorias', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Erro na requisição da API');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      preencherSelectComOpcoes(data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+window.addEventListener('load', atualizarSelectComOpcoes);
