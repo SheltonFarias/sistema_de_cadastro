@@ -169,6 +169,7 @@ function preencherTabelaComcategorias(categorias) {
   });
 }
 
+//atualizar
 function atualizarTabelaComcategorias() {
   fetch('http://localhost:3000/categorias', {
     method: 'GET',
