@@ -123,13 +123,13 @@ function editarcategoria(icon) {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error('Erro ao atualizar categoria');
-        }
-      })
+      // .then((response) => {
+      //   if (response.ok) {
+      //     return response.json();
+      //   } else {
+      //     throw new Error('Erro ao atualizar categoria');
+      //   }
+      // })
       .then((data) => {
         console.log(data);
   
