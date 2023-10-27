@@ -109,20 +109,22 @@ input[type="tel"] {
   border-radius: 4px;
 }  
 
-/* Estilização da div que contém o select */
-.container {
-  background-color: #f0f0f0;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 155px;
-  background-color: #007BFF;
+/* Estilo para a div com a classe "selectCategorias" */
+.Categorias {
+  justify-content: left ;
+  margin: 1px;
+
 }
 
-/* Estilização do select dentro da div */
-    .container select {
-      width: 100%;  
-    }
+/* Estilo para o botão dentro da div */
+
+/* Estilize o botão quando o mouse estiver sobre ele */
+#selectCategorias {
+  background-color: #0056b3;
+  color: #f1eded;
+  width: 10%;
+}
+
 
 
 /*botão para adicionar contato*/
@@ -200,10 +202,10 @@ ul.pagination li {
   background-color:gainsboro;
 }
                 
-#categoria {
+#selectCategorias {
   margin-bottom: 10px;
   tr:hover {
-  background-color: #f5f5f5;  
+  background-color: #ac1313;  
   transition: background-color 0.3s;
   margin-bottom: 10px;
 }  
