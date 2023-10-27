@@ -231,7 +231,7 @@ window.addEventListener('load', atualizarTabelaComContatos);
 
 
 function preencherSelectComOpcoes(opcoes) {
-  let select = document.getElementById("selectCategorias");
+  let select = document.getElementById("categoria");
   select.innerHTML = "";
   
   opcoes.forEach(categoria => {
