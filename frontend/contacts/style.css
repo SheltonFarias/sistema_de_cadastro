@@ -109,22 +109,27 @@ input[type="tel"] {
   border-radius: 4px;
 }  
 
-/* Estilo para a div com a classe "selectCategorias" */
+
+.Categorias select {
+  padding: 6px; 
+  font-size: 15px; 
+  border: 2px solid #ccc; 
+  border-radius: 5px; 
+  width: 15%; 
+  background-color: #f9f9f9; 
+  color: #5c5858; 
+}
+
+/* Estilize o contêiner das categorias (opcional) */
 .Categorias {
-  justify-content: left ;
-  margin: 1px;
-
+  margin-bottom: 1px; 
 }
 
-/* Estilo para o botão dentro da div */
-
-/* Estilize o botão quando o mouse estiver sobre ele */
-#selectCategorias {
-  background-color: #0056b3;
-  color: #f1eded;
-  width: 10%;
+/* Estilize a borda quando a caixa de seleção está focada */
+.Categorias select:focus {
+  outline: none; 
+  border-color: #007bff;
 }
-
 
 
 /*botão para adicionar contato*/
