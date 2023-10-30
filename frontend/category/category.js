@@ -13,8 +13,7 @@ function adicionarCategoria() {
     ' <i class="fa fa-pencil" onclick="editarcategoria(this)"></i';
 
   // Limpar o formulário após adicionar o categoria
-  document.getElementById("nome").value = "";
-
+  limparcampos()
   // Objeto para envio ao solicitar POST
   const data = {
     name: nome,
@@ -136,8 +135,7 @@ function editarcategoria(icon) {
         // Libera os campos para atualizar a tabela
         row.getElementsByTagName("td")[0].textContent = nome;
   
-        // limpa os campos pos ediçao
-        document.getElementById("nome").value = "";
+        limparcampos()
   
         // Retorna a função do botão para adicionar categorias
         let adicionarBotao = document.querySelector("button[onclick='adicionarCategoria()']");
@@ -179,9 +177,21 @@ function atualizarTabelaComcategorias() {
   })
     .then((response) => response.json())
     .then((data) => {
-      preencherTabelaComcategorias(data); // repassa os valores recebidos para a tabela
+      preencherTabelaComcategorias(data); 
     });
 }
+
+// Função de limpar os campos para botão cancelar
+function limparcampos() {
+  document.getElementById("nome").value = ""; 
+  document.getElementById("email").value = ""; 
+  document.getElementById("telefone").value = ""; 
+  document.getElementById("categoria").value = ""; 
+}
+
+document.getElementById("cancelar-edicao").addEventListener("click", function() {
+  limparcampos();
+});
 
 window.addEventListener('load', atualizarTabelaComcategorias);
 
