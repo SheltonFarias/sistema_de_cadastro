@@ -24,7 +24,7 @@ function adicionarContato() {
   cell5.innerHTML = '<i class="fa fa-trash" onclick="excluirContato(this)"></i>' +
     ' <i class="fa fa-pencil" onclick="editarContato(this)"></i';
 
-  limparcampos()
+  limparCampos()
 
   // Objeto para envio ao solicitar POST
   const data = {
@@ -165,7 +165,7 @@ function editarContato(icon) {
         row.getElementsByTagName("td")[2].textContent = telefone;
         row.getElementsByTagName("td")[3].textContent = categoria;
   
-        limparcampos()
+        limparCampos()
 
         // Retorna a função do botão para adicionar contatos
         let adicionarBotao = document.querySelector("button[onclick='adicionarContato()']");
@@ -257,7 +257,7 @@ function atualizarSelectComOpcoes() {
 }
 
 // funçao que limpa os inputs para viculado ao cancelar
-function limparcampos() {
+function limparCampos() {
   document.getElementById("nome").value = ""; 
   document.getElementById("email").value = ""; 
   document.getElementById("telefone").value = ""; 
@@ -265,7 +265,7 @@ function limparcampos() {
 }
 
 document.getElementById("cancelar-edicao").addEventListener("click", function() {
-  limparcampos();
+  limparCampos();
 });
 
 window.addEventListener('load', atualizarSelectComOpcoes);
