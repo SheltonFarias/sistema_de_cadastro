@@ -3,7 +3,7 @@ function adicionarContato() {
   let nome = document.getElementById("nome").value;
   let email = document.getElementById("email").value;
   let telefone = document.getElementById("telefone").value;
-  let categoria = document.getElementById("categoria").value; // Obtém a categoria
+  let categoria = document.getElementById("categoria").value;
 
   let table = document.getElementById("result-contacts").getElementsByTagName('tbody')[0];
   let newRow = table.insertRow(table.rows.length);
@@ -263,5 +263,17 @@ function atualizarSelectComOpcoes() {
       console.error(error);
     });
 }
+
+// funçao que limpa os inputs para viculado ao cancelar
+function botaoCancelar() {
+  document.getElementById("nome").value = ""; 
+  document.getElementById("email").value = ""; 
+  document.getElementById("telefone").value = ""; 
+  document.getElementById("categoria").value = ""; 
+}
+
+document.getElementById("cancelar-edicao").addEventListener("click", function() {
+  botaoCancelar();
+});
 
 window.addEventListener('load', atualizarSelectComOpcoes);
