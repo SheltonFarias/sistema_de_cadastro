@@ -235,4 +235,21 @@ tr:hover {
   margin-bottom: 15px;
   border: 3v solid #f1eded;
 }
+footer {
+  background-color: #007BFF; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  text-align: center; /* Alinhamento do texto */
+  padding: 20px; /* Espaçamento interno */
+}
+    footer p {
+      font-size: 18px; /* Tamanho da fonte do parágrafo */
+      margin: 0; /* Remova a margem padrão do parágrafo */
+    }
+        footer a{
+          color: #fcf9f9;
+        }
+
+        .spacer {
+          margin-left: 10px; /* Adicione a quantidade de espaço desejada */
+        }
  
