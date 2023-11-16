@@ -12,13 +12,11 @@ function adicionarCategoria() {
   cell2.innerHTML = '<i class="fa fa-trash" onclick="excluircategoria(this)"></i>' +
     ' <i class="fa fa-pencil" onclick="editarcategoria(this)"></i';
 
-  limparCampos()
-  
+  limparCampos()  
   // Objeto para envio ao solicitar POST
   const data = {
     name: nome,
   };
-
   fetch('http://localhost:3000/categorias', {
     method: 'POST',
     headers: {
@@ -34,7 +32,6 @@ function adicionarCategoria() {
     .catch((error) => {
       console.error('Erro ao adicionar categoria:', error);
     });
-  
 }
 
 // Exclui a Função ao clicar no icone e Confirmar
@@ -70,7 +67,6 @@ function excluircategoria(icon) {
       });
   }
 }
-
 // Pesquisa os categorias com base nos Caracteres infotm
 function pesquisarCategoria() {
   var pesquisa = document.getElementById("pesquisa").value.toLowerCase();
@@ -86,7 +82,6 @@ function pesquisarCategoria() {
       }
   }
 }
-
 // Edita o categoria salvo, retornando ele para o campo de registro de cadastro
 function editarcategoria(icon) {
   let row = icon.parentNode.parentNode;
@@ -113,8 +108,7 @@ function editarcategoria(icon) {
   
     const data = {
       name: nome,
-    };
-  
+    }; 
     fetch(`http://localhost:3000/categorias/${categoriaId}`, {
       method: 'PUT',
       headers: {
@@ -122,21 +116,11 @@ function editarcategoria(icon) {
       },
       body: JSON.stringify(data),
     })
-      // .then((response) => {
-      //   if (response.ok) {
-      //     return response.json();
-      //   } else {
-      //     throw new Error('Erro ao atualizar categoria');
-      //   }
-      // })
       .then((data) => {
         console.log(data);
-  
         // Libera os campos para atualizar a tabela
         row.getElementsByTagName("td")[0].textContent = nome;
-  
         limparCampos()
-  
         // Retorna a função do botão para adicionar categorias
         let adicionarBotao = document.querySelector("button[onclick='adicionarCategoria()']");
         adicionarBotao.innerText = "Adicionar categoria";
@@ -145,8 +129,7 @@ function editarcategoria(icon) {
       .catch((error) => {
         console.error('Erro ao atualizar categoria:', error);
       });
-  }
-  
+  } 
 function preencherTabelaComcategorias(categorias) {
   let table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
   // Limpe a tabela antes de preencher com os novos dados
@@ -161,12 +144,10 @@ function preencherTabelaComcategorias(categorias) {
     let cell2 = newRow.insertCell(1);
     cell2.innerHTML = '<i class="fa fa-trash" onclick="excluircategoria(this)"></i>' +
       ' <i class="fa fa-pencil" onclick="editarcategoria(this)"></i>';
-
     // Adicione o atributo data-category-id possibilitando a identificação do ID
     newRow.setAttribute("data-category-id", categoria.id);
   });
 }
-
 //atualizar
 function atualizarTabelaComcategorias() {
   fetch('http://localhost:3000/categorias', {
@@ -180,15 +161,12 @@ function atualizarTabelaComcategorias() {
       preencherTabelaComcategorias(data); 
     });
 }
-
 // Função de limpar os campos para botão cancelar
 function limparCampos() {
   document.getElementById("nome").value = ""; 
 }
-
 document.getElementById("cancelar-edicao").addEventListener("click", function() {
   limparCampos();
 });
-
 window.addEventListener('load', atualizarTabelaComcategorias);
 
