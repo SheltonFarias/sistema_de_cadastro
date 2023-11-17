@@ -45,21 +45,21 @@ function adicionarContato() {
     .then((data) => {
       console.log(data);
       atualizarTabelaComContatos();
+      alert('cadastro feito com sucesso')
     })
     .catch((error) => {
       console.error('Erro ao adicionar contato:', error);
     });
-  
 }
 
 // Exclui a Função ao clicar no icone e Confirmar
 function excluirContato(icon) {
   var confirmation = confirm("Tem certeza de que deseja excluir este contato?");
-  if (confirmation) {
-    var row = icon.parentNode.parentNode;
+  if (confirmation){
+    const row = icon.parentNode.parentNode;
     
     // Obtenha o ID do contato a partir dos dados da linha da tabela
-    var contatoId = row.getAttribute("data-contact-id");
+    const contatoId = row.getAttribute("data-contact-id");
 
     fetch(`http://localhost:3000/contatos/${contatoId}`, {
       method: 'DELETE',
@@ -76,6 +76,7 @@ function excluirContato(icon) {
       })
       .then((data) => {
         console.log('Contato excluído com sucesso:', data);
+        alert('Cadastro excluido com sucesso')
  
         // Remova a linha da tabela após a exclusão bem-sucedida.
         row.parentNode.removeChild(row);

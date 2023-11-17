@@ -31,17 +31,18 @@ function adicionarCategoria() {
     })
     .catch((error) => {
       console.error('Erro ao adicionar categoria:', error);
+      alert('aaaaaaa')
     });
 }
-
 // Exclui a Função ao clicar no icone e Confirmar
 function excluircategoria(icon) {
-  var confirmation = confirm("Tem certeza de que deseja excluir este categoria?");
-  if (confirmation) {
+  const confirmation = confirm("Tem certeza de que deseja excluir este categoria?");
+  if (confirmation) 
+  {
     var row = icon.parentNode.parentNode;
     
     // Obtenha o ID do categoria a partir dos dados da linha da tabela
-    var categoriaId = row.getAttribute("data-category-id");
+    const categoriaId = row.getAttribute("data-category-id");
 
     fetch(`http://localhost:3000/categorias/${categoriaId}`, {
       method: 'DELETE',
@@ -58,7 +59,7 @@ function excluircategoria(icon) {
       })
       .then((data) => {
         console.log('categoria excluído com sucesso:', data);
- 
+        alert('categoria excluida com sucesso')
         // Remova a linha da tabela após a exclusão bem-sucedida.
         row.parentNode.removeChild(row);
       })
@@ -67,14 +68,15 @@ function excluircategoria(icon) {
       });
   }
 }
+
 // Pesquisa os categorias com base nos Caracteres infotm
 function pesquisarCategoria() {
-  var pesquisa = document.getElementById("pesquisa").value.toLowerCase();
-  var table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
-  var rows = table.getElementsByTagName("tr");
+  const pesquisa = document.getElementById("pesquisa").value.toLowerCase();
+  const table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
+  const rows = table.getElementsByTagName("tr");
   
-  for (var i = 0; i < rows.length; i++) {
-      var nome = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
+  for (const i = 0; i < rows.length; i++) {
+      let nome = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
       if (nome.includes(pesquisa)) {
         rows[i].style.display = "";
       } else {
@@ -92,7 +94,7 @@ function editarcategoria(icon) {
   document.getElementById("nome").value = nome;
   
   // Defina a ação do botão "Adicionar categoria" para atualizar o categoria em vez de adicionar um novo
-  var adicionarBotao = document.querySelector("button[onclick='adicionarCategoria()']");
+  const adicionarBotao = document.querySelector("button[onclick='adicionarCategoria()']");
   adicionarBotao.innerText = "Salvar Edição";
   adicionarBotao.onclick = function () {
       salvarEdicao(row);
@@ -104,11 +106,12 @@ function editarcategoria(icon) {
     let nome = document.getElementById("nome").value;
   
     // Fornece o ID atraves da tabela
-    var categoriaId = row.getAttribute("data-category-id");
+    const categoriaId = row.getAttribute("data-category-id");
   
     const data = {
       name: nome,
-    }; 
+    };
+  
     fetch(`http://localhost:3000/categorias/${categoriaId}`, {
       method: 'PUT',
       headers: {
@@ -118,9 +121,12 @@ function editarcategoria(icon) {
     })
       .then((data) => {
         console.log(data);
+  
         // Libera os campos para atualizar a tabela
         row.getElementsByTagName("td")[0].textContent = nome;
+  
         limparCampos()
+  
         // Retorna a função do botão para adicionar categorias
         let adicionarBotao = document.querySelector("button[onclick='adicionarCategoria()']");
         adicionarBotao.innerText = "Adicionar categoria";
@@ -129,7 +135,8 @@ function editarcategoria(icon) {
       .catch((error) => {
         console.error('Erro ao atualizar categoria:', error);
       });
-  } 
+  }
+  
 function preencherTabelaComcategorias(categorias) {
   let table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
   // Limpe a tabela antes de preencher com os novos dados
@@ -169,4 +176,3 @@ document.getElementById("cancelar-edicao").addEventListener("click", function() 
   limparCampos();
 });
 window.addEventListener('load', atualizarTabelaComcategorias);
-
