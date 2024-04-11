@@ -6,7 +6,7 @@ services:
     image: bitnami/postgresql
     container_name: contacts-pg
     ports:
-      - 5431:5432
+      - 5431:5431
     environment:
       - POSTGRESQL_USERNAME=docker
       - POSTGRESQL_PASSWORD=docker
