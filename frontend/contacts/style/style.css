@@ -1,0 +1,252 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+.navbar {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.navbar .title {
+  font-size: 40px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.Categorias select {
+  padding: 6px;
+  font-size: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 15%;
+  background-color: #f9f9f9;
+  color: #5c5858;
+}
+
+.Categorias {
+  margin-bottom: 1px;
+}
+
+.Categorias select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+button {
+  padding: 10px 30px;
+  background-color: #007bff;
+  margin-left: 0%;
+  margin-right: 30px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: darkblue;
+}
+
+table {
+  background-color: #fff;
+  width: calc(100% - 360px);
+  margin: 20px;
+  border-collapse: collapse;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.acoes {
+  width: 20px;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+ul.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+ul.pagination li {
+  display: inline;
+}
+
+ul.pagination li a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-align: center;
+}
+
+ul.pagination li a.active {
+  background-color: #007bff;
+  color: white;
+}
+
+ul.pagination li:not(:last-child) {
+  margin-right: 5px;
+}
+
+ul.pagination li a.active:hover {
+  background-color: darkblue;
+}
+
+.seta:hover {
+  background-color: gainsboro;
+}
+
+#selectCategorias {
+  margin-bottom: 10px;
+  background-color: #ac1313;
+  transition: background-color 0.3s;
+  margin-bottom: 10px;
+}
+
+#register-contacts {
+  background-color: #fff;
+  padding: 20px;
+  width: 49%;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  float: left;
+}
+
+#consult-contacts {
+  background-color: #fff;
+  padding: 20px;
+  max-width: 650px;
+  width: 40%;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
+  float: right;
+}
+
+#result-contacts {
+  width: 98%;
+  padding: 2px;
+  margin-bottom: 15px;
+  border: 3v solid #f1eded;
+}
+
+.alterPage {
+  background-color: #007bff;
+  color: #fff;
+  height: 50px;
+  margin: 5px solid black;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+footer {
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+}
+
+footer p {
+  font-size: 18px;
+  margin: 0;
+}
+
+footer a {
+  color: #fcf9f9;
+}
+
+.spacer {
+  margin-left: 10px;
+}
+
+@media (max-width: 800px) {
+  /*Tela Pequena*/
+  #register-contacts {
+    background-color: #fff;
+    width: 49%; /* largura */
+    margin: 10px; /* Centralize horizontalmente */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    float: left;
+  }
+  
+  #consult-contacts {
+    background-color: #fff;
+    max-width: 650px; /* Aumentar a largura*/
+    width: 90%;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
+    float: left;
+  }
+}
+
+@media (min-width: 801px) {
+  /*Tela Media*/
+  #register-contacts {
+    background-color: #fff;
+    padding: 20px;
+    width: 49%;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    float: left;
+  }
+
+  #consult-contacts {
+    background-color: #fff;
+    padding: 25px;
+    width: 43%;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
+    float: left;
+  }
+
+  #result-contacts {
+    width: 98%;
+    padding: 2px;
+    margin-bottom: 15px;
+    border: 3v solid #f1eded;
+  }
+}
