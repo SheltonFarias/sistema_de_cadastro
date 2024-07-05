@@ -9,11 +9,16 @@ body {
   background-color: #f0f0f0;
 }
 
+.modal {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+}
+
 /* Navbar */
 .navbar {
   background-color: #007bff;
   color: white;
-  padding: 20px;
+  padding: 30px 0px;
   text-align: center;
   font-size: 30px;
 }
@@ -75,23 +80,19 @@ button:hover {
 #register-contacts {
   background-color: #fff;
   padding: 20px;
-  width: 49%;
   margin: 10px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  float: left;
 }
 
 /* Consulta de contatos */
 #consult-contacts {
   background-color: #fff;
-  padding: 20px;
-  max-width: 650px;
-  width: 40%;
+  padding: 25px;
   margin: 10px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
-  float: right;
+  align-content: center;
 }
 
 /* Tabela de contatos */
@@ -131,9 +132,9 @@ th {
 }
 
 #result-contacts {
-  width: 100%;
+  width: 98%;
   padding: 2px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   border: 3v solid #f1eded;
 }
 
@@ -161,29 +162,23 @@ th {
 }
 
 /* Footer */
-footer {
+.footer {
   background-color: #007bff;
   color: #fff;
-  text-align: center;
   padding: 30px 0px;
-  position: relative;
   width: 100%;
-  bottom: 0px;
   display: flex;
+  gap: 40px;
 }
 
-footer p {
-  font-size: 18px;
-  margin: 0;
-}
-
-#copyright {
-  margin-left: 40%;
-  display: flex;
+.footer li {
+ list-style: none;
+ text-align: center;
 }
 
 footer a {
   color: #fcf9f9;
+  text-decoration: none;
 }
 
 .wrapper {
@@ -196,49 +191,24 @@ footer a {
 @media (max-width: 800px) {
   #register-contacts {
     background-color: #fff;
-    width: 49%;
-    margin: 10px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    float: left;
   }
 
   #consult-contacts {
     background-color: #fff;
-    max-width: 650px;
-    width: 90%;
-    margin: 10px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
-    float: left;
-  }
-}
-
-@media (min-width: 801px) {
-  #register-contacts {
-    background-color: #fff;
-    padding: 20px;
-    width: 49%;
-    margin: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    float: left;
   }
 
-  #consult-contacts {
-    background-color: #fff;
-    padding: 25px;
-    width: 43%;
-    margin: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
-    float: left;
+  .navbar {
+    width: 100vw;
+    display: flex;
   }
 
-  #result-contacts {
-    width: 98%;
-    padding: 2px;
-    margin-bottom: 60px;
-    border: 3v solid #f1eded;
+  .footer {
+    width: 100vw;
+    text-align: center;
+    margin-left: 0px;
   }
 }
