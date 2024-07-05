@@ -1,11 +1,3 @@
-function contactPage() {
-  window.location.href = '../contacts/contacts.html'
-}
-
-function categoryPage() {
-  window.location.href = '../category/category.html'
-}
-
 function adicionarContato() {
   let nome = document.getElementById("nome").value;
   let email = document.getElementById("email").value;

@@ -1,3 +1,4 @@
+/* Parametros Gerais */
 * {
   margin: 0;
   padding: 0;
@@ -8,19 +9,19 @@ body {
   background-color: #f0f0f0;
 }
 
+/* Navbar */
 .navbar {
   background-color: #007bff;
   color: white;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
+  font-size: 30px;
 }
 
-.navbar .title {
-  font-size: 40px;
-}
-
+/* Resgistro de Contatos */
 label {
   display: block;
+  font-size: 20px;
   margin-bottom: 5px;
   color: #333;
 }
@@ -71,6 +72,29 @@ button:hover {
   background-color: darkblue;
 }
 
+#register-contacts {
+  background-color: #fff;
+  padding: 20px;
+  width: 49%;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  float: left;
+}
+
+/* Consulta de contatos */
+#consult-contacts {
+  background-color: #fff;
+  padding: 20px;
+  max-width: 650px;
+  width: 40%;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
+  float: right;
+}
+
+/* Tabela de contatos */
 table {
   background-color: #fff;
   width: calc(100% - 360px);
@@ -96,94 +120,54 @@ th {
   color: white;
 }
 
-ul.pagination {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-}
-
-ul.pagination li {
-  display: inline;
-}
-
-ul.pagination li a {
-  color: black;
-  padding: 8px 16px;
-  text-decoration: none;
-  text-align: center;
-}
-
-ul.pagination li a.active {
-  background-color: #007bff;
-  color: white;
-}
-
-ul.pagination li:not(:last-child) {
-  margin-right: 5px;
-}
-
-ul.pagination li a.active:hover {
-  background-color: darkblue;
-}
-
 .seta:hover {
   background-color: gainsboro;
 }
 
 #selectCategorias {
   margin-bottom: 10px;
-  background-color: #ac1313;
   transition: background-color 0.3s;
   margin-bottom: 10px;
 }
 
-#register-contacts {
-  background-color: #fff;
-  padding: 20px;
-  width: 49%;
-  margin: 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  float: left;
-}
-
-#consult-contacts {
-  background-color: #fff;
-  padding: 20px;
-  max-width: 650px;
-  width: 40%;
-  margin: 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
-  float: right;
-}
-
 #result-contacts {
-  width: 98%;
+  width: 100%;
   padding: 2px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   border: 3v solid #f1eded;
 }
 
 .alterPage {
-  background-color: #007bff;
-  color: #fff;
-  height: 50px;
-  margin: 5px solid black;
   font-size: 20px;
+  display: block;
   text-decoration: none;
+  position: relative;
 }
 
+.alterPage a {
+  color: #fff;
+  text-decoration: none;
+  background-color: #007bff;
+  padding: 10px 20px;
+  display: inline-block;
+  align-content: center;
+  margin-left: 20px;
+  bottom: 10px;
+  position: absolute;
+}
+
+.alterPage a:hover {
+  background-color: darkblue;
+}
+
+/* Footer */
 footer {
   background-color: #007bff;
   color: #fff;
   text-align: center;
-  padding: 30px;
-  position: fixed;
+  padding: 30px 0px;
+  position: relative;
   width: 100%;
-  height: 25px;
   bottom: 0px;
   display: flex;
 }
@@ -202,12 +186,18 @@ footer a {
   color: #fcf9f9;
 }
 
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsividade */
 @media (max-width: 800px) {
-  /*Tela Pequena*/
   #register-contacts {
     background-color: #fff;
-    width: 49%; /* largura */
-    margin: 10px; /* Centralize horizontalmente */
+    width: 49%;
+    margin: 10px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     float: left;
@@ -215,7 +205,7 @@ footer a {
 
   #consult-contacts {
     background-color: #fff;
-    max-width: 650px; /* Aumentar a largura*/
+    max-width: 650px;
     width: 90%;
     margin: 10px;
     border-radius: 5px;
@@ -225,7 +215,6 @@ footer a {
 }
 
 @media (min-width: 801px) {
-  /*Tela Media*/
   #register-contacts {
     background-color: #fff;
     padding: 20px;
@@ -249,7 +238,7 @@ footer a {
   #result-contacts {
     width: 98%;
     padding: 2px;
-    margin-bottom: 15px;
+    margin-bottom: 60px;
     border: 3v solid #f1eded;
   }
 }

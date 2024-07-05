@@ -3,6 +3,25 @@
   padding: 0;
 }
 
+.alterPage {
+  font-size: 20px;
+  display: block;
+  text-decoration: none;
+  position: absolute;
+}
+
+.alterPage a {
+  color: #fff;
+  text-decoration: none;
+  background-color: #007bff;
+  padding: 10px 20px;
+  display: inline-block;
+  align-content: center;
+  position: relative;
+  top: 400px;
+  margin-left: 20px;
+}
+
 @media (max-width: 800px) {
   /*Tela Pequena*/
   #register-category {

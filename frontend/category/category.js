@@ -1,4 +1,3 @@
-//Adiciona o categoria apos o preenchimento dos campo e clicar no BOTÃO
 function adicionarCategoria() {
   let nome = document.getElementById("nome").value;
 

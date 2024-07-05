@@ -10,67 +10,74 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
   </head>
-
   <body>
-    <nav class="navbar">
-      <h1 class="title">Tabela de Contatos</h1>
-    </nav>
-    <div id="register-contacts">
-      <h2>Faça seu Cadastro</h2>
-
-      <label for="nome">Nome:</label>
-      <input type="text" id="nome" required placeholder="Digite o nome" />
-
-      <label for="email">Email:</label>
-      <input
-        type="email"
-        id="email"
-        required
-        placeholder="Ex: teste@gmail.com"
-      />
-      <label for="telefone">Telefone:</label>
-      <input
-        type="tel"
-        id="telefone"
-        required
-        placeholder="Ex: (85)912345678"
-      />
-      <div class="Categorias">
-        <select id="categoria"></select>
+    <div class="wrapper">
+      <div class="content">
+        <nav class="navbar">
+          <h1 class="title">Tabela de Contatos</h1>
+        </nav>
+        <div id="register-contacts">
+          <h2>Faça seu Cadastro</h2>
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" required placeholder="Digite o nome" />
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            required
+            placeholder="Ex: teste@gmail.com"
+          />
+          <label for="telefone">Telefone:</label>
+          <input
+            type="tel"
+            id="telefone"
+            required
+            placeholder="Ex: (85)912345678"
+          />
+          <div class="Categorias">
+            <select id="categoria"></select>
+          </div>
+          <br />
+          <button onclick="adicionarContato()">Adicionar Contato</button>
+          <button id="cancelar-edicao">Cancelar</button>
+        </div>
+        <div id="consult-contacts">
+          <h2>Consulte seu Cadastro</h2>
+          <input type="text" id="pesquisa" placeholder="Digite o nome" />
+          <button onclick="pesquisarContato()">Pesquisar</button>
+        </div>
+        <div>
+          <table id="result-contacts">
+            <thead>
+              <tr>
+                <th data-field="Nome">Nome</th>
+                <th data-field="Email">Email</th>
+                <th data-field="Telefone">Telefone</th>
+                <th data-field="Categoria">Categoria</th>
+                <th class="acoes">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Linhas da tabela serão inseridas aqui -->
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <ul class="alterPage">
+            <li><a href="../category/category.html">Tabela de Categorias</a></li>
+          </ul>
+        </div>
       </div>
-      <br />
-      <button onclick="adicionarContato()">Adicionar Contato</button>
-      <button id="cancelar-edicao">Cancelar</button>
+      <footer class="footer">
+        <div id="copyright">
+          &copy; DIREITOS RESERVADOS
+          <a href="https://github.com/SheltonFarias">SOBRE NÓS</a>
+        </div>
+        <div>
+          <p class="redeSocial">teste teste</p>
+        </div>
+      </footer>
     </div>
-    <div id="consult-contacts">
-      <h2>Consulte seu Cadastro</h2>
-      <input type="text" id="pesquisa" placeholder="Digite o nome" />
-      <button onclick="pesquisarContato()">Pesquisar</button>
-    </div>
-    <table id="result-contacts">
-      <thead>
-        <tr>
-          <th data-field="Nome">Nome</th>
-          <th data-field="Email">Email</th>
-          <th data-field="Telefone">Telefone</th>
-          <th data-field="">Categoria</th>
-          <th class="acoes">Ações</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <button onclick="categoryPage()" class="alterPage">
-      Tabela de Categorias
-    </button>
-    <footer class="footer">
-      <div id="copyright">
-        &copy; DIREITOS RESERVADOS
-        <a href="https://github.com/SheltonFarias">SOBRE NÓS</a>
-      </div>
-      <div>
-        <p class="redeSocial">teste teste</p>
-      </div>
-    </footer>
     <script src="script.js"></script>
   </body>
 </html>
