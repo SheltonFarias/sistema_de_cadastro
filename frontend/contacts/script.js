@@ -1,3 +1,23 @@
+// DarkMode
+const alteracaoTema = document.querySelector(".theme-toggle");
+const botaoTema = document.getElementById("theme-icon");
+const themeSystem = localStorage.getItem("themeSystem") || "light";
+
+alteracaoTema.addEventListener("click", () => {
+  const novoTema = document.body.classList.contains("dark-mode") ? "light" : "dark";
+  definicaoItem(novoTema);
+});
+
+function definicaoItem(tema) {
+  const dark = '<i class="bi bi-moon-fill"></i>';
+  const light = '<i class="bi bi-brightness-high-fill"></i>';
+  botaoTema.innerHTML = tema === "dark" ? light : dark;
+  document.body.classList.toggle("dark-mode", tema === "dark");
+  localStorage.setItem("themeSystem", tema);
+}
+definicaoItem(themeSystem);
+
+
 function adicionarContato() {
   let nome = document.getElementById("nome").value;
   let email = document.getElementById("email").value;
@@ -5,7 +25,7 @@ function adicionarContato() {
   let categoria = document.getElementById("categoria").value;
 
   let table = document
-    .getElementById("result-contacts")
+    .getElementById("resultado-contatos")
     .getElementsByTagName("tbody")[0];
   let newRow = table.insertRow(table.rows.length);
 
@@ -92,7 +112,7 @@ function excluirContato(icon) {
 function pesquisarContato() {
   var pesquisa = document.getElementById("pesquisa").value.toLowerCase();
   var table = document
-    .getElementById("result-contacts")
+    .getElementById("resultado-contatos")
     .getElementsByTagName("tbody")[0];
   var rows = table.getElementsByTagName("tr");
 
@@ -187,7 +207,7 @@ function salvarEdicao(row) {
 
 function preencherTabelaComContatos(contatos) {
   let table = document
-    .getElementById("result-contacts")
+    .getElementById("resultado-contatos")
     .getElementsByTagName("tbody")[0];
   // Limpe a tabela antes de preencher com os novos dados
   table.innerHTML = "";

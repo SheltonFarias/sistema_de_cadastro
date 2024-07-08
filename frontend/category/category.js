@@ -1,7 +1,7 @@
 function adicionarCategoria() {
   let nome = document.getElementById("nome").value;
 
-  let table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
+  let table = document.getElementById("resultado-categoria").getElementsByTagName('tbody')[0];
   let newRow = table.insertRow(table.rows.length);
 
   let cell1 = newRow.insertCell(0);
@@ -71,7 +71,7 @@ function excluircategoria(icon) {
 // Pesquisa os categorias com base nos Caracteres infotm
 function pesquisarCategoria() {
   const pesquisa = document.getElementById("pesquisa").value.toLowerCase();
-  const table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
+  const table = document.getElementById("resultado-categoria").getElementsByTagName('tbody')[0];
   const rows = table.getElementsByTagName("tr");
   
   for (const i = 0; i < rows.length; i++) {
@@ -137,7 +137,7 @@ function editarcategoria(icon) {
   }
   
 function preencherTabelaComcategorias(categorias) {
-  let table = document.getElementById("result-category").getElementsByTagName('tbody')[0];
+  let table = document.getElementById("resultado-categoria").getElementsByTagName('tbody')[0];
   // Limpe a tabela antes de preencher com os novos dados
   table.innerHTML = "";
 

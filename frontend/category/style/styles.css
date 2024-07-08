@@ -1,77 +1,7 @@
+/* Parametros Gerais */
 * {
   margin: 0;
   padding: 0;
-}
-
-.alterPage {
-  font-size: 20px;
-  display: block;
-  text-decoration: none;
-  position: absolute;
-}
-
-.alterPage a {
-  color: #fff;
-  text-decoration: none;
-  background-color: #007bff;
-  padding: 10px 20px;
-  display: inline-block;
-  align-content: center;
-  position: relative;
-  top: 400px;
-  margin-left: 20px;
-}
-
-@media (max-width: 800px) {
-  /*Tela Pequena*/
-  #register-category {
-    background-color: #fff;
-    width: 49%; /* largura */
-    margin: 10px; /* Centralize horizontalmente */
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    float: left;
-  }
-
-  #consult-category {
-    background-color: #fff;
-    max-width: 650px; /* Aumentar a largura*/
-    width: 90%;
-    margin: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
-    float: left;
-  }
-}
-
-@media (min-width: 8001px) {
-  /*Tela Grande*/
-  #register-category {
-    background-color: #fff;
-    padding: 20px;
-    width: 49%; /* largura */
-    margin: 10px; /* Centralize horizontalmente */
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    float: left;
-  }
-
-  #consult-category {
-    background-color: #fff;
-    padding: 40px;
-    width: 42%;
-    margin: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
-    float: left;
-  }
-
-  #result-category {
-    width: 98%; /* Definir a largura */
-    padding: 2px;
-    margin-bottom: 15px;
-    border: 3v solid #f1eded;
-  }
 }
 
 body {
@@ -79,15 +9,63 @@ body {
   background-color: #f0f0f0;
 }
 
-h1 {
-  background-color: #007bff;
+.modal {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  margin: 5px 10px;
+}
+
+/* Navbar */
+.navbar {
   color: white;
-  padding: 10px;
   text-align: center;
+}
+
+.primeiro-navbar {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: 30px;
+  background-color: #007bff;
+  padding: 1rem 0px;
+  gap: 20px ;
+}
+
+.segundo-navbar {
+  background-color: white;
+  color: #007bff;
+}
+
+.segundo-navbar ul {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  gap: 1rem;
+  list-style: none;
+}
+
+.segundo-navbar ul li {
+  padding: 18px 10px;
+}
+
+.segundo-navbar ul li:hover {
+  background-color: darkblue;
+  color: white;
+  cursor: pointer;
+}
+
+/* Resgistro de Contatos */
+#registro-categoria {
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 label {
   display: block;
+  font-size: 20px;
   margin-bottom: 5px;
   color: #333;
 }
@@ -97,23 +75,30 @@ input[type="email"],
 input[type="tel"] {
   box-sizing: border-box;
   width: 100%;
+  height: 40px;
   padding: 8px;
   margin-bottom: 10px;
   border: 2px solid #ccc;
   border-radius: 4px;
 }
 
-.container {
-  background-color: #f0f0f0;
-  padding: 5px;
-  border: 1px solid #ccc;
+.Categorias select {
+  padding: 6px;
+  font-size: 15px;
+  border: 2px solid #ccc;
   border-radius: 5px;
-  width: 155px;
-  background-color: #007bff;
+  width: 15%;
+  background-color: #f9f9f9;
+  color: #5c5858;
 }
 
-.container select {
-  width: 100%;
+.Categorias {
+  margin-bottom: 1px;
+}
+
+.Categorias select:focus {
+  outline: none;
+  border-color: #007bff;
 }
 
 button {
@@ -131,17 +116,34 @@ button:hover {
   background-color: darkblue;
 }
 
+/* Consulta de contatos */
+#consulta-categoria {
+  background-color: #fff;
+  padding: 25px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem; 
+}
+
+#consulta-categoria button{
+  width: 8rem;
+}
+
+/* Tabela de categoria */
 table {
   background-color: #fff;
   width: calc(100% - 360px);
-  margin: 20px;
+  margin: 10px 15px;
   border-collapse: collapse;
-  border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .acoes {
-  width: 10px;
+  width: 20px;
 }
 
 th,
@@ -156,98 +158,98 @@ th {
   color: white;
 }
 
-ul.pagination {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 20px 0; /* Adicione margem na parte inferior */
-}
-
-ul.pagination li {
-  display: inline;
-}
-
-ul.pagination li a {
-  color: black;
-  padding: 8px 16px;
-  text-decoration: none;
-  text-align: center;
-}
-
-ul.pagination li a.active {
-  background-color: #007bff;
-  color: white;
-}
-
-ul.pagination li:not(:last-child) {
-  margin-right: 5px; /* Adicione uma margem à direita para criar a linha branca */
-}
-
-ul.pagination li a.active:hover {
-  background-color: darkblue;
-}
-
 .seta:hover {
   background-color: gainsboro;
 }
 
-#categoria {
+#selectCategorias {
   margin-bottom: 10px;
-}
-tr:hover {
-  background-color: #f5f5f5;
   transition: background-color 0.3s;
   margin-bottom: 10px;
 }
 
-/* Styles for forms */
-#register-category {
-  background-color: #fff;
-  padding: 20px;
-  width: 46%;
-  /* largura */
-  margin: 10px;
-  /* Centralize horizontalmente */
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  float: left;
-}
-
-#consult-category {
-  background-color: #fff;
-  width: 45%;
-  margin: 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
-  float: right;
-}
-
-#result-category {
+#resultado-categoria {
   width: 98%;
   padding: 2px;
-  margin-bottom: 15px;
+  margin-bottom: 60px;
   border: 3v solid #f1eded;
 }
-footer {
+
+.alterPage {
+  font-size: 20px;
+  display: block;
+  text-decoration: none;
+  position: relative;
+}
+
+.alterPage a {
+  color: #fff;
+  text-decoration: none;
+  background-color: #007bff;
+  padding: 10px 20px;
+  display: inline-block;
+  align-content: center;
+  margin-left: 20px;
+  bottom: 10px;
+  position: absolute;
+}
+
+.alterPage a:hover {
+  background-color: darkblue;
+}
+
+/* Footer */
+.footer {
   background-color: #007bff;
   color: #fff;
-  text-align: center;
-  padding: 20px;
-  position: fixed;
+  padding: 20px 0px;
   width: 100%;
-  bottom: 0px;
+  position: relative;
+  bottom: -10vh;
+  display: flex;
+  justify-content: center;
+  gap: 35px;
 }
 
-footer p {
-  font-size: 18px;
-  margin: 0;
+.footer ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
 }
 
-footer a {
-  color: #fcf9f9;
+.redeSocial li svg:hover {
+  fill: darkblue;
+  cursor: pointer;
 }
 
-.spacer {
-  margin-left: 10px;
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsividade */
+@media (max-width: 800px) {
+  #register-contacts {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+  #consult-contacts {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
+  }
+
+  .navbar {
+    width: 100vw;
+    display: flex;
+  }
+
+  .footer {
+    width: 100vw;
+    text-align: center;
+    margin-left: 0px;
+  }
 }
