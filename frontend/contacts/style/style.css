@@ -7,12 +7,14 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
+  transition: 0.3s;
 }
 
 .modal {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
   margin: 5px 10px;
+  margin-bottom: 4rem;
 }
 
 /* Navbar */
@@ -28,7 +30,7 @@ body {
   font-size: 30px;
   background-color: #007bff;
   padding: 1rem 0px;
-  gap: 20px ;
+  gap: 20px;
 }
 
 .segundo-navbar {
@@ -61,6 +63,15 @@ body {
   position: absolute;
   right: 2rem;
   top: 6.5rem;
+}
+
+#theme-icon {
+  margin-top: -5px;
+}
+
+#theme-icon i {
+  font-size: 1.4rem;
+  cursor: pointer;
 }
 
 #theme-icon i:hover {
@@ -136,10 +147,10 @@ button:hover {
   justify-content: center;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem; 
+  gap: 0.6rem;
 }
 
-#consulta-contatos button{
+#consulta-contatos button {
   width: 8rem;
 }
 
@@ -215,7 +226,7 @@ th {
   padding: 20px 0px;
   width: 100%;
   position: relative;
-  bottom: -10vh;
+  bottom: -22vh;
   display: flex;
   justify-content: center;
   gap: 35px;
@@ -227,15 +238,65 @@ th {
   gap: 15px;
 }
 
-.redeSocial li svg:hover {
-  fill: darkblue;
+.redeSocial li i {
   cursor: pointer;
+}
+
+.redeSocial li i:hover {
+  cursor: pointer;
+  color: darkblue;
 }
 
 .wrapper {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+/* DarkMode */
+
+.dark-mode {
+  background-color: #808080;
+  color: blue;
+  transition: 0.3s;
+}
+
+.dark-mode .primeiro-navbar {
+  color: #333;
+}
+
+.dark-mode .segundo-navbar {
+  background-color: #333;
+  color: blue;
+}
+
+.dark-mode #registro-contatos {
+  background-color: #333;
+}
+
+.dark-mode #consulta-contatos {
+  background-color: #333;
+}
+
+.dark-mode #resultado-contatos {
+  background-color: #333;
+}
+
+.dark-mode footer {
+  color: #333;
+}
+
+.dark-mode button {
+  color:darkblue ;
+  border: none;
+}
+
+.dark-mode th {
+  color: darkblue;
+}
+
+.dark-mode .btn-page {
+  color: darkblue;
 }
 
 /* Responsividade */
@@ -252,35 +313,9 @@ th {
     box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
   }
 
-  .navbar {
-    width: 100vw;
-    display: flex;
-  }
-
   .footer {
     width: 100vw;
     text-align: center;
     margin-left: 0px;
   }
 }
-
-/* DarkMode */
-.navbar.dark-mode {
-  background-color: red;
-}
-
-body.dark-mode {
-  background-color: black;
-  color: red;
-}
-
-body.dark-mode .navbar .primeiro-navbar{
-  background-color: brown;
-  color: red;
-}
-
-.theme-icon i {
-  color: red;
-}
-
-
