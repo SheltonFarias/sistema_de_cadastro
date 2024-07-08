@@ -12,18 +12,70 @@ body {
 .modal {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  margin: 5px 10px;
 }
 
 /* Navbar */
 .navbar {
-  background-color: #007bff;
   color: white;
-  padding: 30px 0px;
   text-align: center;
+}
+
+.primeiro-navbar {
+  justify-content: center;
+  align-items: center;
+  display: flex;
   font-size: 30px;
+  background-color: #007bff;
+  padding: 1rem 0px;
+  gap: 20px ;
+}
+
+.segundo-navbar {
+  background-color: white;
+  color: #007bff;
+  gap: 2rem;
+}
+
+.segundo-navbar ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  gap: 1rem;
+  list-style: none;
+}
+
+.segundo-navbar ul li {
+  padding: 18px 10px;
+}
+
+.segundo-navbar ul li:hover {
+  background-color: darkblue;
+  color: white;
+  cursor: pointer;
+}
+
+.segundo-navbar div {
+  display: flex;
+  position: absolute;
+  right: 2rem;
+  top: 6.5rem;
+}
+
+#theme-icon i:hover {
+  color: darkblue;
 }
 
 /* Resgistro de Contatos */
+#registro-contatos {
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
 label {
   display: block;
   font-size: 20px;
@@ -74,31 +126,29 @@ button:hover {
   background-color: darkblue;
 }
 
-#register-contacts {
-  background-color: #fff;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
 /* Consulta de contatos */
-#consult-contacts {
+#consulta-contatos {
   background-color: #fff;
   padding: 25px;
   margin: 10px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(151, 144, 144, 0.2);
-  align-content: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem; 
+}
+
+#consulta-contatos button{
+  width: 8rem;
 }
 
 /* Tabela de contatos */
 table {
   background-color: #fff;
   width: calc(100% - 360px);
-  margin: 20px;
+  margin: 10px 15px;
   border-collapse: collapse;
-  border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -128,7 +178,7 @@ th {
   margin-bottom: 10px;
 }
 
-#result-contacts {
+#resultado-contatos {
   width: 98%;
   padding: 2px;
   margin-bottom: 60px;
@@ -149,7 +199,7 @@ th {
   padding: 10px 20px;
   display: inline-block;
   align-content: center;
-  margin-left: 20px;
+  margin-left: 15px;
   bottom: 10px;
   position: absolute;
 }
@@ -162,20 +212,24 @@ th {
 .footer {
   background-color: #007bff;
   color: #fff;
-  padding: 30px 0px;
+  padding: 20px 0px;
   width: 100%;
+  position: relative;
+  bottom: -10vh;
   display: flex;
-  gap: 40px;
+  justify-content: center;
+  gap: 35px;
 }
 
-.footer li {
- list-style: none;
- text-align: center;
+.footer ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
 }
 
-footer a {
-  color: #fcf9f9;
-  text-decoration: none;
+.redeSocial li svg:hover {
+  fill: darkblue;
+  cursor: pointer;
 }
 
 .wrapper {
@@ -209,3 +263,24 @@ footer a {
     margin-left: 0px;
   }
 }
+
+/* DarkMode */
+.navbar.dark-mode {
+  background-color: red;
+}
+
+body.dark-mode {
+  background-color: black;
+  color: red;
+}
+
+body.dark-mode .navbar .primeiro-navbar{
+  background-color: brown;
+  color: red;
+}
+
+.theme-icon i {
+  color: red;
+}
+
+
