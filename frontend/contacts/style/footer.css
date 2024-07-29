@@ -1,0 +1,32 @@
+.footer {
+  background-color: #007bff;
+  color: #fff;
+  padding: 20px 0px;
+  width: 100%;
+  position: relative;
+  bottom: -22vh;
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+}
+
+.footer ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.redeSocial li i {
+  cursor: pointer;
+}
+
+.redeSocial li i:hover {
+  cursor: pointer;
+  color: darkblue;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}

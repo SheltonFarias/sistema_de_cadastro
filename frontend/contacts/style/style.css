@@ -46,16 +46,19 @@ body {
   text-decoration: none;
   gap: 1rem;
   list-style: none;
+  font-size: 18px;
 }
 
 .segundo-navbar ul li {
   padding: 18px 10px;
+  border-bottom: 3px solid transparent;
 }
 
 .segundo-navbar ul li:hover {
-  background-color: darkblue;
-  color: white;
   cursor: pointer;
+  border-color: #007bff;
+  margin-top: -4px;
+  transition: 0.3,5s;
 }
 
 .segundo-navbar div {

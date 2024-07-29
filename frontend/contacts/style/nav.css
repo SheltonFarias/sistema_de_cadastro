@@ -1,0 +1,62 @@
+.navbar {
+  color: white;
+  text-align: center;
+}
+
+.primeiro-navbar {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: 30px;
+  background-color: #007bff;
+  padding: 1rem 0px;
+  gap: 20px;
+}
+
+.segundo-navbar {
+  background-color: white;
+  color: #007bff;
+  gap: 2rem;
+}
+
+.segundo-navbar ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  gap: 1rem;
+  list-style: none;
+  font-size: 18px;
+}
+
+.segundo-navbar ul li {
+  padding: 18px 10px;
+  border-bottom: 3px solid transparent;
+}
+
+.segundo-navbar ul li:hover {
+  cursor: pointer;
+  border-color: #007bff;
+  margin-top: -4px;
+  transition: 0.3s;
+}
+
+.segundo-navbar div {
+  display: flex;
+  position: absolute;
+  right: 2rem;
+  top: 6.5rem;
+}
+
+#theme-icon {
+  margin-top: -5px;
+}
+
+#theme-icon i {
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+#theme-icon i:hover {
+  color: darkblue;
+}
