@@ -24,7 +24,7 @@ a {
 }
 
 .modal-login {
-  background: darkgray;
+  background: #007bff;
   display: flex;
   flex-direction: column;
   width: 700px;
