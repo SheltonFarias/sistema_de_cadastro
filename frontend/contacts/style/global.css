@@ -1,10 +1,21 @@
-@import "./global.css";
-@import "./nav.css";
-@import "./footer.css";
-@import "./darkMode.css";
-@import "./modal.css";
+* {
+  margin: 0;
+  padding: 0;
+}
 
-/* Responsividade */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  transition: 0.3s;
+}
+
+.modal {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  margin: 5px 10px;
+  margin-bottom: 4rem;
+}
+
 @media (max-width: 800px) {
   #register-contacts {
     background-color: #fff;

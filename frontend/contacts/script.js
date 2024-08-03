@@ -17,7 +17,6 @@ function definicaoItem(tema) {
 }
 definicaoItem(themeSystem);
 
-
 function adicionarContato() {
   let nome = document.getElementById("nome").value;
   let email = document.getElementById("email").value;
