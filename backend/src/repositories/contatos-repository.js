@@ -11,6 +11,7 @@ async function showContatos(filters) {
   console.log(contatos);
   return contatos;
 }
+
 async function createContatos(name, email, formattedPhone, category_id) {
   const obj = {
     text: "INSERT INTO contatos(name, email, phone, category_id) VALUES($1, $2, $3, $4) RETURNING *",
@@ -20,6 +21,7 @@ async function createContatos(name, email, formattedPhone, category_id) {
   console.log(contatoCriado);
   return contatoCriado;
 }
+
 async function updatecontatos(contato) {
   const { name, email, phone, category_id, id } = contato;
   const sql = {
@@ -30,7 +32,7 @@ async function updatecontatos(contato) {
 
   return atualizarcontatos;
 }
-// delete contatos
+
 async function deletecontatos(id) {
   const sql = {
     text: "DELETE FROM contatos WHERE id = $1 RETURNING *",
@@ -39,6 +41,7 @@ async function deletecontatos(id) {
   const [deletarcontatos] = await query(sql);
   return deletarcontatos;
 }
+
 module.exports = {
   showContatos,
   createContatos,
